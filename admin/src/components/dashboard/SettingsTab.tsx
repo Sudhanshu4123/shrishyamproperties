@@ -46,6 +46,7 @@ export default function SettingsTab({ settings, onSaveSettings }: SettingsTabPro
             <label className="block font-bold text-slate-500 uppercase tracking-wider mb-2">Agency Name</label>
             <input
               type="text"
+              spellCheck={true}
               value={formData.agencyName}
               onChange={e => setFormData({ ...formData, agencyName: e.target.value })}
               className="w-full bg-slate-50 text-slate-800 rounded-xl p-3 border border-slate-200 focus:border-teal-500 focus:outline-none"
@@ -56,6 +57,7 @@ export default function SettingsTab({ settings, onSaveSettings }: SettingsTabPro
             <label className="block font-bold text-slate-500 uppercase tracking-wider mb-2">Tagline</label>
             <input
               type="text"
+              spellCheck={true}
               value={formData.tagline}
               onChange={e => setFormData({ ...formData, tagline: e.target.value })}
               className="w-full bg-slate-50 text-slate-800 rounded-xl p-3 border border-slate-200 focus:border-teal-500 focus:outline-none"
@@ -76,6 +78,7 @@ export default function SettingsTab({ settings, onSaveSettings }: SettingsTabPro
             <label className="block font-bold text-slate-500 uppercase tracking-wider mb-2">Support Email</label>
             <input
               type="email"
+              spellCheck={true}
               value={formData.emailSupport}
               onChange={e => setFormData({ ...formData, emailSupport: e.target.value })}
               className="w-full bg-slate-50 text-slate-800 rounded-xl p-3 border border-slate-200 focus:border-teal-500 focus:outline-none"
@@ -86,6 +89,7 @@ export default function SettingsTab({ settings, onSaveSettings }: SettingsTabPro
             <label className="block font-bold text-slate-500 uppercase tracking-wider mb-2">Dwarka Office Address</label>
             <input
               type="text"
+              spellCheck={true}
               value={formData.dwarkaOfficeAddress}
               onChange={e => setFormData({ ...formData, dwarkaOfficeAddress: e.target.value })}
               className="w-full bg-slate-50 text-slate-800 rounded-xl p-3 border border-slate-200 focus:border-teal-500 focus:outline-none"

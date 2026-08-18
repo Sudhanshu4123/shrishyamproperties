@@ -85,6 +85,7 @@ export default function LeadGenerationForm({ propertyTitle, onSuccessClose }: Le
                 <input
                   type="text"
                   required
+                  spellCheck={true}
                   placeholder="Enter your full name"
                   value={formData.name}
                   onChange={e => setFormData({ ...formData, name: e.target.value })}
@@ -103,6 +104,7 @@ export default function LeadGenerationForm({ propertyTitle, onSuccessClose }: Le
                 <input
                   type="tel"
                   required
+                  spellCheck={false}
                   placeholder="Enter your phone number"
                   value={formData.phone}
                   onChange={e => setFormData({ ...formData, phone: e.target.value })}
@@ -121,6 +123,7 @@ export default function LeadGenerationForm({ propertyTitle, onSuccessClose }: Le
                 <input
                   type="email"
                   required
+                  spellCheck={true}
                   placeholder="Enter your email address"
                   value={formData.email}
                   onChange={e => setFormData({ ...formData, email: e.target.value })}

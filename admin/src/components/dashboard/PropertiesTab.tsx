@@ -689,6 +689,7 @@ export default function PropertiesTab({
                         <input
                           type="text"
                           required
+                          spellCheck={true}
                           placeholder="e.g. 3 BHK Ultra Luxury Builder Floor with Private Lift & Stilt Parking"
                           value={formData.title}
                           onChange={e => setFormData({ ...formData, title: e.target.value })}
@@ -762,6 +763,7 @@ export default function PropertiesTab({
                           <input
                             type="text"
                             required
+                            spellCheck={true}
                             placeholder="e.g. Near Ramphal Chowk, Dwarka Sector 7, New Delhi"
                             value={formData.location}
                             onChange={e => setFormData({ ...formData, location: e.target.value })}
@@ -796,6 +798,7 @@ export default function PropertiesTab({
                       <textarea
                         rows={4}
                         required
+                        spellCheck={true}
                         placeholder="Describe interior design, Italian marble flooring, modular fittings, park view, nearby metro station connectivity, and property highlights..."
                         value={formData.description}
                         onChange={e => setFormData({ ...formData, description: e.target.value })}
