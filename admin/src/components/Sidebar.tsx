@@ -43,8 +43,8 @@ export default function Sidebar({ activeTab, setActiveTab, onLogout }: SidebarPr
             <h1 className="text-sm font-black text-slate-800 tracking-wide" style={{ fontFamily: "'Playfair Display', serif" }}>
               Shri Shyam <span className="text-teal-600">Admin</span>
             </h1>
-            <span className="text-[10px] text-slate-500 font-semibold block uppercase tracking-wider">
-              Dwarka Control Panel
+            <span className="text-[10px] text-teal-600 font-bold uppercase tracking-wider block">
+              Shri Shyam Associate
             </span>
           </div>
         </div>
@@ -105,7 +105,7 @@ export default function Sidebar({ activeTab, setActiveTab, onLogout }: SidebarPr
             </div>
             <div>
               <span className="text-xs font-bold text-slate-800 block leading-tight">Super Admin</span>
-              <span className="text-[10px] text-slate-500">admin@shrishyam.com</span>
+              <span className="text-[10px] text-slate-500">admin@shrishyamassociate.com</span>
             </div>
           </div>
           <button

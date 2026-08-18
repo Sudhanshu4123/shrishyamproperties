@@ -119,7 +119,7 @@ export default function LeadsTab({
                   <td className="p-4 text-right">
                     <div className="flex items-center justify-end gap-2">
                       <a
-                        href={`https://wa.me/91${lead.phone}?text=Hello%20${encodeURIComponent(lead.name)},%20this%20is%20Shri%20Shyam%20Properties%20Dwarka.`}
+                        href={`https://wa.me/91${lead.phone}?text=Hello%20${encodeURIComponent(lead.name)},%20this%20is%20Shri%20Shyam%20Associate%20Dwarka.`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="px-3 py-1.5 rounded-xl bg-emerald-50 text-emerald-700 hover:bg-emerald-600 hover:text-white border border-emerald-200 text-xs font-bold transition-all"
