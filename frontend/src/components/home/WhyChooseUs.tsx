@@ -17,7 +17,7 @@ export default function WhyChooseUs() {
     <section className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <p className="section-label mb-2">Why Shri Shyam</p>
+          <p className="section-label mb-2">Why Shri Shyam Associate</p>
           <h2 className="text-3xl sm:text-4xl font-black text-slate-800 tracking-tight">
             Why Choose <span className="gold-gradient-text">Us?</span>
           </h2>

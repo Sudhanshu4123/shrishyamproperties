@@ -9,7 +9,7 @@ public class ShriShyamPropertiesApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ShriShyamPropertiesApplication.class, args);
 		System.out.println("==================================================");
-		System.out.println("Shri Shyam Properties Spring Boot Backend Running!");
+		System.out.println("Shri Shyam Associate Spring Boot Backend Running!");
 		System.out.println("Target Area: Dwarka, New Delhi");
 		System.out.println("==================================================");
 	}

@@ -45,7 +45,7 @@ export default function PropertyDetailPage() {
     );
   }
 
-  const whatsappMsg = `Hello Shri Shyam Properties, I am interested in: ${property.title} (${property.sector}, ${property.priceDisplay}). Please share available visit slots.`;
+  const whatsappMsg = `Hello Shri Shyam Associate, I am interested in: ${property.title} (${property.sector}, ${property.priceDisplay}). Please share available visit slots.`;
   const whatsappUrl = `https://wa.me/919911956274?text=${encodeURIComponent(whatsappMsg)}`;
 
   return (
@@ -262,7 +262,7 @@ export default function PropertyDetailPage() {
             {/* Quick Contact Box */}
             <div className="bg-gradient-to-br from-teal-50 to-emerald-50 p-6 rounded-3xl border border-teal-200 text-center shadow-sm">
               <h4 className="text-lg font-bold text-slate-800 mb-1">Direct Agent Assistance</h4>
-              <p className="text-xs text-slate-600 mb-4">Shri Shyam Properties Dwarka Desk</p>
+              <p className="text-xs text-slate-600 mb-4">Shri Shyam Associate Dwarka Desk</p>
 
               <div className="flex flex-col gap-3">
                 <a

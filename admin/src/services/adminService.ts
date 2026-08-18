@@ -26,7 +26,7 @@ const INITIAL_AGENTS: AgentStaff[] = [];
 const INITIAL_VISITS: SiteVisit[] = [];
 
 const INITIAL_SETTINGS: SystemSettings = {
-  agencyName: 'Shri Shyam Properties',
+  agencyName: 'Shri Shyam Associate',
   tagline: 'Premier Real Estate Agency in Dwarka, New Delhi',
   dwarkaOfficeAddress: 'Shop No. 12, Main Market, Dwarka Sector 7, New Delhi - 110075',
   contactPhone: '+91 9911956274',

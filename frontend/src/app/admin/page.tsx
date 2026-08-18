@@ -152,7 +152,7 @@ export default function AdminPage() {
 
             <h2 className="text-2xl font-black text-slate-800 text-center" style={{ fontFamily: "'Playfair Display', serif" }}>Admin Portal Login</h2>
             <p className="text-xs text-teal-600 text-center font-semibold mt-1 mb-6">
-              Shri Shyam Properties Management
+              Shri Shyam Associate Management
             </p>
 
             {loginError && (
@@ -222,7 +222,7 @@ export default function AdminPage() {
               <span>Real Estate Operations</span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-black text-slate-800" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Shri Shyam Properties <span className="gold-gradient-text">Admin Dashboard</span>
+              Shri Shyam Associate <span className="gold-gradient-text">Admin Dashboard</span>
             </h1>
           </div>
 

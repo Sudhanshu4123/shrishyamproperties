@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Shri Shyam Properties — Admin Control Panel",
+  title: "Shri Shyam Associate — Admin Control Panel",
   description: "Executive Management Portal for Shri Shyam Real Estate Dwarka New Delhi",
 };
 

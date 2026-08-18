@@ -1,4 +1,4 @@
--- MySQL Table Schema DDL for Shri Shyam Properties
+-- MySQL Table Schema DDL for Shri Shyam Associate
 
 CREATE TABLE IF NOT EXISTS users (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,

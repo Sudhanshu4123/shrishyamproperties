@@ -39,7 +39,7 @@ export default function OverviewTab({ stats, properties, leads, logs, onNavigate
               <span>Real Estate Operations Console</span>
             </div>
             <h2 className="text-2xl md:text-3xl font-black text-white" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Shri Shyam Properties <span className="text-teal-300">Executive Control</span>
+              Shri Shyam Associate <span className="text-teal-300">Executive Control</span>
             </h2>
             <p className="text-xs text-teal-100 mt-1 max-w-xl">
               Full administrative authority for Dwarka builder floors, society flats, penthouses & customer enquiry pipelines.

@@ -8,7 +8,7 @@ import LeadGenerationForm from '@/components/home/LeadGenerationForm';
 import { Phone, Mail, MapPin, Clock, MessageCircle } from 'lucide-react';
 
 export default function ContactPage() {
-  const whatsappUrl = "https://wa.me/919911956274?text=Hello%20Shri%20Shyam%20Properties,%20I%20want%20to%20schedule%20a%20site%20visit%20in%20Dwarka.";
+  const whatsappUrl = "https://wa.me/919911956274?text=Hello%20Shri%20Shyam%20Associate,%20I%20want%20to%20schedule%20a%20site%20visit%20in%20Dwarka.";
 
   return (
     <div className="min-h-screen bg-[#f0f4f8] text-slate-800 flex flex-col font-sans">
@@ -20,7 +20,7 @@ export default function ContactPage() {
             Get In Touch
           </span>
           <h1 className="text-4xl sm:text-5xl font-black text-slate-800 tracking-tight" style={{ fontFamily: "'Playfair Display', serif" }}>
-            Contact <span className="gold-gradient-text">Shri Shyam Properties</span>
+            Contact <span className="gold-gradient-text">Shri Shyam Associate</span>
           </h1>
           <p className="text-slate-600 text-base mt-3">
             Have questions about buying, selling, or renting properties in Dwarka, New Delhi? Reach out to us directly or visit our office.

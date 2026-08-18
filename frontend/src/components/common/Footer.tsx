@@ -16,7 +16,7 @@ export default function Footer() {
                 <Building2 className="w-5 h-5" />
               </div>
               <div>
-                <span className="text-base font-black text-white block">Shri Shyam Properties</span>
+                <span className="text-base font-black text-white block">Shri Shyam Associate</span>
                 <span className="text-[10px] text-teal-400 font-bold uppercase tracking-wider">Dwarka, New Delhi</span>
               </div>
             </div>
@@ -82,7 +82,7 @@ export default function Footer() {
                 <a href="mailto:shrishyamproperties001@gmail.com" className="hover:text-teal-400 transition-colors">shrishyamproperties001@gmail.com</a>
               </div>
               <a
-                href="https://wa.me/919911956274?text=Hello%20Shri%20Shyam%20Properties"
+                href="https://wa.me/919911956274?text=Hello%20Shri%20Shyam%20Associate"
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center justify-center gap-2 w-full py-2.5 bg-teal-600 hover:bg-teal-500 text-white rounded-xl text-xs font-bold mt-3 transition-colors"
@@ -94,7 +94,7 @@ export default function Footer() {
         </div>
 
         <div className="pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
-          <p>© {new Date().getFullYear()} Shri Shyam Properties. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Shri Shyam Associate. All rights reserved.</p>
           <p>Made with ♥ for Dwarka, New Delhi</p>
         </div>
       </div>

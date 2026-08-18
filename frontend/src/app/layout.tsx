@@ -17,14 +17,14 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Shri Shyam Properties — Premium Real Estate in Dwarka, New Delhi",
+  title: "Shri Shyam Associate — Premium Real Estate in Dwarka, New Delhi",
   description:
-    "Find 2, 3, 4 & 5 BHK luxury builder floors, DDA flats, society apartments, commercial shops, and plots in Dwarka, New Delhi. Verified listings with 3D property inspection at Shri Shyam Properties.",
+    "Find 2, 3, 4 & 5 BHK luxury builder floors, DDA flats, society apartments, commercial shops, and plots in Dwarka, New Delhi. Verified listings with 3D property inspection at Shri Shyam Associate.",
   keywords:
-    "Dwarka properties, builder floor Dwarka, 3 BHK Dwarka Sector 7, DDA flat Dwarka, property for sale Dwarka, property for rent Dwarka, Shri Shyam Properties",
-  authors: [{ name: "Shri Shyam Properties" }],
+    "Dwarka properties, builder floor Dwarka, 3 BHK Dwarka Sector 7, DDA flat Dwarka, property for sale Dwarka, property for rent Dwarka, Shri Shyam Associate",
+  authors: [{ name: "Shri Shyam Associate" }],
   openGraph: {
-    title: "Shri Shyam Properties — Dwarka Real Estate",
+    title: "Shri Shyam Associate — Dwarka Real Estate",
     description: "Premium Dwarka real estate: builder floors, DDA flats, society apartments, commercial properties. Contact: 9911956274",
     type: "website",
     locale: "en_IN",

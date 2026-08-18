@@ -13,7 +13,7 @@ interface PropertyCardProps {
 }
 
 export default function PropertyCard({ property, onOpen3DViewer, onScheduleVisit }: PropertyCardProps) {
-  const whatsappMsg = `Hello Shri Shyam Properties, I am interested in: ${property.title} (${property.sector}, ${property.priceDisplay}).`;
+  const whatsappMsg = `Hello Shri Shyam Associate, I am interested in: ${property.title} (${property.sector}, ${property.priceDisplay}).`;
   const whatsappUrl = `https://wa.me/919911956274?text=${encodeURIComponent(whatsappMsg)}`;
 
   return (

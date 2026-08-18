@@ -16,13 +16,13 @@ export default function AboutPage() {
         {/* Header */}
         <div className="max-w-3xl mb-12">
           <span className="section-label block mb-2">
-            About Shri Shyam Properties
+            About Shri Shyam Associate
           </span>
           <h1 className="text-4xl sm:text-5xl font-black text-slate-800 tracking-tight" style={{ fontFamily: "'Playfair Display', serif" }}>
             Dwarka’s Trusted Real Estate <span className="gold-gradient-text">Advisors</span>
           </h1>
           <p className="text-slate-600 text-base mt-4 leading-relaxed">
-            Shri Shyam Properties is a trusted real estate service focused on helping customers find the right residential and commercial properties in Dwarka, New Delhi.
+            Shri Shyam Associate is a trusted real estate service focused on helping customers find the right residential and commercial properties in Dwarka, New Delhi.
           </p>
         </div>
 

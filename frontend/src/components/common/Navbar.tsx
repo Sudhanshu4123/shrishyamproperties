@@ -45,7 +45,7 @@ export default function Navbar() {
               Shri Shyam
             </span>
             <span className="text-[9px] font-bold text-teal-600 uppercase tracking-widest">
-              Properties
+              Associate
             </span>
           </div>
         </Link>

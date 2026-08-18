@@ -12,8 +12,8 @@
 	<groupId>com.shrishyam</groupId>
 	<artifactId>properties-backend</artifactId>
 	<version>1.0.0</version>
-	<name>Shri Shyam Properties Backend</name>
-	<description>Java Spring Boot REST API Service for Shri Shyam Properties Dwarka</description>
+	<name>Shri Shyam Associate Backend</name>
+	<description>Java Spring Boot REST API Service for Shri Shyam Associate Dwarka</description>
 
 	<properties>
 		<java.version>17</java.version>
