@@ -85,7 +85,7 @@ export default function LeadGenerationForm({ propertyTitle, onSuccessClose }: Le
                 <input
                   type="text"
                   required
-                  placeholder="e.g. Rajesh Sharma"
+                  placeholder="Enter your full name"
                   value={formData.name}
                   onChange={e => setFormData({ ...formData, name: e.target.value })}
                   className="form-input pl-10"
@@ -102,7 +102,7 @@ export default function LeadGenerationForm({ propertyTitle, onSuccessClose }: Le
                 <input
                   type="tel"
                   required
-                  placeholder="e.g. 9810123456"
+                  placeholder="Enter your phone number"
                   value={formData.phone}
                   onChange={e => setFormData({ ...formData, phone: e.target.value })}
                   className="form-input pl-10"
@@ -119,7 +119,7 @@ export default function LeadGenerationForm({ propertyTitle, onSuccessClose }: Le
                 <input
                   type="email"
                   required
-                  placeholder="e.g. rajesh@gmail.com"
+                  placeholder="Enter your email address"
                   value={formData.email}
                   onChange={e => setFormData({ ...formData, email: e.target.value })}
                   className="form-input pl-10"
