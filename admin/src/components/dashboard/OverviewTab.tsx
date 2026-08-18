@@ -26,6 +26,17 @@ interface OverviewTabProps {
 }
 
 export default function OverviewTab({ stats, properties, leads, logs, onNavigateToTab }: OverviewTabProps) {
+  const sectorCounts = React.useMemo(() => {
+    const sectors = ['Dwarka Sector 7', 'Dwarka Sector 6', 'Dwarka Sector 10', 'Dwarka Sector 12', 'Dwarka Sector 21'];
+    return sectors.map(sec => {
+      const count = properties.filter(p => p.sector === sec || p.location.includes(sec)).length;
+      const total = properties.length || 1;
+      const calcPct = Math.round((count / total) * 100);
+      const displayPct = count > 0 ? Math.max(calcPct, 25) : 12;
+      return { sector: sec, count, percent: `${displayPct}%` };
+    });
+  }, [properties]);
+
   return (
     <div className="space-y-6">
       {/* Top Banner Hero */}
@@ -138,51 +149,58 @@ export default function OverviewTab({ stats, properties, leads, logs, onNavigate
           </div>
 
           <div className="space-y-3">
-            {leads.slice(0, 4).map(lead => (
-              <div
-                key={lead.id}
-                className="p-4 rounded-2xl bg-slate-50 border border-slate-200 hover:border-teal-400 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3"
-              >
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs font-black text-slate-800">{lead.name}</span>
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-teal-50 text-teal-700 border border-teal-200">
-                      {lead.status}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-3 text-[11px] text-slate-500">
-                    <span className="flex items-center gap-1 text-slate-700 font-medium">
-                      <Phone className="w-3 h-3 text-teal-600" />
-                      {lead.phone}
-                    </span>
-                    <span>•</span>
-                    <span className="text-teal-700 font-semibold">{lead.budget}</span>
-                    <span>•</span>
-                    <span className="flex items-center gap-1 text-slate-500">
-                      <MapPin className="w-3 h-3 text-slate-400" />
-                      {lead.preferredLocation}
-                    </span>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <a
-                    href={`https://wa.me/91${lead.phone}?text=Hello%20${encodeURIComponent(lead.name)},%20this%20is%20Shri%20Shyam%20Associate%20Dwarka.`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-3 py-1.5 rounded-xl bg-emerald-50 text-emerald-700 hover:bg-emerald-600 hover:text-white border border-emerald-200 text-xs font-bold transition-all"
-                  >
-                    WhatsApp
-                  </a>
-                  <a
-                    href={`tel:${lead.phone}`}
-                    className="px-3 py-1.5 rounded-xl bg-slate-800 text-white hover:bg-slate-700 text-xs font-bold transition-all"
-                  >
-                    Call Client
-                  </a>
-                </div>
+            {leads.length === 0 ? (
+              <div className="p-8 text-center bg-slate-50 rounded-2xl border border-slate-200">
+                <p className="text-xs text-slate-500 font-semibold mb-1">No buyer or seller enquiries received yet.</p>
+                <p className="text-[11px] text-slate-400">Enquiries submitted via website forms will appear here automatically.</p>
               </div>
-            ))}
+            ) : (
+              leads.slice(0, 4).map(lead => (
+                <div
+                  key={lead.id}
+                  className="p-4 rounded-2xl bg-slate-50 border border-slate-200 hover:border-teal-400 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3"
+                >
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs font-black text-slate-800">{lead.name}</span>
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-teal-50 text-teal-700 border border-teal-200">
+                        {lead.status}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-3 text-[11px] text-slate-500">
+                      <span className="flex items-center gap-1 text-slate-700 font-medium">
+                        <Phone className="w-3 h-3 text-teal-600" />
+                        {lead.phone}
+                      </span>
+                      <span>•</span>
+                      <span className="text-teal-700 font-semibold">{lead.budget}</span>
+                      <span>•</span>
+                      <span className="flex items-center gap-1 text-slate-500">
+                        <MapPin className="w-3 h-3 text-slate-400" />
+                        {lead.preferredLocation}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <a
+                      href={`https://wa.me/91${lead.phone}?text=Hello%20${encodeURIComponent(lead.name)},%20this%20is%20Shri%20Shyam%20Associate%20Dwarka.`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-3 py-1.5 rounded-xl bg-emerald-50 text-emerald-700 hover:bg-emerald-600 hover:text-white border border-emerald-200 text-xs font-bold transition-all"
+                    >
+                      WhatsApp
+                    </a>
+                    <a
+                      href={`tel:${lead.phone}`}
+                      className="px-3 py-1.5 rounded-xl bg-slate-800 text-white hover:bg-slate-700 text-xs font-bold transition-all"
+                    >
+                      Call Client
+                    </a>
+                  </div>
+                </div>
+              ))
+            )}
           </div>
         </div>
 
@@ -193,21 +211,15 @@ export default function OverviewTab({ stats, properties, leads, logs, onNavigate
             <p className="text-xs text-slate-500 mb-6">Property listing concentration by location</p>
 
             <div className="space-y-3">
-              {[
-                { sector: 'Dwarka Sector 6', count: 12, percent: '35%' },
-                { sector: 'Dwarka Sector 7', count: 15, percent: '40%' },
-                { sector: 'Dwarka Sector 10', count: 8, percent: '22%' },
-                { sector: 'Dwarka Sector 21 & 23', count: 6, percent: '18%' },
-                { sector: 'MBR Enclave', count: 4, percent: '12%' },
-              ].map((s, i) => (
+              {sectorCounts.map((s, i) => (
                 <div key={i} className="space-y-1">
                   <div className="flex justify-between text-xs font-semibold">
                     <span className="text-slate-700">{s.sector}</span>
-                    <span className="text-teal-600 font-bold">{s.count} Properties</span>
+                    <span className="text-teal-600 font-bold">{s.count} {s.count === 1 ? 'Property' : 'Properties'}</span>
                   </div>
                   <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden border border-slate-200">
                     <div
-                      className="bg-gradient-to-r from-teal-500 to-teal-700 h-full rounded-full"
+                      className="bg-gradient-to-r from-teal-500 to-teal-700 h-full rounded-full transition-all duration-500"
                       style={{ width: s.percent }}
                     />
                   </div>
