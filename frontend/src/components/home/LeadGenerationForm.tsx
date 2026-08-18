@@ -88,9 +88,10 @@ export default function LeadGenerationForm({ propertyTitle, onSuccessClose }: Le
                   placeholder="Enter your full name"
                   value={formData.name}
                   onChange={e => setFormData({ ...formData, name: e.target.value })}
-                  className="form-input pl-10"
+                  className="form-input"
+                  style={{ paddingLeft: '42px' }}
                 />
-                <User className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <User className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
               </div>
             </div>
 
@@ -105,9 +106,10 @@ export default function LeadGenerationForm({ propertyTitle, onSuccessClose }: Le
                   placeholder="Enter your phone number"
                   value={formData.phone}
                   onChange={e => setFormData({ ...formData, phone: e.target.value })}
-                  className="form-input pl-10"
+                  className="form-input"
+                  style={{ paddingLeft: '42px' }}
                 />
-                <Phone className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <Phone className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
               </div>
             </div>
 
@@ -122,9 +124,10 @@ export default function LeadGenerationForm({ propertyTitle, onSuccessClose }: Le
                   placeholder="Enter your email address"
                   value={formData.email}
                   onChange={e => setFormData({ ...formData, email: e.target.value })}
-                  className="form-input pl-10"
+                  className="form-input"
+                  style={{ paddingLeft: '42px' }}
                 />
-                <Mail className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <Mail className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
               </div>
             </div>
 
