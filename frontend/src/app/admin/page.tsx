@@ -194,7 +194,7 @@ export default function AdminPage() {
                 type="submit"
                 className="w-full btn-teal text-xs py-3 rounded-xl font-extrabold shadow-md hover:scale-[1.02] transition-transform"
               >
-                Sign In to Admin Dashboard
+                Login
               </button>
             </form>
           </div>

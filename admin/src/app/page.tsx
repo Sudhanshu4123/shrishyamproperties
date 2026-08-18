@@ -159,7 +159,7 @@ export default function AdminPage() {
               type="submit"
               className="w-full py-3.5 text-xs font-extrabold text-white bg-gradient-to-r from-teal-600 via-teal-500 to-teal-700 rounded-xl shadow-lg hover:scale-[1.02] transition-transform flex items-center justify-center gap-2"
             >
-              <span>Access Admin Panel</span>
+              <span>Login</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </form>
