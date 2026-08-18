@@ -59,7 +59,7 @@ export default function AdminPage() {
       setLoginError('');
       refreshData();
     } else {
-      setLoginError('Invalid credentials! Demo Login -> Username: admin | Password: admin');
+      setLoginError('Invalid username/email or password. Please try again.');
     }
   };
 
@@ -134,7 +134,7 @@ export default function AdminPage() {
               <input
                 type="text"
                 required
-                placeholder="admin"
+                placeholder="Enter username or email"
                 value={loginEmail}
                 onChange={e => setLoginEmail(e.target.value)}
                 className="w-full bg-slate-50 text-slate-800 text-xs rounded-xl px-3.5 py-3 border border-slate-200 focus:border-teal-500 focus:outline-none transition-colors"
@@ -148,15 +148,11 @@ export default function AdminPage() {
               <input
                 type="password"
                 required
-                placeholder="admin"
+                placeholder="••••••••"
                 value={loginPassword}
                 onChange={e => setLoginPassword(e.target.value)}
                 className="w-full bg-slate-50 text-slate-800 text-xs rounded-xl px-3.5 py-3 border border-slate-200 focus:border-teal-500 focus:outline-none transition-colors"
               />
-            </div>
-
-            <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-[11px] text-slate-500 text-center">
-              Demo Credentials: Username <span className="text-teal-600 font-bold">admin</span> | Password <span className="text-teal-600 font-bold">admin</span>
             </div>
 
             <button
