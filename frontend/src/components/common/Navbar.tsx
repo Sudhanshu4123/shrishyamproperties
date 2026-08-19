@@ -36,18 +36,12 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Brand Logo */}
-        <Link href="/" className="flex items-center gap-2.5 group shrink-0">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-teal-500 to-teal-700 flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
-            <Building2 className="w-5 h-5" />
-          </div>
-          <div>
-            <span className="text-lg font-black text-slate-800 tracking-tight leading-none block">
-              Shri Shyam
-            </span>
-            <span className="text-[9px] font-bold text-teal-600 uppercase tracking-widest">
-              Associate
-            </span>
-          </div>
+        <Link href="/" className="flex items-center group shrink-0">
+          <img 
+            src="/logo.png" 
+            alt="Shri Shyam Associate" 
+            className="h-10 sm:h-12 w-auto object-contain group-hover:scale-105 transition-transform" 
+          />
         </Link>
 
         {/* Desktop Navigation */}

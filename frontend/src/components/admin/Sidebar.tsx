@@ -31,18 +31,12 @@ export default function Sidebar({ activeTab, setActiveTab, onLogout }: SidebarPr
     <aside className="w-64 bg-white border-r border-slate-200 flex flex-col justify-between h-screen sticky top-0 z-40 text-slate-700 shadow-sm">
       <div>
         {/* Brand Header */}
-        <div className="p-6 border-b border-slate-100 flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-500 to-teal-700 flex items-center justify-center text-white font-black shadow-md">
-            <Building2 className="w-6 h-6 text-white" />
-          </div>
-          <div>
-            <h1 className="text-sm font-black text-slate-800 tracking-wide" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Shri Shyam <span className="text-teal-600">Admin</span>
-            </h1>
-            <span className="text-[10px] text-teal-600 font-bold uppercase tracking-wider block">
-              Shri Shyam Associate
-            </span>
-          </div>
+        <div className="p-4 border-b border-slate-100 flex items-center justify-center">
+          <img 
+            src="/logo.png" 
+            alt="Shri Shyam Associate Admin" 
+            className="h-12 w-auto object-contain" 
+          />
         </div>
 
         {/* System Health Status Indicator */}

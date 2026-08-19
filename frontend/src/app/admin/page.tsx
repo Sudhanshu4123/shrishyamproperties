@@ -116,8 +116,12 @@ export default function AdminPage() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-teal-500/10 via-emerald-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative z-10 max-w-md w-full p-8 rounded-3xl bg-white border border-slate-200 shadow-2xl backdrop-blur-xl">
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-teal-500 to-teal-700 text-white flex items-center justify-center mx-auto mb-4 font-black shadow-lg">
-            <Building2 className="w-8 h-8 text-white" />
+          <div className="flex justify-center mb-4">
+            <img 
+              src="/logo.png" 
+              alt="Shri Shyam Associate" 
+              className="h-16 w-auto object-contain" 
+            />
           </div>
 
           <h1 className="text-2xl font-black text-slate-800 text-center tracking-tight" style={{ fontFamily: "'Playfair Display', serif" }}>

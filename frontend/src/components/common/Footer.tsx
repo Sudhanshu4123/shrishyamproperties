@@ -11,14 +11,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-9 h-9 rounded-xl bg-teal-600 flex items-center justify-center text-white">
-                <Building2 className="w-5 h-5" />
-              </div>
-              <div>
-                <span className="text-base font-black text-white block">Shri Shyam Associate</span>
-                <span className="text-[10px] text-teal-400 font-bold uppercase tracking-wider">Dwarka, New Delhi</span>
-              </div>
+            <div className="mb-4">
+              <img 
+                src="/logo.png" 
+                alt="Shri Shyam Associate" 
+                className="h-14 w-auto object-contain bg-white/95 p-2 rounded-2xl shadow-md border border-white/20" 
+              />
             </div>
             <p className="text-xs text-slate-400 leading-relaxed mb-4">
               Dwarka's trusted real estate agency offering verified 2–5 BHK builder floors, society flats, DDA pockets, commercial shops and plots.
