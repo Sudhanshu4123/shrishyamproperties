@@ -40,7 +40,6 @@ export default function Footer() {
                 { name: 'Commercial Spaces', href: '/properties?type=Commercial' },
                 { name: 'About Us', href: '/about' },
                 { name: 'Contact', href: '/contact' },
-                { name: 'Admin Panel', href: '/admin' },
               ].map(item => (
                 <li key={item.name}>
                   <Link href={item.href} className="hover:text-teal-400 transition-colors flex items-center gap-1">

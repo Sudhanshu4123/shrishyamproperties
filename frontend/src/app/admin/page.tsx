@@ -69,13 +69,18 @@ export default function AdminPage() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if ((loginEmail === 'admin@shrishyamproperties.com' || loginEmail === 'admin') && loginPassword === 'admin') {
+    const user = loginEmail.trim().toLowerCase();
+    const pass = loginPassword.trim();
+    if (
+      (user === 'admin' || user === 'admin@shrishyamassociate.com' || user === 'admin@shrishyamproperties.com') &&
+      (pass === 'Shrishyam@2026#' || pass === 'admin')
+    ) {
       setIsAuthenticated(true);
       sessionStorage.setItem('ssp_admin_auth', 'true');
       setLoginError('');
       refreshData();
     } else {
-      setLoginError('Invalid email/username or password. Please try again.');
+      setLoginError('Access Denied. Invalid admin credentials.');
     }
   };
 
