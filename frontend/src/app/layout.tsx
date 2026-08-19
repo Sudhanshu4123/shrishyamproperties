@@ -23,6 +23,14 @@ export const metadata: Metadata = {
   keywords:
     "Dwarka properties, builder floor Dwarka, 3 BHK Dwarka Sector 7, DDA flat Dwarka, property for sale Dwarka, property for rent Dwarka, Shri Shyam Associate",
   authors: [{ name: "Shri Shyam Associate" }],
+  icons: {
+    icon: [
+      { url: '/logo.png', type: 'image/png' },
+      { url: '/icon.png', type: 'image/png' },
+    ],
+    shortcut: '/logo.png',
+    apple: '/logo.png',
+  },
   openGraph: {
     title: "Shri Shyam Associate — Dwarka Real Estate",
     description: "Premium Dwarka real estate: builder floors, DDA flats, society apartments, commercial properties. Contact: 9911956274",
@@ -34,6 +42,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable} h-full antialiased`}>
+      <head>
+        <link rel="icon" href="/logo.png" type="image/png" sizes="any" />
+        <link rel="apple-touch-icon" href="/logo.png" />
+      </head>
       <body className="min-h-full flex flex-col bg-[#f0f4f8]">{children}</body>
     </html>
   );
