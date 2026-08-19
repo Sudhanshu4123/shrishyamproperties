@@ -7,6 +7,14 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080/a
 
 export class PropertyService {
   // Properties API
+  private static saveProperties(properties: Property[]): void {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(PROPERTIES_KEY, JSON.stringify(properties));
+      localStorage.setItem('ssp_admin_properties_v3', JSON.stringify(properties));
+      window.dispatchEvent(new Event('storage'));
+    }
+  }
+
   static getProperties(): Property[] {
     if (typeof window === 'undefined') return INITIAL_PROPERTIES;
     
@@ -15,13 +23,14 @@ export class PropertyService {
     localStorage.removeItem('ssp_admin_properties_v2');
 
     const adminStored = localStorage.getItem('ssp_admin_properties_v3');
-    const stored = adminStored || localStorage.getItem(PROPERTIES_KEY);
-    if (!stored) {
-      localStorage.setItem(PROPERTIES_KEY, JSON.stringify(INITIAL_PROPERTIES));
+    const stored = adminStored !== null ? adminStored : localStorage.getItem(PROPERTIES_KEY);
+    if (stored === null) {
+      this.saveProperties(INITIAL_PROPERTIES);
       return INITIAL_PROPERTIES;
     }
     try {
-      return JSON.parse(stored);
+      const parsed = JSON.parse(stored);
+      return Array.isArray(parsed) ? parsed : INITIAL_PROPERTIES;
     } catch {
       return INITIAL_PROPERTIES;
     }
@@ -32,7 +41,7 @@ export class PropertyService {
     return list.find(p => p.id === id || p.slug === id);
   }
 
-  static async fetchPropertiesApi(params: {
+  static async fetchPropertiesApi(params?: {
     purpose?: string;
     type?: string;
     sector?: string;
@@ -43,9 +52,9 @@ export class PropertyService {
   }): Promise<Property[]> {
     try {
       const queryParams = new URLSearchParams();
-      if (params.purpose) queryParams.set('purpose', params.purpose);
-      if (params.type) queryParams.set('type', params.type);
-      if (params.sector) queryParams.set('sector', params.sector);
+      if (params?.purpose) queryParams.set('purpose', params.purpose);
+      if (params?.type) queryParams.set('type', params.type);
+      if (params?.sector) queryParams.set('sector', params.sector);
 
       const response = await fetch(`${API_BASE_URL}/properties?${queryParams.toString()}`, {
         method: 'GET',
@@ -55,16 +64,19 @@ export class PropertyService {
       if (response && response.ok) {
         const data = await response.json();
         if (Array.isArray(data) && data.length > 0) {
-          return data;
+          localStorage.setItem(PROPERTIES_KEY, JSON.stringify(data));
+          localStorage.setItem('ssp_admin_properties_v3', JSON.stringify(data));
+          return params ? this.searchProperties(params) : data;
         }
       }
     } catch (e) {
-      console.warn('Backend Spring Boot API connection check, serving verified dataset.');
+      console.warn('Backend API connection warning, fallback to local properties:', e);
     }
 
-    // Simulated API response latency delay
-    await new Promise(resolve => setTimeout(resolve, 350));
-    return this.searchProperties(params);
+    if (params) {
+      return this.searchProperties(params);
+    }
+    return this.getProperties();
   }
 
   static searchProperties(params: {
@@ -132,9 +144,7 @@ export class PropertyService {
       createdAt: new Date().toISOString()
     };
     properties.unshift(newProperty);
-    if (typeof window !== 'undefined') {
-      localStorage.setItem(PROPERTIES_KEY, JSON.stringify(properties));
-    }
+    this.saveProperties(properties);
     return newProperty;
   }
 
@@ -144,18 +154,14 @@ export class PropertyService {
     if (index === -1) return null;
 
     properties[index] = { ...properties[index], ...updates };
-    if (typeof window !== 'undefined') {
-      localStorage.setItem(PROPERTIES_KEY, JSON.stringify(properties));
-    }
+    this.saveProperties(properties);
     return properties[index];
   }
 
   static deleteProperty(id: string): boolean {
     const properties = this.getProperties();
     const filtered = properties.filter(p => p.id !== id);
-    if (typeof window !== 'undefined') {
-      localStorage.setItem(PROPERTIES_KEY, JSON.stringify(filtered));
-    }
+    this.saveProperties(filtered);
     return true;
   }
 

@@ -101,6 +101,37 @@ export default function AdminPage() {
     }
   };
 
+  const handleEditProperty = (prop: Property) => {
+    setEditingPropertyId(prop.id);
+    setNewProp({
+      title: prop.title,
+      purpose: prop.purpose,
+      type: prop.type,
+      priceDisplay: prop.priceDisplay,
+      priceValue: prop.priceValue,
+      location: prop.location,
+      sector: prop.sector,
+      bhk: prop.bhk,
+      bathrooms: prop.bathrooms,
+      areaSqFt: prop.areaSqFt,
+      carpetAreaSqFt: prop.carpetAreaSqFt,
+      floor: prop.floor,
+      totalFloors: prop.totalFloors,
+      parking: prop.parking,
+      furnishing: prop.furnishing,
+      facing: prop.facing,
+      propertyAge: prop.propertyAge,
+      availability: prop.availability,
+      featured: prop.featured,
+      published: prop.published,
+      heroImage: prop.heroImage,
+      description: prop.description,
+      amenities: Array.isArray(prop.amenities) ? prop.amenities.join(', ') : prop.amenities || '',
+      contactNumber: prop.contactNumber
+    });
+    setIsAddPropertyOpen(true);
+  };
+
   const handleLeadStatusChange = (leadId: string, newStatus: LeadStatus) => {
     PropertyService.updateLeadStatus(leadId, newStatus);
     refreshData();
@@ -350,6 +381,13 @@ export default function AdminPage() {
                       <td className="p-4 text-right">
                         <div className="flex items-center justify-end gap-2">
                           <button
+                            onClick={() => handleEditProperty(prop)}
+                            className="p-1.5 rounded-lg bg-teal-50 text-teal-600 hover:bg-teal-600 hover:text-white border border-teal-200 transition-colors"
+                            title="Edit Listing"
+                          >
+                            <Edit3 className="w-4 h-4" />
+                          </button>
+                          <button
                             onClick={() => handleDeleteProperty(prop.id)}
                             className="p-1.5 rounded-lg bg-rose-50 text-rose-600 hover:bg-rose-600 hover:text-white border border-rose-200 transition-colors"
                             title="Delete Listing"
@@ -447,7 +485,7 @@ export default function AdminPage() {
             </button>
 
             <h3 className="text-xl font-bold text-slate-800 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Add New Dwarka Property Listing
+              {editingPropertyId ? 'Edit Dwarka Property Listing' : 'Add New Dwarka Property Listing'}
             </h3>
 
             <form onSubmit={handleSavePropertyForm} className="space-y-4 text-xs">
@@ -574,9 +612,9 @@ export default function AdminPage() {
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full py-3 font-extrabold btn-teal rounded-xl shadow-md"
+                  className="w-full py-3 font-extrabold btn-teal rounded-xl shadow-md hover:scale-[1.01] transition-transform"
                 >
-                  Publish Dwarka Property Listing
+                  {editingPropertyId ? 'Update Dwarka Property Listing' : 'Publish Dwarka Property Listing'}
                 </button>
               </div>
             </form>

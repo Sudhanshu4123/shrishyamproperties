@@ -246,12 +246,7 @@ export class AdminService {
       const stored = localStorage.getItem(key);
       if (!stored) return defaultVal;
 
-      const parsed = JSON.parse(stored);
-      // Return defaultVal if stored array is empty so dashboard is always populated with live seeds
-      if (Array.isArray(parsed) && parsed.length === 0 && Array.isArray(defaultVal) && defaultVal.length > 0) {
-        return defaultVal;
-      }
-      return parsed;
+      return JSON.parse(stored);
     } catch {
       return defaultVal;
     }
@@ -263,6 +258,7 @@ export class AdminService {
       localStorage.setItem(key, JSON.stringify(val));
       if (key === STORAGE_KEYS.PROPERTIES) {
         localStorage.setItem('ssp_properties_v3', JSON.stringify(val));
+        window.dispatchEvent(new Event('storage'));
       }
     } catch (e) {
       console.error('LocalStorage write error:', e);

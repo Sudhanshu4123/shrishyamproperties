@@ -28,12 +28,31 @@ export default function HomePage() {
   const [isHomePopupOpen, setIsHomePopupOpen] = useState(false);
 
   useEffect(() => {
-    setProperties(PropertyService.getProperties());
-    // Auto popup query form on home page visit
+    // 1. Immediate initial load
+    const initialProps = PropertyService.getProperties();
+    setProperties(initialProps);
+
+    // 2. Async backend API sync
+    PropertyService.fetchPropertiesApi().then(data => {
+      if (data && data.length > 0) {
+        setProperties(data);
+      }
+    });
+
+    // 3. Live storage listener for admin updates
+    const handleStorage = () => {
+      setProperties(PropertyService.getProperties());
+    };
+    window.addEventListener('storage', handleStorage);
+
     const timer = setTimeout(() => {
       setIsHomePopupOpen(true);
     }, 600);
-    return () => clearTimeout(timer);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('storage', handleStorage);
+    };
   }, []);
 
   const handleOpen3D = (prop: Property) => {
