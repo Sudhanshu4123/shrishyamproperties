@@ -45,7 +45,7 @@ export default function LeadsTab({
             <span>Customer Leads & Enquiry Pipeline ({filteredLeads.length})</span>
           </h2>
           <p className="text-xs text-slate-500 mt-0.5">
-            Manage client enquiries, update CRM pipeline status, assign agents & contact buyers via WhatsApp / Phone.
+            Manage client enquiries, update CRM pipeline status & contact buyers via WhatsApp / Phone.
           </p>
         </div>
 

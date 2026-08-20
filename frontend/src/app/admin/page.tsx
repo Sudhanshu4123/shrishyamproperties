@@ -7,10 +7,9 @@ import OverviewTab from '@/components/admin/dashboard/OverviewTab';
 import PropertiesTab from '@/components/admin/dashboard/PropertiesTab';
 import LeadsTab from '@/components/admin/dashboard/LeadsTab';
 import VisitsTab from '@/components/admin/dashboard/VisitsTab';
-import AgentsTab from '@/components/admin/dashboard/AgentsTab';
 import SettingsTab from '@/components/admin/dashboard/SettingsTab';
 import { AdminService } from '@/services/adminService';
-import { AdminProperty, AdminLead, AgentStaff, SiteVisit, SystemSettings, ActivityLog } from '@/types/admin';
+import { AdminProperty, AdminLead, SiteVisit, SystemSettings, ActivityLog } from '@/types/admin';
 import { Building2, ArrowRight } from 'lucide-react';
 
 export default function AdminPage() {
@@ -27,7 +26,6 @@ export default function AdminPage() {
   const [stats, setStats] = useState<any>({});
   const [properties, setProperties] = useState<AdminProperty[]>([]);
   const [leads, setLeads] = useState<AdminLead[]>([]);
-  const [agents, setAgents] = useState<AgentStaff[]>([]);
   const [visits, setVisits] = useState<SiteVisit[]>([]);
   const [logs, setLogs] = useState<ActivityLog[]>([]);
   const [settings, setSettings] = useState<SystemSettings>({} as SystemSettings);
@@ -44,7 +42,6 @@ export default function AdminPage() {
   const refreshData = () => {
     setProperties(AdminService.getProperties());
     setLeads(AdminService.getLeads());
-    setAgents(AdminService.getAgents());
     setVisits(AdminService.getSiteVisits());
     setLogs(AdminService.getLogs());
     setSettings(AdminService.getSettings());
@@ -229,10 +226,6 @@ export default function AdminPage() {
 
           {activeTab === 'visits' && (
             <VisitsTab visits={visits} />
-          )}
-
-          {activeTab === 'agents' && (
-            <AgentsTab agents={agents} />
           )}
 
           {activeTab === 'settings' && (

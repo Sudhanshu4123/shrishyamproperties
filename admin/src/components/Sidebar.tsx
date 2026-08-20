@@ -5,7 +5,6 @@ import {
   Building2, 
   LayoutDashboard, 
   Layers, 
-  Users, 
   Calendar, 
   Settings, 
   LogOut, 
@@ -27,7 +26,6 @@ export default function Sidebar({ activeTab, setActiveTab, onLogout }: SidebarPr
     { id: 'properties', label: 'Properties Portfolio', icon: Building2, badge: 'Full CRUD' },
     { id: 'leads', label: 'Leads & Enquiries', icon: Layers, badge: 'CRM' },
     { id: 'visits', label: 'Site Visits Calendar', icon: Calendar, badge: 'Scheduled' },
-    { id: 'agents', label: 'Agents & Staff', icon: Users, badge: null },
     { id: 'settings', label: 'System Settings', icon: Settings, badge: 'API' }
   ];
 
