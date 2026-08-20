@@ -26,7 +26,7 @@ export default function Sidebar({ activeTab, setActiveTab, onLogout }: SidebarPr
     { id: 'properties', label: 'Properties Portfolio', icon: Building2 },
     { id: 'leads', label: 'Leads & Enquiries', icon: Layers },
     { id: 'visits', label: 'Site Visits Calendar', icon: Calendar },
-    { id: 'settings', label: 'System Settings', icon: Settings }
+    { id: 'settings', label: 'Agency Settings', icon: Settings }
   ];
 
   return (
