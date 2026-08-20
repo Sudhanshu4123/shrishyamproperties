@@ -9,12 +9,12 @@ import {
 } from '../types/admin';
 
 const STORAGE_KEYS = {
-  PROPERTIES: 'ssp_admin_properties_v3',
-  LEADS: 'ssp_admin_leads_v3',
-  AGENTS: 'ssp_admin_agents_v3',
-  VISITS: 'ssp_admin_visits_v3',
-  LOGS: 'ssp_admin_logs_v3',
-  SETTINGS: 'ssp_admin_settings_v3'
+  PROPERTIES: 'ssp_admin_properties_v4',
+  LEADS: 'ssp_admin_leads_v4',
+  AGENTS: 'ssp_admin_agents_v4',
+  VISITS: 'ssp_admin_visits_v4',
+  LOGS: 'ssp_admin_logs_v4',
+  SETTINGS: 'ssp_admin_settings_v4'
 };
 
 const INITIAL_PROPERTIES: AdminProperty[] = [
@@ -121,101 +121,11 @@ const INITIAL_PROPERTIES: AdminProperty[] = [
   }
 ];
 
-const INITIAL_LEADS: AdminLead[] = [
-  {
-    id: 'lead-101',
-    name: 'Rajesh Kumar',
-    phone: '9810123456',
-    email: 'rajesh.k@gmail.com',
-    lookingFor: 'Buy',
-    propertyType: '3 BHK',
-    budget: '₹ 1.50 Cr - 1.80 Cr',
-    preferredLocation: 'Dwarka Sector 7',
-    message: 'Interested in buying a 3 BHK luxury builder floor with lift and parking.',
-    propertyTitle: '3 BHK Ultra Luxury Builder Floor Sector 7',
-    status: 'New',
-    createdAt: new Date().toISOString()
-  },
-  {
-    id: 'lead-102',
-    name: 'Priya Sharma',
-    phone: '9876543210',
-    email: 'priya.s@yahoo.com',
-    lookingFor: 'Buy',
-    propertyType: '4 BHK',
-    budget: '₹ 2.50 Cr - 3.00 Cr',
-    preferredLocation: 'Dwarka Sector 6',
-    message: 'Looking for a penthouse or top floor society flat in Sector 6.',
-    propertyTitle: '4 BHK High-End Society Penthouse',
-    status: 'Contacted',
-    createdAt: new Date(Date.now() - 86400000).toISOString()
-  },
-  {
-    id: 'lead-103',
-    name: 'Amit Verma',
-    phone: '9911223344',
-    email: 'verma.amit@outlook.com',
-    lookingFor: 'Buy',
-    propertyType: '2 BHK',
-    budget: '₹ 90 Lakhs - 1.00 Cr',
-    preferredLocation: 'Dwarka Sector 10',
-    message: 'Required 2 BHK DDA flat near metro station.',
-    propertyTitle: '2 BHK Renovated DDA Apartment Sector 10',
-    status: 'Site Visit Scheduled',
-    visitDate: '2026-08-20',
-    createdAt: new Date(Date.now() - 172800000).toISOString()
-  }
-];
+const INITIAL_LEADS: AdminLead[] = [];
 
-const INITIAL_AGENTS: AgentStaff[] = [
-  {
-    id: 'agent-1',
-    name: 'Rahul Sharma',
-    role: 'Senior Broker',
-    phone: '+91 9911956274',
-    email: 'rahul@shrishyamassociate.com',
-    sectorSpecialization: 'Dwarka Sector 6 & 7',
-    activeDeals: 8,
-    status: 'Active',
-    avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=200&q=80'
-  },
-  {
-    id: 'agent-2',
-    name: 'Deepak Verma',
-    role: 'Site Manager',
-    phone: '+91 9811223344',
-    email: 'deepak@shrishyamassociate.com',
-    sectorSpecialization: 'Dwarka Sector 10 & 12',
-    activeDeals: 5,
-    status: 'Active',
-    avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=80'
-  }
-];
+const INITIAL_AGENTS: AgentStaff[] = [];
 
-const INITIAL_VISITS: SiteVisit[] = [
-  {
-    id: 'visit-1',
-    clientName: 'Rajesh Kumar',
-    clientPhone: '9810123456',
-    propertyTitle: '3 BHK Ultra Luxury Builder Floor Sector 7',
-    sector: 'Dwarka Sector 7',
-    visitDate: '2026-08-20',
-    visitTime: '11:00 AM',
-    agentAssigned: 'Rahul Sharma',
-    status: 'Confirmed'
-  },
-  {
-    id: 'visit-2',
-    clientName: 'Amit Verma',
-    clientPhone: '9911223344',
-    propertyTitle: '2 BHK DDA Apartment Sector 10',
-    sector: 'Dwarka Sector 10',
-    visitDate: '2026-08-21',
-    visitTime: '04:00 PM',
-    agentAssigned: 'Deepak Verma',
-    status: 'Pending'
-  }
-];
+const INITIAL_VISITS: SiteVisit[] = [];
 
 const INITIAL_SETTINGS: SystemSettings = {
   agencyName: 'Shri Shyam Associate',
@@ -237,11 +147,13 @@ export class AdminService {
   private static getItem<T>(key: string, defaultVal: T): T {
     if (typeof window === 'undefined') return defaultVal;
     try {
-      // Purge legacy keys containing empty or stale data
+      // Purge legacy keys containing demo data
       localStorage.removeItem('ssp_admin_properties_v2');
       localStorage.removeItem('ssp_admin_leads_v2');
       localStorage.removeItem('ssp_admin_agents_v2');
       localStorage.removeItem('ssp_admin_visits_v2');
+      localStorage.removeItem('ssp_admin_leads_v3');
+      localStorage.removeItem('ssp_admin_visits_v3');
       
       const stored = localStorage.getItem(key);
       if (!stored) return defaultVal;

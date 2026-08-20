@@ -23,51 +23,58 @@ export default function VisitsTab({ visits }: VisitsTabProps) {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {visits.map(visit => (
-          <div
-            key={visit.id}
-            className="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm hover:border-teal-400 transition-all"
-          >
-            <div className="flex items-center justify-between mb-3">
-              <span className="text-xs font-bold text-teal-700 bg-teal-50 px-2.5 py-1 rounded-full border border-teal-200">
-                {visit.status}
-              </span>
-              <span className="text-[10px] text-slate-500 flex items-center gap-1">
-                <Clock className="w-3 h-3 text-slate-400" />
-                {visit.visitDate} @ {visit.visitTime}
-              </span>
-            </div>
-
-            <h3 className="text-sm font-bold text-slate-800 mb-2">{visit.propertyTitle}</h3>
-
-            <div className="space-y-1.5 text-xs text-slate-600 mb-4">
-              <div className="flex items-center gap-2">
-                <User className="w-3.5 h-3.5 text-teal-600" />
-                <span>Client: <strong className="text-slate-800">{visit.clientName}</strong></span>
+      {visits.length === 0 ? (
+        <div className="p-12 text-center bg-white rounded-3xl border border-slate-200 shadow-sm">
+          <Calendar className="w-12 h-12 text-slate-300 mx-auto mb-3" />
+          <h3 className="text-sm font-bold text-slate-700 mb-1">No Site Visit Appointments Scheduled</h3>
+          <p className="text-xs text-slate-400">Customer site visit requests will appear here automatically.</p>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {visits.map(visit => (
+            <div
+              key={visit.id}
+              className="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm hover:border-teal-400 transition-all"
+            >
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-xs font-bold text-teal-700 bg-teal-50 px-2.5 py-1 rounded-full border border-teal-200">
+                  {visit.status}
+                </span>
+                <span className="text-[10px] text-slate-500 flex items-center gap-1">
+                  <Clock className="w-3 h-3 text-slate-400" />
+                  {visit.visitDate} @ {visit.visitTime}
+                </span>
               </div>
-              <div className="flex items-center gap-2">
-                <Phone className="w-3.5 h-3.5 text-slate-400" />
-                <span>Phone: {visit.clientPhone}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <MapPin className="w-3.5 h-3.5 text-slate-400" />
-                <span>Sector: {visit.sector}</span>
-              </div>
-            </div>
 
-            <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px]">
-              <span className="text-slate-500">Assigned Broker: <strong className="text-slate-700">{visit.agentAssigned}</strong></span>
-              <a
-                href={`tel:${visit.clientPhone}`}
-                className="px-3 py-1 rounded-lg btn-teal text-xs font-bold shadow-sm"
-              >
-                Call Client
-              </a>
+              <h3 className="text-sm font-bold text-slate-800 mb-2">{visit.propertyTitle}</h3>
+
+              <div className="space-y-1.5 text-xs text-slate-600 mb-4">
+                <div className="flex items-center gap-2">
+                  <User className="w-3.5 h-3.5 text-teal-600" />
+                  <span>Client: <strong className="text-slate-800">{visit.clientName}</strong></span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Phone className="w-3.5 h-3.5 text-slate-400" />
+                  <span>Phone: {visit.clientPhone}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <MapPin className="w-3.5 h-3.5 text-slate-400" />
+                  <span>Sector: {visit.sector}</span>
+                </div>
+              </div>
+
+              <div className="pt-3 border-t border-slate-100 flex items-center justify-end text-[11px]">
+                <a
+                  href={`tel:${visit.clientPhone}`}
+                  className="px-3.5 py-1.5 rounded-xl btn-teal text-xs font-bold shadow-sm"
+                >
+                  Call Client
+                </a>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
