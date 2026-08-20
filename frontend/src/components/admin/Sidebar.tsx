@@ -18,11 +18,11 @@ interface SidebarProps {
 
 export default function Sidebar({ activeTab, setActiveTab, onLogout }: SidebarProps) {
   const navItems = [
-    { id: 'overview', label: 'Dashboard Overview', icon: LayoutDashboard, badge: null },
-    { id: 'properties', label: 'Properties Portfolio', icon: Building2, badge: 'Full CRUD' },
-    { id: 'leads', label: 'Leads & Enquiries', icon: Layers, badge: 'CRM' },
-    { id: 'visits', label: 'Site Visits Calendar', icon: Calendar, badge: 'Scheduled' },
-    { id: 'settings', label: 'System Settings', icon: Settings, badge: 'API' }
+    { id: 'overview', label: 'Dashboard Overview', icon: LayoutDashboard },
+    { id: 'properties', label: 'Properties Portfolio', icon: Building2 },
+    { id: 'leads', label: 'Leads & Enquiries', icon: Layers },
+    { id: 'visits', label: 'Site Visits Calendar', icon: Calendar },
+    { id: 'settings', label: 'System Settings', icon: Settings }
   ];
 
   return (
@@ -38,13 +38,13 @@ export default function Sidebar({ activeTab, setActiveTab, onLogout }: SidebarPr
         </div>
 
         {/* System Health Status Indicator */}
-        <div className="px-3.5 py-2.5 mx-4 my-4 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between gap-2 text-xs">
+        <div className="px-3.5 py-2.5 mx-4 my-4 rounded-xl bg-emerald-50/70 border border-emerald-200/80 flex items-center justify-between gap-2 text-xs">
           <div className="flex items-center gap-2 min-w-0">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-            <span className="text-[11px] font-semibold text-slate-700 truncate">System Live</span>
+            <span className="text-[11px] font-bold text-emerald-800 truncate">System Active</span>
           </div>
-          <span className="text-[9px] font-bold text-teal-700 bg-teal-50 px-2 py-0.5 rounded-full border border-teal-200 shrink-0">
-            API Online
+          <span className="text-[9px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full border border-emerald-300/60 shrink-0">
+            Online
           </span>
         </div>
 
@@ -57,7 +57,7 @@ export default function Sidebar({ activeTab, setActiveTab, onLogout }: SidebarPr
               <button
                 key={item.id}
                 onClick={() => setActiveTab(item.id)}
-                className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all ${
+                className={`w-full flex items-center justify-start px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all ${
                   isActive
                     ? 'btn-teal font-bold shadow-md'
                     : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
@@ -67,17 +67,6 @@ export default function Sidebar({ activeTab, setActiveTab, onLogout }: SidebarPr
                   <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-slate-400'}`} />
                   <span>{item.label}</span>
                 </div>
-                {item.badge && (
-                  <span
-                    className={`text-[9px] font-bold px-1.5 py-0.5 rounded-md ${
-                      isActive
-                        ? 'bg-slate-900 text-teal-300'
-                        : 'bg-slate-100 text-slate-500 border border-slate-200'
-                    }`}
-                  >
-                    {item.badge}
-                  </span>
-                )}
               </button>
             );
           })}
