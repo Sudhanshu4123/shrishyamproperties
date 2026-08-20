@@ -6,7 +6,6 @@ import {
   LayoutDashboard, 
   Layers, 
   Calendar, 
-  Settings, 
   LogOut, 
   Sparkles, 
   Shield, 
@@ -25,8 +24,7 @@ export default function Sidebar({ activeTab, setActiveTab, onLogout }: SidebarPr
     { id: 'overview', label: 'Dashboard Overview', icon: LayoutDashboard },
     { id: 'properties', label: 'Properties Portfolio', icon: Building2 },
     { id: 'leads', label: 'Leads & Enquiries', icon: Layers },
-    { id: 'visits', label: 'Site Visits Calendar', icon: Calendar },
-    { id: 'settings', label: 'Agency Settings', icon: Settings }
+    { id: 'visits', label: 'Site Visits Calendar', icon: Calendar }
   ];
 
   return (

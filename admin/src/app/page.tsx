@@ -7,7 +7,6 @@ import OverviewTab from '../components/dashboard/OverviewTab';
 import PropertiesTab from '../components/dashboard/PropertiesTab';
 import LeadsTab from '../components/dashboard/LeadsTab';
 import VisitsTab from '../components/dashboard/VisitsTab';
-import SettingsTab from '../components/dashboard/SettingsTab';
 import { AdminService } from '../services/adminService';
 import { AdminProperty, AdminLead, SiteVisit, SystemSettings, ActivityLog } from '../types/admin';
 import { Lock, Sparkles, Building2, ShieldCheck, ArrowRight } from 'lucide-react';
@@ -224,13 +223,6 @@ export default function AdminPage() {
 
           {activeTab === 'visits' && (
             <VisitsTab visits={visits} />
-          )}
-
-          {activeTab === 'settings' && (
-            <SettingsTab
-              settings={settings}
-              onSaveSettings={handleSaveSettings}
-            />
           )}
         </main>
       </div>
