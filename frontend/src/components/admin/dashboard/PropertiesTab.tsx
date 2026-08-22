@@ -293,12 +293,36 @@ export default function PropertiesTab({
     showToast('Set as main Hero Image for this property!', 'success');
   };
 
+  const currentStepIndex = FORM_STEPS.findIndex(s => s.id === activeFormTab);
+
+  const handleNextStep = (e?: React.MouseEvent) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    if (currentStepIndex < FORM_STEPS.length - 1) {
+      setActiveFormTab(FORM_STEPS[currentStepIndex + 1].id);
+    }
+  };
+
+  const handlePrevStep = (e?: React.MouseEvent) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    if (currentStepIndex > 0) {
+      setActiveFormTab(FORM_STEPS[currentStepIndex - 1].id);
+    }
+  };
+
   const handleSubmitForm = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // If user is not on the final tab ('images'), advance to next step instead of submitting early
+    // STRICT GUARD: If user is not on the final tab ('images'), advance to next step instead of submitting early
     if (activeFormTab !== 'images') {
-      handleNextStep();
+      if (currentStepIndex < FORM_STEPS.length - 1) {
+        setActiveFormTab(FORM_STEPS[currentStepIndex + 1].id);
+      }
       return;
     }
 
@@ -359,20 +383,6 @@ export default function PropertiesTab({
       showToast(`New Property "${formData.title}" published successfully!`, 'success');
     }
     setIsModalOpen(false);
-  };
-
-  const currentStepIndex = FORM_STEPS.findIndex(s => s.id === activeFormTab);
-
-  const handleNextStep = () => {
-    if (currentStepIndex < FORM_STEPS.length - 1) {
-      setActiveFormTab(FORM_STEPS[currentStepIndex + 1].id);
-    }
-  };
-
-  const handlePrevStep = () => {
-    if (currentStepIndex > 0) {
-      setActiveFormTab(FORM_STEPS[currentStepIndex - 1].id);
-    }
   };
 
   const filtered = properties.filter(p => {
@@ -1372,7 +1382,7 @@ export default function PropertiesTab({
                       onClick={handleNextStep}
                       className="px-6 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-black shadow-md shadow-teal-500/20 hover:scale-105 transition-all flex items-center gap-2 cursor-pointer text-xs"
                     >
-                      <span>Next Step</span>
+                      <span>Next Step: {FORM_STEPS[currentStepIndex + 1]?.label}</span>
                       <ChevronRight className="w-4 h-4" />
                     </button>
                   ) : (
