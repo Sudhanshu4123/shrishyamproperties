@@ -78,11 +78,14 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
 
-      - name: Make Maven Wrapper Executable
-        run: chmod +x mvnw
-
       - name: Build & Package Spring Boot Application JAR
-        run: ./mvnw clean package -DskipTests
+        run: |
+          if [ -f "./mvnw" ]; then
+            chmod +x ./mvnw
+            ./mvnw clean package -DskipTests
+          else
+            mvn clean package -DskipTests
+          fi
 
       - name: Upload Backend Executable Artifact
         uses: actions/upload-artifact@v4

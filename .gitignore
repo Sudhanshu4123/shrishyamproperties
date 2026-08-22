@@ -14,9 +14,6 @@ dist/
 
 # Java Spring Boot Maven build output
 **/target/
-**/.mvn/
-**/mvnw.cmd
-**/mvnw
 
 # Environment variables & secrets
 .env*.local
