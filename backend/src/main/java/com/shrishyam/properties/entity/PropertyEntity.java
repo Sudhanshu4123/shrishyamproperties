@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "properties")
@@ -59,8 +60,13 @@ public class PropertyEntity {
     @Builder.Default
     private Boolean published = true;
 
-    @Column(name = "hero_image", length = 500)
+    @Column(name = "hero_image", columnDefinition = "TEXT")
     private String heroImage;
+
+    @ElementCollection
+    @CollectionTable(name = "property_images", joinColumns = @JoinColumn(name = "property_id"))
+    @Column(name = "image_url", columnDefinition = "TEXT")
+    private List<String> images;
 
     @Column(columnDefinition = "TEXT")
     private String description;

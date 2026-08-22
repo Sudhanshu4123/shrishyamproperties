@@ -59,11 +59,29 @@ public class PropertyController {
     public ResponseEntity<PropertyEntity> updateProperty(@PathVariable Long id, @RequestBody PropertyEntity details) {
         return propertyRepository.findById(id).map(p -> {
             p.setTitle(details.getTitle());
+            p.setPurpose(details.getPurpose());
+            p.setPropertyType(details.getPropertyType());
             p.setPriceDisplay(details.getPriceDisplay());
             p.setPriceValue(details.getPriceValue());
+            p.setLocation(details.getLocation());
             p.setSector(details.getSector());
+            p.setBhk(details.getBhk());
+            p.setBathrooms(details.getBathrooms());
+            p.setAreaSqFt(details.getAreaSqFt());
+            p.setCarpetAreaSqFt(details.getCarpetAreaSqFt());
+            p.setFloor(details.getFloor());
+            p.setTotalFloors(details.getTotalFloors());
+            p.setParking(details.getParking());
+            p.setFurnishing(details.getFurnishing());
+            p.setFacing(details.getFacing());
+            p.setPropertyAge(details.getPropertyAge());
+            p.setAvailability(details.getAvailability());
             p.setFeatured(details.getFeatured());
             p.setPublished(details.getPublished());
+            p.setHeroImage(details.getHeroImage());
+            p.setImages(details.getImages());
+            p.setDescription(details.getDescription());
+            p.setContactNumber(details.getContactNumber());
             return ResponseEntity.ok(propertyRepository.save(p));
         }).orElse(ResponseEntity.notFound().build());
     }

@@ -143,6 +143,69 @@ const INITIAL_SETTINGS: SystemSettings = {
   cloudinaryUploadPreset: 'dwarka_properties'
 };
 
+export function compressImage(file: File, maxWidth = 1200, maxHeight = 1200, quality = 0.75): Promise<string> {
+  return new Promise((resolve, reject) => {
+    if (typeof window === 'undefined') {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result as string);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+      return;
+    }
+
+    if (file.type === 'image/svg+xml' || file.size < 30 * 1024) {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result as string);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const img = document.createElement('img');
+      img.onload = () => {
+        let width = img.width;
+        let height = img.height;
+
+        if (width > maxWidth || height > maxHeight) {
+          if (width / height > maxWidth / maxHeight) {
+            height = Math.round((height * maxWidth) / width);
+            width = maxWidth;
+          } else {
+            width = Math.round((width * maxHeight) / height);
+            height = maxHeight;
+          }
+        }
+
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) {
+          resolve(e.target?.result as string);
+          return;
+        }
+
+        ctx.drawImage(img, 0, 0, width, height);
+
+        let mimeType = 'image/webp';
+        let dataUrl = canvas.toDataURL(mimeType, quality);
+        if (!dataUrl.startsWith('data:image/webp')) {
+          mimeType = 'image/jpeg';
+          dataUrl = canvas.toDataURL(mimeType, quality);
+        }
+
+        resolve(dataUrl);
+      };
+      img.onerror = () => resolve(e.target?.result as string);
+      img.src = e.target?.result as string;
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
 export class AdminService {
   private static getItem<T>(key: string, defaultVal: T): T {
     if (typeof window === 'undefined') return defaultVal;
@@ -177,45 +240,58 @@ export class AdminService {
     }
   }
 
-  // --- CLOUDINARY & LOCAL FILE UPLOAD ---
-  static async uploadImage(file: File): Promise<{ url: string; source: 'Cloudinary' | 'Local' }> {
-    const settings = this.getSettings();
-    const cloudName = settings.cloudinaryCloudName || 'shrishyamproperties';
-    const uploadPreset = settings.cloudinaryUploadPreset || 'dwarka_properties';
-
-    // 1. Try Cloudinary Unsigned/Direct API upload if available
+  // --- SERVER, CLOUDINARY & COMPRESSED FILE UPLOAD ---
+  static async uploadImage(file: File): Promise<{ url: string; source: 'Server' | 'Cloudinary' | 'Local' }> {
+    // 1. Try local server API route first (/api/upload)
     try {
       const formData = new FormData();
       formData.append('file', file);
-      formData.append('upload_preset', uploadPreset);
-      if (settings.cloudinaryApiKey) {
-        formData.append('api_key', settings.cloudinaryApiKey);
-      }
 
-      const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+      const res = await fetch('/api/upload', {
         method: 'POST',
         body: formData
       });
 
       if (res.ok) {
         const data = await res.json();
-        if (data.secure_url) {
-          return { url: data.secure_url, source: 'Cloudinary' };
+        if (data.url) {
+          return { url: data.url, source: 'Server' };
         }
       }
     } catch (err) {
-      console.warn('Cloudinary direct upload bypassed, using high performance local Data URL:', err);
+      console.warn('Local API route upload bypassed:', err);
     }
 
-    // 2. High-performance FileReader Base64 fallback (guaranteed offline & local success)
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = () => {
-        resolve({ url: reader.result as string, source: 'Local' });
-      };
-      reader.onerror = (error) => reject(error);
-      reader.readAsDataURL(file);
-    });
+    // 2. Try Cloudinary Unsigned/Direct API upload if configured
+    const settings = this.getSettings();
+    if (settings.cloudinaryCloudName && settings.cloudinaryUploadPreset) {
+      try {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('upload_preset', settings.cloudinaryUploadPreset);
+        if (settings.cloudinaryApiKey) {
+          formData.append('api_key', settings.cloudinaryApiKey);
+        }
+
+        const res = await fetch(`https://api.cloudinary.com/v1_1/${settings.cloudinaryCloudName}/image/upload`, {
+          method: 'POST',
+          body: formData
+        });
+
+        if (res.ok) {
+          const data = await res.json();
+          if (data.secure_url) {
+            return { url: data.secure_url, source: 'Cloudinary' };
+          }
+        }
+      } catch (err) {
+        console.warn('Cloudinary direct upload bypassed:', err);
+      }
+    }
+
+    // 3. Fallback to client-side HTML5 canvas image compression (~40-80KB WebP)
+    const compressedUrl = await compressImage(file);
+    return { url: compressedUrl, source: 'Local' };
   }
 
   // --- PROPERTIES CRUD ---

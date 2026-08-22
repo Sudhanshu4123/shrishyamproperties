@@ -29,7 +29,8 @@ import {
   ChevronRight,
   ChevronLeft,
   ArrowRight,
-  FolderPlus
+  FolderPlus,
+  Link as LinkIcon
 } from 'lucide-react';
 import { AdminProperty, DwarkaSector, PropertyPurpose, PropertyType } from '../../../types/admin';
 import { AdminService } from '../../../services/adminService';
@@ -82,7 +83,27 @@ export default function PropertiesTab({
   const [isUploading, setIsUploading] = useState(false);
   const [uploadMessage, setUploadMessage] = useState<{ text: string; type: 'success' | 'error' } | null>(null);
   const [previewImage, setPreviewImage] = useState<string | null>(null);
+  const [directUrlInput, setDirectUrlInput] = useState('');
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleAddDirectUrl = () => {
+    const url = directUrlInput.trim();
+    if (!url) return;
+    if (!url.startsWith('http://') && !url.startsWith('https://') && !url.startsWith('/')) {
+      showToast('Please enter a valid URL starting with http://, https:// or /', 'info');
+      return;
+    }
+    setFormData(prev => {
+      const newImages = Array.from(new Set([...prev.images, url]));
+      return {
+        ...prev,
+        images: newImages,
+        heroImage: prev.heroImage ? prev.heroImage : url
+      };
+    });
+    setDirectUrlInput('');
+    showToast('Direct Image URL added to property gallery!', 'success');
+  };
 
   // Toast State
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'info' } | null>(null);
@@ -1140,9 +1161,40 @@ export default function PropertiesTab({
                     <div className="p-4 rounded-2xl bg-teal-50/70 border border-teal-100 flex items-center justify-between shadow-sm">
                       <div>
                         <h4 className="font-black text-slate-800 text-sm">Step 5: High-Res Photos & Gallery Upload</h4>
-                        <p className="text-[11px] text-slate-500">Upload property images via Cloudinary/Local storage or pick sample stock photos.</p>
+                        <p className="text-[11px] text-slate-500">Upload property images directly, paste image web links, or pick sample stock photos.</p>
                       </div>
                       <ImageIcon className="w-6 h-6 text-teal-600 opacity-70" />
+                    </div>
+
+                    {/* Direct Image Web URL Input Box */}
+                    <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-2">
+                      <label className="block text-xs font-extrabold text-slate-700 flex items-center gap-1.5">
+                        <LinkIcon className="w-3.5 h-3.5 text-teal-600" />
+                        <span>Add Photo via Direct Web Link / URL</span>
+                      </label>
+                      <div className="flex gap-2">
+                        <input
+                          type="url"
+                          value={directUrlInput}
+                          onChange={e => setDirectUrlInput(e.target.value)}
+                          onKeyDown={e => {
+                            if (e.key === 'Enter') {
+                              e.preventDefault();
+                              handleAddDirectUrl();
+                            }
+                          }}
+                          placeholder="Paste image URL (e.g. https://images.unsplash.com/... or Cloudinary URL)"
+                          className="flex-1 text-xs bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 focus:border-teal-500 focus:outline-none"
+                        />
+                        <button
+                          type="button"
+                          onClick={handleAddDirectUrl}
+                          className="px-4 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs transition-all flex items-center gap-1.5 shrink-0 cursor-pointer shadow-sm"
+                        >
+                          <Plus className="w-4 h-4" />
+                          <span>Add URL</span>
+                        </button>
+                      </div>
                     </div>
 
                     {/* Drag & Drop Upload Zone */}
