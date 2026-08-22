@@ -300,6 +300,10 @@ export default function PropertiesTab({
       e.preventDefault();
       e.stopPropagation();
     }
+    if (currentStepIndex === 0 && !formData.title.trim()) {
+      showToast('Please enter Property Title before proceeding to Next Step', 'info');
+      return;
+    }
     if (currentStepIndex < FORM_STEPS.length - 1) {
       setActiveFormTab(FORM_STEPS[currentStepIndex + 1].id);
     }
@@ -315,14 +319,15 @@ export default function PropertiesTab({
     }
   };
 
-  const handleSubmitForm = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handlePublishProperty = (e?: React.MouseEvent) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
 
-    // STRICT GUARD: If user is not on the final tab ('images'), advance to next step instead of submitting early
-    if (activeFormTab !== 'images') {
-      if (currentStepIndex < FORM_STEPS.length - 1) {
-        setActiveFormTab(FORM_STEPS[currentStepIndex + 1].id);
-      }
+    if (!formData.title.trim()) {
+      showToast('Please enter Property Title in Step 1', 'info');
+      setActiveFormTab('basic');
       return;
     }
 
@@ -695,8 +700,8 @@ export default function PropertiesTab({
               })}
             </div>
 
-            {/* Modal Body Form with Fixed Footer */}
-            <form onSubmit={handleSubmitForm} className="flex flex-col flex-1 min-h-0 overflow-hidden">
+            {/* Modal Body Wizard with Fixed Footer */}
+            <div className="flex flex-col flex-1 min-h-0 overflow-hidden">
               
               {/* Scrollable Form Body */}
               <div className="flex-1 overflow-y-auto p-6 space-y-6 text-xs">
@@ -1387,7 +1392,8 @@ export default function PropertiesTab({
                     </button>
                   ) : (
                     <button
-                      type="submit"
+                      type="button"
+                      onClick={handlePublishProperty}
                       className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-black shadow-lg shadow-emerald-500/25 hover:scale-105 transition-all flex items-center gap-2 cursor-pointer text-xs"
                     >
                       <Check className="w-4 h-4 stroke-[3]" />
@@ -1396,7 +1402,7 @@ export default function PropertiesTab({
                   )}
                 </div>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       )}
