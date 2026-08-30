@@ -17,7 +17,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://shrishyamproperties.com'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://shrishyamassociate.com'),
   title: "Shri Shyam Associate — Premium Real Estate in Dwarka, New Delhi",
   description:
     "Find 2, 3, 4 & 5 BHK luxury builder floors, DDA flats, society apartments, commercial shops, and plots in Dwarka, New Delhi. Verified listings with 3D property inspection at Shri Shyam Associate.",

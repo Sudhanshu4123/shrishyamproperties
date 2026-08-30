@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin
 Disallow: /api/
 
-Sitemap: https://shrishyamproperties.com/sitemap.xml
+Sitemap: https://shrishyamassociate.com/sitemap.xml

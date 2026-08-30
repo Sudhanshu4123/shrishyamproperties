@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { INITIAL_PROPERTIES } from '@/data/mockData';
 import { Property } from '@/types/property';
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://shrishyamproperties.com';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://shrishyamassociate.com';
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080/api';
 
 async function getAllProperties(): Promise<Property[]> {
