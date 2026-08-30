@@ -4,6 +4,13 @@ import { INITIAL_PROPERTIES, INITIAL_LEADS, DWARKA_SECTORS, INITIAL_TESTIMONIALS
 const PROPERTIES_KEY = 'ssp_properties_v5';
 const LEADS_KEY = 'ssp_leads_v5';
 
+const getApiBaseUrl = (): string => {
+  if (typeof window !== 'undefined') {
+    return '/api';
+  }
+  return process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8080/api';
+};
+
 const isDemoProperty = (p: any) => {
   if (!p) return true;
   const id = String(p.id || '');
