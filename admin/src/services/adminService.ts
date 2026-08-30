@@ -17,9 +17,16 @@ const STORAGE_KEYS = {
   SETTINGS: 'ssp_admin_settings_v4'
 };
 
+const getApiBaseUrl = (): string => {
+  if (typeof window !== 'undefined') {
+    return '/api';
+  }
+  return process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8080/api';
+};
+
 const INITIAL_PROPERTIES: AdminProperty[] = [
   {
-    id: 'prop-101',
+    id: '1',
     title: '3 BHK Ultra Luxury Builder Floor with Private Lift & Stilt Parking',
     slug: '3-bhk-ultra-luxury-builder-floor-sector-7',
     purpose: 'Buy',
@@ -53,7 +60,7 @@ const INITIAL_PROPERTIES: AdminProperty[] = [
     viewsCount: 142
   },
   {
-    id: 'prop-102',
+    id: '2',
     title: '4 BHK High-End CGHS Society Penthouse with Terrace Garden',
     slug: '4-bhk-high-end-cghs-society-penthouse-sector-6',
     purpose: 'Buy',
@@ -87,7 +94,7 @@ const INITIAL_PROPERTIES: AdminProperty[] = [
     viewsCount: 98
   },
   {
-    id: 'prop-103',
+    id: '3',
     title: '2 BHK Renovated DDA Apartment near Sector 10 Metro',
     slug: '2-bhk-renovated-dda-apartment-sector-10',
     purpose: 'Buy',
@@ -122,9 +129,7 @@ const INITIAL_PROPERTIES: AdminProperty[] = [
 ];
 
 const INITIAL_LEADS: AdminLead[] = [];
-
 const INITIAL_AGENTS: AgentStaff[] = [];
-
 const INITIAL_VISITS: SiteVisit[] = [];
 
 const INITIAL_SETTINGS: SystemSettings = {
@@ -133,9 +138,9 @@ const INITIAL_SETTINGS: SystemSettings = {
   dwarkaOfficeAddress: 'Shop No. 12, Main Market, Dwarka Sector 7, New Delhi - 110075',
   contactPhone: '+91 9911956274',
   whatsappHotline: '9911956274',
-  emailSupport: 'info@shrishyamproperties.com',
+  emailSupport: 'info@shrishyamassociate.com',
   enable3DViewer: true,
-  backendApiUrl: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080/api',
+  backendApiUrl: '/api',
   currencySymbol: '₹',
   requireApprovalForListings: false,
   cloudinaryCloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || 'shrishyamproperties',
@@ -206,11 +211,44 @@ export function compressImage(file: File, maxWidth = 1200, maxHeight = 1200, qua
   });
 }
 
+const mapBackendToAdminProperty = (item: any): AdminProperty => ({
+  id: String(item.id),
+  title: item.title || '',
+  slug: item.slug || '',
+  purpose: item.purpose || 'Buy',
+  type: item.propertyType || item.type || 'Builder Floor',
+  priceDisplay: item.priceDisplay || '',
+  priceValue: Number(item.priceValue) || 0,
+  location: item.location || '',
+  sector: item.sector || '',
+  bhk: Number(item.bhk) || 0,
+  bathrooms: Number(item.bathrooms) || 0,
+  areaSqFt: Number(item.areaSqFt) || 0,
+  carpetAreaSqFt: Number(item.carpetAreaSqFt) || 0,
+  floor: item.floor || '',
+  totalFloors: Number(item.totalFloors) || 0,
+  parking: item.parking || '',
+  furnishing: item.furnishing || '',
+  facing: item.facing || '',
+  propertyAge: item.propertyAge || '',
+  availability: item.availability || 'Ready to Move',
+  featured: Boolean(item.featured),
+  published: item.published !== false,
+  heroImage: item.heroImage || 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80',
+  images: Array.isArray(item.images) && item.images.length > 0 ? item.images : [item.heroImage || 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80'],
+  description: item.description || '',
+  amenities: item.amenities || ['24/7 Security', 'Power Backup', 'Stilt Parking', 'Modular Kitchen'],
+  highlights: item.highlights || ['Freehold Clear Title', 'Prime Dwarka Location'],
+  contactNumber: item.contactNumber || '+91 9911956274',
+  legalClearance: true,
+  createdAt: item.createdAt || new Date().toISOString(),
+  viewsCount: item.viewsCount || 0
+});
+
 export class AdminService {
   private static getItem<T>(key: string, defaultVal: T): T {
     if (typeof window === 'undefined') return defaultVal;
     try {
-      // Purge legacy keys containing demo data
       localStorage.removeItem('ssp_admin_properties_v2');
       localStorage.removeItem('ssp_admin_leads_v2');
       localStorage.removeItem('ssp_admin_agents_v2');
@@ -232,7 +270,7 @@ export class AdminService {
     try {
       localStorage.setItem(key, JSON.stringify(val));
       if (key === STORAGE_KEYS.PROPERTIES) {
-        localStorage.setItem('ssp_properties_v3', JSON.stringify(val));
+        localStorage.setItem('ssp_properties_v4', JSON.stringify(val));
         window.dispatchEvent(new Event('storage'));
       }
     } catch (e) {
@@ -294,56 +332,138 @@ export class AdminService {
     return { url: compressedUrl, source: 'Local' };
   }
 
-  // --- PROPERTIES CRUD ---
+  // --- PROPERTIES CRUD & CLOUD SYNC ---
   static getProperties(): AdminProperty[] {
-    return this.getItem<AdminProperty[]>(STORAGE_KEYS.PROPERTIES, INITIAL_PROPERTIES);
+    const cached = this.getItem<AdminProperty[]>(STORAGE_KEYS.PROPERTIES, INITIAL_PROPERTIES);
+    return Array.isArray(cached) && cached.length > 0 ? cached : INITIAL_PROPERTIES;
   }
 
-  static addProperty(propData: Omit<AdminProperty, 'id' | 'createdAt' | 'viewsCount'>): AdminProperty {
-    const properties = this.getProperties();
-    const newProp: AdminProperty = {
+  static async fetchProperties(): Promise<AdminProperty[]> {
+    try {
+      const apiUrl = getApiBaseUrl();
+      const res = await fetch(`${apiUrl}/properties?all=true`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+        cache: 'no-store'
+      });
+      if (res.ok) {
+        const data = await res.json();
+        if (Array.isArray(data) && data.length > 0) {
+          const mapped = data.map(mapBackendToAdminProperty);
+          this.setItem(STORAGE_KEYS.PROPERTIES, mapped);
+          return mapped;
+        }
+      }
+    } catch (err) {
+      console.warn('AdminService fetchProperties API notice:', err);
+    }
+    return this.getProperties();
+  }
+
+  static async addProperty(propData: Omit<AdminProperty, 'id' | 'createdAt' | 'viewsCount'>): Promise<AdminProperty> {
+    const slug = propData.slug || propData.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') + '-' + Date.now();
+    
+    const payload = {
+      title: propData.title,
+      slug: slug,
+      purpose: propData.purpose || 'Buy',
+      propertyType: propData.type || 'Builder Floor',
+      priceDisplay: propData.priceDisplay,
+      priceValue: propData.priceValue,
+      location: propData.location,
+      sector: propData.sector,
+      bhk: propData.bhk,
+      bathrooms: propData.bathrooms,
+      areaSqFt: propData.areaSqFt,
+      carpetAreaSqFt: propData.carpetAreaSqFt,
+      floor: propData.floor,
+      totalFloors: propData.totalFloors,
+      parking: propData.parking,
+      furnishing: propData.furnishing,
+      facing: propData.facing,
+      propertyAge: propData.propertyAge,
+      availability: propData.availability,
+      featured: Boolean(propData.featured),
+      published: propData.published !== false,
+      heroImage: propData.heroImage,
+      images: propData.images,
+      description: propData.description,
+      contactNumber: propData.contactNumber
+    };
+
+    let newProp: AdminProperty = {
       ...propData,
       id: `prop-${Date.now()}`,
+      slug: slug,
       createdAt: new Date().toISOString(),
       viewsCount: 0
     };
+
+    try {
+      const apiUrl = getApiBaseUrl();
+      const res = await fetch(`${apiUrl}/properties`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (res.ok) {
+        const backendData = await res.json();
+        newProp = mapBackendToAdminProperty(backendData);
+      }
+    } catch (e) {
+      console.warn('Backend property POST notice:', e);
+    }
+
+    const properties = this.getProperties().filter(p => String(p.id) !== String(newProp.id));
     properties.unshift(newProp);
     this.setItem(STORAGE_KEYS.PROPERTIES, properties);
     this.logActivity('Create Property', newProp.title, 'create');
-
-    // Async sync to Backend Spring Boot API
-    const settings = this.getSettings();
-    const apiUrl = settings.backendApiUrl || 'http://localhost:8080/api';
-    try {
-      fetch(`${apiUrl}/properties`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newProp)
-      }).catch(e => console.warn('Backend property sync notice:', e));
-    } catch (e) {
-      console.warn('Property sync notice:', e);
-    }
-
     return newProp;
   }
 
-  static updateProperty(id: string, updates: Partial<AdminProperty>): AdminProperty | null {
+  static async updateProperty(id: string, updates: Partial<AdminProperty>): Promise<AdminProperty | null> {
     const properties = this.getProperties();
-    const index = properties.findIndex(p => p.id === id);
+    const index = properties.findIndex(p => String(p.id) === String(id));
     if (index === -1) return null;
+
     properties[index] = { ...properties[index], ...updates };
     this.setItem(STORAGE_KEYS.PROPERTIES, properties);
     this.logActivity('Update Property', properties[index].title, 'update');
 
-    // Async sync to Backend Spring Boot API
-    const settings = this.getSettings();
-    const apiUrl = settings.backendApiUrl || 'http://localhost:8080/api';
     if (!isNaN(Number(id))) {
       try {
-        fetch(`${apiUrl}/properties/${id}`, {
+        const apiUrl = getApiBaseUrl();
+        const updatedObj = properties[index];
+        await fetch(`${apiUrl}/properties/${id}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(properties[index])
+          body: JSON.stringify({
+            title: updatedObj.title,
+            slug: updatedObj.slug,
+            purpose: updatedObj.purpose,
+            propertyType: updatedObj.type,
+            priceDisplay: updatedObj.priceDisplay,
+            priceValue: updatedObj.priceValue,
+            location: updatedObj.location,
+            sector: updatedObj.sector,
+            bhk: updatedObj.bhk,
+            bathrooms: updatedObj.bathrooms,
+            areaSqFt: updatedObj.areaSqFt,
+            carpetAreaSqFt: updatedObj.carpetAreaSqFt,
+            floor: updatedObj.floor,
+            totalFloors: updatedObj.totalFloors,
+            parking: updatedObj.parking,
+            furnishing: updatedObj.furnishing,
+            facing: updatedObj.facing,
+            propertyAge: updatedObj.propertyAge,
+            availability: updatedObj.availability,
+            featured: updatedObj.featured,
+            published: updatedObj.published,
+            heroImage: updatedObj.heroImage,
+            images: updatedObj.images,
+            description: updatedObj.description,
+            contactNumber: updatedObj.contactNumber
+          })
         }).catch(e => console.warn('Backend property update notice:', e));
       } catch (e) {
         console.warn('Property update notice:', e);
@@ -353,19 +473,17 @@ export class AdminService {
     return properties[index];
   }
 
-  static deleteProperty(id: string): boolean {
+  static async deleteProperty(id: string): Promise<boolean> {
     const properties = this.getProperties();
-    const prop = properties.find(p => p.id === id);
-    const filtered = properties.filter(p => p.id !== id);
+    const prop = properties.find(p => String(p.id) === String(id));
+    const filtered = properties.filter(p => String(p.id) !== String(id));
     this.setItem(STORAGE_KEYS.PROPERTIES, filtered);
     if (prop) this.logActivity('Delete Property', prop.title, 'delete');
 
-    // Async sync to Backend Spring Boot API
-    const settings = this.getSettings();
-    const apiUrl = settings.backendApiUrl || 'http://localhost:8080/api';
     if (!isNaN(Number(id))) {
       try {
-        fetch(`${apiUrl}/properties/${id}`, { method: 'DELETE' }).catch(e => console.warn('Backend property delete notice:', e));
+        const apiUrl = getApiBaseUrl();
+        await fetch(`${apiUrl}/properties/${id}`, { method: 'DELETE' }).catch(e => console.warn('Backend property delete notice:', e));
       } catch (e) {
         console.warn('Property delete notice:', e);
       }
@@ -379,21 +497,56 @@ export class AdminService {
     return this.getItem<AdminLead[]>(STORAGE_KEYS.LEADS, INITIAL_LEADS);
   }
 
-  static updateLeadStatus(id: string, status: LeadStatus, notes?: string): AdminLead | null {
+  static async fetchLeads(): Promise<AdminLead[]> {
+    try {
+      const apiUrl = getApiBaseUrl();
+      const res = await fetch(`${apiUrl}/leads`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+        cache: 'no-store'
+      });
+      if (res.ok) {
+        const data = await res.json();
+        if (Array.isArray(data)) {
+          const mapped: AdminLead[] = data.map((l: any) => ({
+            id: String(l.id),
+            name: l.name || '',
+            phone: l.phone || '',
+            email: l.email || '',
+            lookingFor: l.lookingFor || 'Buy',
+            propertyType: l.propertyType || '3 BHK',
+            budget: l.budget || '',
+            preferredLocation: l.preferredLocation || '',
+            message: l.message || '',
+            status: l.status || 'New',
+            createdAt: l.createdAt || new Date().toISOString(),
+            notes: l.notes || '',
+            source: 'Website Form',
+            propertyTitle: l.propertyTitle || ''
+          }));
+          this.setItem(STORAGE_KEYS.LEADS, mapped);
+          return mapped;
+        }
+      }
+    } catch (err) {
+      console.warn('AdminService fetchLeads notice:', err);
+    }
+    return this.getLeads();
+  }
+
+  static async updateLeadStatus(id: string, status: LeadStatus, notes?: string): Promise<AdminLead | null> {
     const leads = this.getLeads();
-    const index = leads.findIndex(l => l.id === id);
+    const index = leads.findIndex(l => String(l.id) === String(id));
     if (index === -1) return null;
     leads[index].status = status;
     if (notes) leads[index].notes = notes;
     this.setItem(STORAGE_KEYS.LEADS, leads);
     this.logActivity('Update Lead Status', `${leads[index].name} -> ${status}`, 'update');
 
-    // Async sync to Backend Spring Boot API
-    const settings = this.getSettings();
-    const apiUrl = settings.backendApiUrl || 'http://localhost:8080/api';
     if (!isNaN(Number(id))) {
       try {
-        fetch(`${apiUrl}/leads/${id}/status?status=${encodeURIComponent(status)}`, { method: 'PATCH' })
+        const apiUrl = getApiBaseUrl();
+        await fetch(`${apiUrl}/leads/${id}/status?status=${encodeURIComponent(status)}`, { method: 'PATCH' })
           .catch(e => console.warn('Backend lead status update notice:', e));
       } catch (e) {
         console.warn('Lead status update notice:', e);
@@ -403,17 +556,15 @@ export class AdminService {
     return leads[index];
   }
 
-  static deleteLead(id: string): boolean {
+  static async deleteLead(id: string): Promise<boolean> {
     const leads = this.getLeads();
-    const filtered = leads.filter(l => l.id !== id);
+    const filtered = leads.filter(l => String(l.id) !== String(id));
     this.setItem(STORAGE_KEYS.LEADS, filtered);
 
-    // Async sync to Backend Spring Boot API
-    const settings = this.getSettings();
-    const apiUrl = settings.backendApiUrl || 'http://localhost:8080/api';
     if (!isNaN(Number(id))) {
       try {
-        fetch(`${apiUrl}/leads/${id}`, { method: 'DELETE' }).catch(e => console.warn('Backend lead delete notice:', e));
+        const apiUrl = getApiBaseUrl();
+        await fetch(`${apiUrl}/leads/${id}`, { method: 'DELETE' }).catch(e => console.warn('Backend lead delete notice:', e));
       } catch (e) {
         console.warn('Lead delete notice:', e);
       }
@@ -448,52 +599,48 @@ export class AdminService {
   static getLogs(): ActivityLog[] {
     return this.getItem<ActivityLog[]>(STORAGE_KEYS.LOGS, [
       {
-        id: 'log-1',
-        user: 'Super Admin',
-        action: 'System Boot',
-        target: 'Shri Shyam Admin Console',
+        id: 'log-init',
+        user: 'Admin',
         timestamp: new Date().toISOString(),
-        type: 'auth'
+        action: 'System Initialized',
+        target: 'Real-time sync enabled across mobile & desktop',
+        type: 'create'
       }
     ]);
   }
 
-  static logActivity(action: string, target: string, type: 'create' | 'update' | 'delete' | 'auth') {
+  private static logActivity(action: string, target: string, type: 'create' | 'update' | 'delete' | 'auth'): void {
     const logs = this.getLogs();
     const newLog: ActivityLog = {
       id: `log-${Date.now()}`,
-      user: 'Super Admin',
+      user: 'Admin',
+      timestamp: new Date().toISOString(),
       action,
       target,
-      timestamp: new Date().toISOString(),
       type
     };
     logs.unshift(newLog);
     this.setItem(STORAGE_KEYS.LOGS, logs.slice(0, 50));
   }
 
-  // --- ANALYTICS STATS ---
+  // --- DASHBOARD STATS ---
   static getDashboardStats() {
     const properties = this.getProperties();
     const leads = this.getLeads();
     const visits = this.getSiteVisits();
 
-    const totalProperties = properties.length;
-    const featuredCount = properties.filter(p => p.featured).length;
-    const totalLeads = leads.length;
-    const newLeads = leads.filter(l => l.status === 'New').length;
-    const activeVisits = visits.filter(v => v.status === 'Confirmed' || v.status === 'Pending').length;
-    
-    const totalPortfolioValue = properties.reduce((acc, p) => acc + (p.priceValue || 0), 0);
+    const totalViews = properties.reduce((acc, p) => acc + (p.viewsCount || 0), 0);
+    const closedLeads = leads.filter(l => l.status === 'Closed').length;
 
     return {
-      totalProperties,
-      featuredCount,
-      totalLeads,
-      newLeads,
-      activeVisits,
-      totalPortfolioValueDisplay: `₹ ${(totalPortfolioValue / 10000000).toFixed(2)} Cr`,
-      totalPortfolioValue
+      totalProperties: properties.length,
+      publishedProperties: properties.filter(p => p.published).length,
+      featuredProperties: properties.filter(p => p.featured).length,
+      totalLeads: leads.length,
+      newLeads: leads.filter(l => l.status === 'New').length,
+      totalViews,
+      siteVisitsCount: visits.length,
+      conversionRate: leads.length > 0 ? ((closedLeads / leads.length) * 100).toFixed(1) + '%' : '0%'
     };
   }
 }

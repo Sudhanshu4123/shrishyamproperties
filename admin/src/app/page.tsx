@@ -38,13 +38,31 @@ export default function AdminPage() {
     refreshData();
   }, []);
 
-  const refreshData = () => {
+  const refreshData = async () => {
+    // 1. Instant local render
     setProperties(AdminService.getProperties());
     setLeads(AdminService.getLeads());
     setVisits(AdminService.getSiteVisits());
     setLogs(AdminService.getLogs());
     setSettings(AdminService.getSettings());
     setStats(AdminService.getDashboardStats());
+
+    // 2. Real-time background sync from central DB
+    try {
+      const [remoteProps, remoteLeads] = await Promise.all([
+        AdminService.fetchProperties(),
+        AdminService.fetchLeads()
+      ]);
+      if (remoteProps && remoteProps.length > 0) {
+        setProperties(remoteProps);
+      }
+      if (remoteLeads && remoteLeads.length > 0) {
+        setLeads(remoteLeads);
+      }
+      setStats(AdminService.getDashboardStats());
+    } catch (e) {
+      console.warn('Background sync notice:', e);
+    }
   };
 
   const handleLogin = (e: React.FormEvent) => {
@@ -70,30 +88,30 @@ export default function AdminPage() {
   };
 
   // Property Handlers
-  const handleAddProperty = (propData: any) => {
-    AdminService.addProperty(propData);
-    refreshData();
+  const handleAddProperty = async (propData: any) => {
+    await AdminService.addProperty(propData);
+    await refreshData();
   };
 
-  const handleUpdateProperty = (id: string, updates: Partial<AdminProperty>) => {
-    AdminService.updateProperty(id, updates);
-    refreshData();
+  const handleUpdateProperty = async (id: string, updates: Partial<AdminProperty>) => {
+    await AdminService.updateProperty(id, updates);
+    await refreshData();
   };
 
-  const handleDeleteProperty = (id: string) => {
-    AdminService.deleteProperty(id);
-    refreshData();
+  const handleDeleteProperty = async (id: string) => {
+    await AdminService.deleteProperty(id);
+    await refreshData();
   };
 
   // Lead Handlers
-  const handleUpdateLeadStatus = (id: string, status: any, notes?: string) => {
-    AdminService.updateLeadStatus(id, status, notes);
-    refreshData();
+  const handleUpdateLeadStatus = async (id: string, status: any, notes?: string) => {
+    await AdminService.updateLeadStatus(id, status, notes);
+    await refreshData();
   };
 
-  const handleDeleteLead = (id: string) => {
-    AdminService.deleteLead(id);
-    refreshData();
+  const handleDeleteLead = async (id: string) => {
+    await AdminService.deleteLead(id);
+    await refreshData();
   };
 
   // Settings Handler

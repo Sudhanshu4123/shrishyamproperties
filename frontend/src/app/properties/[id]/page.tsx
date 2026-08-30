@@ -29,6 +29,14 @@ export default function PropertyDetailPage() {
       if (p) {
         setProperty(p);
         setSelectedImage(p.heroImage);
+      } else {
+        PropertyService.fetchPropertiesApi().then(() => {
+          const fresh = PropertyService.getPropertyById(params.id as string);
+          if (fresh) {
+            setProperty(fresh);
+            setSelectedImage(fresh.heroImage);
+          }
+        });
       }
     }
   }, [params]);

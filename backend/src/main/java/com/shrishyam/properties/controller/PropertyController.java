@@ -19,7 +19,10 @@ public class PropertyController {
     }
 
     @GetMapping
-    public ResponseEntity<List<PropertyEntity>> getAllProperties() {
+    public ResponseEntity<List<PropertyEntity>> getAllProperties(@RequestParam(required = false, defaultValue = "false") boolean all) {
+        if (all) {
+            return ResponseEntity.ok(propertyRepository.findAll());
+        }
         return ResponseEntity.ok(propertyRepository.findByPublishedTrue());
     }
 
@@ -52,6 +55,38 @@ public class PropertyController {
 
     @PostMapping
     public ResponseEntity<PropertyEntity> createProperty(@RequestBody PropertyEntity property) {
+        property.setId(null);
+        if (property.getTitle() == null || property.getTitle().trim().isEmpty()) {
+            property.setTitle("Dwarka Property Listing");
+        }
+        if (property.getSlug() == null || property.getSlug().trim().isEmpty()) {
+            String cleanSlug = property.getTitle().toLowerCase().replaceAll("[^a-z0-9]+", "-").replaceAll("^-|-$", "");
+            property.setSlug(cleanSlug + "-" + System.currentTimeMillis());
+        }
+        if (property.getPropertyType() == null || property.getPropertyType().trim().isEmpty()) {
+            property.setPropertyType("Builder Floor");
+        }
+        if (property.getPurpose() == null || property.getPurpose().trim().isEmpty()) {
+            property.setPurpose("Buy");
+        }
+        if (property.getPriceDisplay() == null) {
+            property.setPriceDisplay("₹ Call for Price");
+        }
+        if (property.getPriceValue() == null) {
+            property.setPriceValue(java.math.BigDecimal.ZERO);
+        }
+        if (property.getLocation() == null) {
+            property.setLocation("Dwarka, New Delhi");
+        }
+        if (property.getSector() == null) {
+            property.setSector("Dwarka");
+        }
+        if (property.getPublished() == null) {
+            property.setPublished(true);
+        }
+        if (property.getCreatedAt() == null) {
+            property.setCreatedAt(java.time.LocalDateTime.now());
+        }
         return ResponseEntity.ok(propertyRepository.save(property));
     }
 
