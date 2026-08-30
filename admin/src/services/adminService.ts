@@ -19,13 +19,11 @@ const STORAGE_KEYS = {
 
 const isDemoAdminProperty = (p: any) => {
   if (!p) return true;
-  const id = String(p.id || '');
   const slug = String(p.slug || '');
-  return id === 'prop-101' || id === 'prop-102' || id === 'prop-103' ||
-         id === '1' || id === '2' || id === '3' ||
-         slug.includes('3-bhk-ultra-luxury-builder-floor-sector-7') ||
-         slug.includes('4-bhk-high-end-cghs-society-penthouse') ||
-         slug.includes('2-bhk-renovated-dda-apartment');
+  return slug === '3-bhk-ultra-luxury-builder-floor-sector-7' ||
+         slug === '4-bhk-high-end-cghs-society-penthouse-sector-6' ||
+         slug === '2-bhk-renovated-dda-apartment-sector-10' ||
+         slug.startsWith('test-3-bhk-luxury-builder-floor');
 };
 
 const getApiBaseUrl = (): string => {

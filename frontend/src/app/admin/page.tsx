@@ -53,10 +53,10 @@ export default function AdminPage() {
         AdminService.fetchProperties(),
         AdminService.fetchLeads()
       ]);
-      if (remoteProps && remoteProps.length > 0) {
+      if (Array.isArray(remoteProps)) {
         setProperties(remoteProps);
       }
-      if (remoteLeads && remoteLeads.length > 0) {
+      if (Array.isArray(remoteLeads)) {
         setLeads(remoteLeads);
       }
       setStats(AdminService.getDashboardStats());
