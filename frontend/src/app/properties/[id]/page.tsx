@@ -56,8 +56,57 @@ export default function PropertyDetailPage() {
   const whatsappMsg = `Hello Shri Shyam Associate, I am interested in: ${property.title} (${property.sector}, ${property.priceDisplay}). Please share available visit slots.`;
   const whatsappUrl = `https://wa.me/919911956274?text=${encodeURIComponent(whatsappMsg)}`;
 
+  const propertySchema = {
+    "@context": "https://schema.org",
+    "@type": "SingleFamilyResidence",
+    "name": property.title,
+    "description": property.description || `${property.title} in ${property.location}`,
+    "image": property.heroImage,
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": property.location,
+      "addressLocality": property.sector,
+      "addressRegion": "New Delhi",
+      "postalCode": "110075",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 28.5823,
+      "longitude": 77.0700
+    },
+    "numberOfRooms": property.bhk,
+    "numberOfBathroomsTotal": property.bathrooms,
+    "floorSize": {
+      "@type": "QuantitativeValue",
+      "value": property.areaSqFt,
+      "unitCode": "FTK"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": property.priceValue,
+      "priceCurrency": "INR",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": property.priceValue,
+        "priceCurrency": "INR",
+        "name": property.priceDisplay
+      },
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "@type": "RealEstateAgent",
+        "name": "Shri Shyam Associate",
+        "telephone": "+91 9911956274"
+      }
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#f0f4f8] text-slate-800 flex flex-col font-sans">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(propertySchema) }}
+      />
       <Navbar />
 
       <main className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex-1">
