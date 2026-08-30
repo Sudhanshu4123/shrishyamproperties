@@ -60,15 +60,15 @@ public class PropertyEntity {
     @Builder.Default
     private Boolean published = true;
 
-    @Column(name = "hero_image", columnDefinition = "TEXT")
+    @Column(name = "hero_image", columnDefinition = "LONGTEXT")
     private String heroImage;
 
     @ElementCollection
     @CollectionTable(name = "property_images", joinColumns = @JoinColumn(name = "property_id"))
-    @Column(name = "image_url", columnDefinition = "TEXT")
+    @Column(name = "image_url", columnDefinition = "LONGTEXT")
     private List<String> images;
 
-    @Column(columnDefinition = "TEXT")
+    @Column(columnDefinition = "LONGTEXT")
     private String description;
 
     @Column(name = "contact_number")
