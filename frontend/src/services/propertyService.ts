@@ -1,14 +1,18 @@
 import { Property, PropertyLead, PropertyPurpose, PropertyType, DwarkaSector, LeadStatus } from '@/types/property';
 import { INITIAL_PROPERTIES, INITIAL_LEADS, DWARKA_SECTORS, INITIAL_TESTIMONIALS } from '@/data/mockData';
 
-const PROPERTIES_KEY = 'ssp_properties_v4';
-const LEADS_KEY = 'ssp_leads_v4';
+const PROPERTIES_KEY = 'ssp_properties_v5';
+const LEADS_KEY = 'ssp_leads_v5';
 
-const getApiBaseUrl = (): string => {
-  if (typeof window !== 'undefined') {
-    return '/api';
-  }
-  return process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8080/api';
+const isDemoProperty = (p: any) => {
+  if (!p) return true;
+  const id = String(p.id || '');
+  const slug = String(p.slug || '');
+  return id === 'prop-101' || id === 'prop-102' || id === 'prop-103' ||
+         id === '1' || id === '2' || id === '3' ||
+         slug.includes('3-bhk-ultra-luxury-builder-floor-sector-7') ||
+         slug.includes('4-bhk-high-end-cghs-society-penthouse') ||
+         slug.includes('2-bhk-renovated-dda-apartment');
 };
 
 const mapBackendProperty = (p: any): Property => ({
@@ -34,11 +38,11 @@ const mapBackendProperty = (p: any): Property => ({
   availability: p.availability || 'Ready to Move',
   featured: Boolean(p.featured),
   published: p.published !== false,
-  heroImage: p.heroImage || 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80',
-  images: Array.isArray(p.images) && p.images.length > 0 ? p.images : [p.heroImage || 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80'],
+  heroImage: p.heroImage || '',
+  images: Array.isArray(p.images) && p.images.length > 0 ? p.images : (p.heroImage ? [p.heroImage] : []),
   description: p.description || '',
-  amenities: p.amenities || ['24/7 Security', 'Power Backup', 'Reserved Parking', 'Modular Kitchen'],
-  highlights: p.highlights || ['Freehold Clear Title', 'Prime Location in Dwarka', 'Ready Possession'],
+  amenities: p.amenities || ['24/7 Security', 'Power Backup', 'Reserved Parking'],
+  highlights: p.highlights || ['Freehold Clear Title', 'Prime Location'],
   contactNumber: p.contactNumber || '+91 9911956274',
   model3dType: p.model3dType || 'luxury-villa',
   createdAt: p.createdAt || new Date().toISOString()
@@ -48,31 +52,33 @@ export class PropertyService {
   // Properties API
   private static saveProperties(properties: Property[]): void {
     if (typeof window !== 'undefined') {
-      localStorage.setItem(PROPERTIES_KEY, JSON.stringify(properties));
-      localStorage.setItem('ssp_admin_properties_v4', JSON.stringify(properties));
+      const cleanProps = properties.filter(p => !isDemoProperty(p));
+      localStorage.setItem(PROPERTIES_KEY, JSON.stringify(cleanProps));
+      localStorage.setItem('ssp_admin_properties_v5', JSON.stringify(cleanProps));
       window.dispatchEvent(new Event('storage'));
     }
   }
 
   static getProperties(): Property[] {
-    if (typeof window === 'undefined') return INITIAL_PROPERTIES;
+    if (typeof window === 'undefined') return [];
     
-    // Purge legacy storage containing stale mock data
-    localStorage.removeItem('ssp_properties_v1');
-    localStorage.removeItem('ssp_properties_v2');
-    localStorage.removeItem('ssp_admin_properties_v2');
+    // Purge all legacy storage versions containing old demo data
+    ['ssp_properties_v1', 'ssp_properties_v2', 'ssp_properties_v3', 'ssp_properties_v4',
+     'ssp_admin_properties_v1', 'ssp_admin_properties_v2', 'ssp_admin_properties_v3', 'ssp_admin_properties_v4'
+    ].forEach(k => localStorage.removeItem(k));
 
-    const adminStored = localStorage.getItem('ssp_admin_properties_v4');
+    const adminStored = localStorage.getItem('ssp_admin_properties_v5');
     const stored = adminStored !== null ? adminStored : localStorage.getItem(PROPERTIES_KEY);
-    if (stored === null) {
-      this.saveProperties(INITIAL_PROPERTIES);
-      return INITIAL_PROPERTIES;
-    }
+    if (!stored) return [];
+
     try {
       const parsed = JSON.parse(stored);
-      return Array.isArray(parsed) && parsed.length > 0 ? parsed : INITIAL_PROPERTIES;
+      if (Array.isArray(parsed)) {
+        return parsed.filter(p => !isDemoProperty(p));
+      }
+      return [];
     } catch {
-      return INITIAL_PROPERTIES;
+      return [];
     }
   }
 

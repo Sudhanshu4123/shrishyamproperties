@@ -9,12 +9,23 @@ import {
 } from '../types/admin';
 
 const STORAGE_KEYS = {
-  PROPERTIES: 'ssp_admin_properties_v4',
-  LEADS: 'ssp_admin_leads_v4',
-  AGENTS: 'ssp_admin_agents_v4',
-  VISITS: 'ssp_admin_visits_v4',
-  LOGS: 'ssp_admin_logs_v4',
-  SETTINGS: 'ssp_admin_settings_v4'
+  PROPERTIES: 'ssp_admin_properties_v5',
+  LEADS: 'ssp_admin_leads_v5',
+  AGENTS: 'ssp_admin_agents_v5',
+  VISITS: 'ssp_admin_visits_v5',
+  LOGS: 'ssp_admin_logs_v5',
+  SETTINGS: 'ssp_admin_settings_v5'
+};
+
+const isDemoAdminProperty = (p: any) => {
+  if (!p) return true;
+  const id = String(p.id || '');
+  const slug = String(p.slug || '');
+  return id === 'prop-101' || id === 'prop-102' || id === 'prop-103' ||
+         id === '1' || id === '2' || id === '3' ||
+         slug.includes('3-bhk-ultra-luxury-builder-floor-sector-7') ||
+         slug.includes('4-bhk-high-end-cghs-society-penthouse') ||
+         slug.includes('2-bhk-renovated-dda-apartment');
 };
 
 const getApiBaseUrl = (): string => {
@@ -147,12 +158,10 @@ export class AdminService {
   private static getItem<T>(key: string, defaultVal: T): T {
     if (typeof window === 'undefined') return defaultVal;
     try {
-      localStorage.removeItem('ssp_admin_properties_v2');
-      localStorage.removeItem('ssp_admin_leads_v2');
-      localStorage.removeItem('ssp_admin_agents_v2');
-      localStorage.removeItem('ssp_admin_visits_v2');
-      localStorage.removeItem('ssp_admin_leads_v3');
-      localStorage.removeItem('ssp_admin_visits_v3');
+      ['ssp_properties_v1', 'ssp_properties_v2', 'ssp_properties_v3', 'ssp_properties_v4',
+       'ssp_admin_properties_v1', 'ssp_admin_properties_v2', 'ssp_admin_properties_v3', 'ssp_admin_properties_v4',
+       'ssp_admin_leads_v1', 'ssp_admin_leads_v2', 'ssp_admin_leads_v3', 'ssp_admin_leads_v4'
+      ].forEach(k => localStorage.removeItem(k));
       
       const stored = localStorage.getItem(key);
       if (!stored) return defaultVal;
@@ -168,7 +177,7 @@ export class AdminService {
     try {
       localStorage.setItem(key, JSON.stringify(val));
       if (key === STORAGE_KEYS.PROPERTIES) {
-        localStorage.setItem('ssp_properties_v4', JSON.stringify(val));
+        localStorage.setItem('ssp_properties_v5', JSON.stringify(val));
         window.dispatchEvent(new Event('storage'));
       }
     } catch (e) {
@@ -233,7 +242,10 @@ export class AdminService {
   // --- PROPERTIES CRUD & CLOUD SYNC ---
   static getProperties(): AdminProperty[] {
     const cached = this.getItem<AdminProperty[]>(STORAGE_KEYS.PROPERTIES, INITIAL_PROPERTIES);
-    return Array.isArray(cached) && cached.length > 0 ? cached : INITIAL_PROPERTIES;
+    if (Array.isArray(cached)) {
+      return cached.filter(p => !isDemoAdminProperty(p));
+    }
+    return [];
   }
 
   static async fetchProperties(): Promise<AdminProperty[]> {
