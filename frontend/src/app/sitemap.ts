@@ -73,5 +73,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }));
 
-  return [...staticRoutes, ...categoryRoutes, ...propertyRoutes];
+  // Sector-specific landing URLs for local SEO
+  const sectors = ['Sector 6', 'Sector 7', 'Sector 8', 'Sector 10', 'Sector 11', 'Sector 12', 'Sector 19', 'Sector 21', 'Sector 22', 'Sector 23', 'Dwarka Expressway'];
+  const sectorRoutes: MetadataRoute.Sitemap = sectors.map((sec) => ({
+    url: `${BASE_URL}/properties?sector=${encodeURIComponent(sec)}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly',
+    priority: 0.75,
+  }));
+
+  return [...staticRoutes, ...categoryRoutes, ...sectorRoutes, ...propertyRoutes];
 }

@@ -19,46 +19,58 @@ const playfair = Playfair_Display({
 const SEO_KEYWORDS = [
   "Shri Shyam Associate",
   "Shri Shyam Properties",
+  "Shri Shyam Properties Dwarka",
   "real estate agent in Dwarka",
   "property dealer in Dwarka New Delhi",
+  "best property dealer near me Dwarka",
+  "property consultant in Dwarka",
+  "real estate consultants Dwarka Delhi",
   "properties for sale in Dwarka",
+  "buy flat in Dwarka",
   "builder floors in Dwarka",
+  "luxury builder floor in Dwarka",
   "luxury builder floor Dwarka Sector 7",
-  "DDA flats in Dwarka Sector 6",
-  "buy 2 BHK in Dwarka",
-  "buy 3 BHK in Dwarka",
-  "buy 4 BHK in Dwarka",
-  "society flats in Dwarka",
-  "CGHS society apartments Dwarka",
-  "commercial shops for sale in Dwarka",
-  "property for rent in Dwarka",
-  "Dwarka Sector 7 properties",
-  "Dwarka Sector 6 builder floor",
-  "Dwarka Sector 10 flats",
+  "Dwarka Sector 6 builder floors",
+  "Dwarka Sector 8 builder floor",
+  "Dwarka Sector 10 builder floors",
   "Dwarka Sector 11 real estate",
   "Dwarka Sector 12 apartments",
   "Dwarka Sector 14 property dealer",
   "Dwarka Sector 19 builder floors",
+  "Dwarka Sector 21 apartments",
   "Dwarka Sector 22 apartments",
   "Dwarka Sector 23 flats",
+  "Ramphal Chowk property dealer",
+  "DDA flats in Dwarka Sector 6",
+  "DDA flats in Dwarka for sale",
+  "buy 2 BHK in Dwarka",
+  "buy 3 BHK in Dwarka",
+  "buy 4 BHK in Dwarka",
+  "buy 5 BHK luxury floor Dwarka",
+  "society flats in Dwarka",
+  "CGHS society apartments Dwarka",
+  "commercial shops for sale in Dwarka",
+  "commercial property in Dwarka",
+  "property for rent in Dwarka",
   "Dwarka Expressway properties",
+  "Dwarka Expressway luxury flats",
   "ready to move flats in Dwarka",
   "freehold property in Dwarka",
   "penthouse in Dwarka Delhi",
-  "property consultant Dwarka",
-  "best property dealer near me Dwarka",
   "verified properties Dwarka",
-  "3D property tour Dwarka"
+  "3D property tour Dwarka",
+  "freehold plots in Dwarka",
+  "MBR Enclave Dwarka properties"
 ];
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://shrishyamassociate.com'),
   title: {
-    default: "Shri Shyam Associate — Premium Real Estate & Property Dealer in Dwarka, New Delhi",
+    default: "Shri Shyam Associate — #1 Real Estate & Property Dealer in Dwarka, New Delhi",
     template: "%s | Shri Shyam Associate Dwarka"
   },
   description:
-    "Shri Shyam Associate is the leading real estate agency in Dwarka, New Delhi. Explore verified 2, 3, 4 & 5 BHK luxury builder floors, DDA flats, CGHS society apartments, and commercial shops across Sector 6, 7, 10, 11, 12, 19, 22, 23 & Dwarka Expressway. Call +91 9911956274.",
+    "Shri Shyam Associate is the top-rated real estate dealer in Dwarka, New Delhi. Discover 100% verified 2, 3, 4 & 5 BHK luxury builder floors, DDA flats, CGHS society apartments & commercial shops across Dwarka Sectors 6, 7, 8, 10, 11, 12, 19, 21, 22, 23 & Dwarka Expressway. Schedule site visit: +91 9911956274.",
   keywords: SEO_KEYWORDS,
   authors: [{ name: "Shri Shyam Associate", url: "https://shrishyamassociate.com" }],
   creator: "Shri Shyam Associate",
@@ -80,9 +92,9 @@ export const metadata: Metadata = {
     apple: '/logo.png',
   },
   openGraph: {
-    title: "Shri Shyam Associate — Premium Real Estate in Dwarka, New Delhi",
+    title: "Shri Shyam Associate — Premium Real Estate & Property Dealer in Dwarka",
     description:
-      "Buy, sell & rent verified 2, 3, 4 BHK luxury builder floors, DDA flats & society apartments in Dwarka. Direct transparent deals. Call: +91 9911956274.",
+      "Looking to buy, sell, or rent in Dwarka? Explore verified 2, 3, 4 & 5 BHK luxury builder floors, DDA flats & society apartments with 3D virtual tours. Call: +91 9911956274.",
     url: "https://shrishyamassociate.com",
     siteName: "Shri Shyam Associate",
     locale: "en_IN",
@@ -92,14 +104,14 @@ export const metadata: Metadata = {
         url: "https://shrishyamassociate.com/logo.png",
         width: 1200,
         height: 630,
-        alt: "Shri Shyam Associate - Dwarka Real Estate",
+        alt: "Shri Shyam Associate - Leading Property Dealer in Dwarka New Delhi",
       }
     ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Shri Shyam Associate — Dwarka Real Estate Experts",
-    description: "Verified builder floors, DDA flats, and society apartments in Dwarka, New Delhi. Call: +91 9911956274.",
+    description: "Verified luxury builder floors, DDA flats, and CGHS society apartments across Dwarka, New Delhi. Call: +91 9911956274.",
     images: ["https://shrishyamassociate.com/logo.png"],
   },
   robots: {
@@ -128,17 +140,18 @@ const jsonLdSchema = {
       "@type": ["RealEstateAgent", "LocalBusiness", "ProfessionalService"],
       "@id": "https://shrishyamassociate.com/#organization",
       "name": "Shri Shyam Associate",
+      "alternateName": "Shri Shyam Properties Dwarka",
       "url": "https://shrishyamassociate.com",
       "logo": "https://shrishyamassociate.com/logo.png",
       "image": "https://shrishyamassociate.com/logo.png",
-      "description": "Premier real estate agency specializing in luxury builder floors, DDA flats, society apartments, and commercial properties in Dwarka, New Delhi.",
+      "description": "Premier real estate consultant in Dwarka, New Delhi offering verified luxury builder floors, DDA flats, CGHS society apartments, and commercial shops.",
       "telephone": "+91 9911956274",
-      "email": "info@shrishyamassociate.com",
+      "email": "shrishyamproperties001@gmail.com",
       "priceRange": "₹40 Lakhs - ₹10 Crore",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Shop No. 12, Main Market, Ramphal Chowk",
-        "addressLocality": "Dwarka Sector 7",
+        "streetAddress": "Dwarka Sector 7, Ramphal Chowk Area",
+        "addressLocality": "Dwarka",
         "addressRegion": "New Delhi",
         "postalCode": "110075",
         "addressCountry": "IN"
@@ -152,7 +165,7 @@ const jsonLdSchema = {
         {
           "@type": "OpeningHoursSpecification",
           "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-          "opens": "09:00",
+          "opens": "09:30",
           "closes": "20:30"
         }
       ],
@@ -164,8 +177,30 @@ const jsonLdSchema = {
         {
           "@type": "AdministrativeArea",
           "name": "Dwarka Expressway"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "West Delhi"
         }
-      ]
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Dwarka Real Estate Catalog",
+        "itemListElement": [
+          {
+            "@type": "OfferCatalog",
+            "name": "Builder Floors in Dwarka"
+          },
+          {
+            "@type": "OfferCatalog",
+            "name": "DDA & Society Apartments"
+          },
+          {
+            "@type": "OfferCatalog",
+            "name": "Commercial Properties in Dwarka"
+          }
+        ]
+      }
     },
     {
       "@type": "WebSite",
@@ -180,6 +215,36 @@ const jsonLdSchema = {
         "target": "https://shrishyamassociate.com/properties?query={search_term_string}",
         "query-input": "required name=search_term_string"
       }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://shrishyamassociate.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Which sectors in Dwarka are best for buying residential builder floors?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dwarka Sector 6, Sector 7, Sector 8, Sector 10, Sector 19, and Sector 23 are among the most sought-after sectors for luxury builder floors with lift, car parking, and metro connectivity."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are the properties listed with Shri Shyam Associate verified?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, 100% of properties listed with Shri Shyam Associate undergo strict document verification, title checks, and physical inspections."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I schedule a site visit with Shri Shyam Associate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can schedule a site visit directly by calling +91 9911956274 or clicking on the WhatsApp button on the website for instant assistance."
+          }
+        }
+      ]
     }
   ]
 };
