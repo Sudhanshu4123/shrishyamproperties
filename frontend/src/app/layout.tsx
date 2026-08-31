@@ -17,9 +17,36 @@ const playfair = Playfair_Display({
 });
 
 const SEO_KEYWORDS = [
+  // Brand Searches
   "Shri Shyam Associate",
   "Shri Shyam Properties",
   "Shri Shyam Properties Dwarka",
+  "Shri Shyam Properties Delhi",
+
+  // Delhi-Wide Searches (High Volume)
+  "real estate agent in Delhi",
+  "property dealer in Delhi",
+  "best property dealer in Delhi",
+  "top real estate consultants in Delhi",
+  "properties for sale in Delhi",
+  "buy flat in Delhi",
+  "builder floors in Delhi",
+  "luxury builder floor in Delhi",
+  "luxury apartments in Delhi",
+  "buy 2 BHK flat in Delhi",
+  "buy 3 BHK flat in Delhi",
+  "buy 4 BHK flat in Delhi",
+  "buy 5 BHK flat in Delhi",
+  "ready to move flats in Delhi",
+  "freehold property in Delhi",
+  "commercial property for sale in Delhi",
+  "shops for sale in Delhi",
+  "real estate company Delhi NCR",
+  "property for sale in West Delhi",
+  "property dealer in West Delhi",
+  "real estate agent in South West Delhi",
+
+  // Dwarka & Micro-Market Specific
   "real estate agent in Dwarka",
   "property dealer in Dwarka New Delhi",
   "best property dealer near me Dwarka",
@@ -66,11 +93,11 @@ const SEO_KEYWORDS = [
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://shrishyamassociate.com'),
   title: {
-    default: "Shri Shyam Associate — #1 Real Estate & Property Dealer in Dwarka, New Delhi",
-    template: "%s | Shri Shyam Associate Dwarka"
+    default: "Shri Shyam Associate — Best Property Dealer & Real Estate in Delhi & Dwarka",
+    template: "%s | Shri Shyam Associate Delhi"
   },
   description:
-    "Shri Shyam Associate is the top-rated real estate dealer in Dwarka, New Delhi. Discover 100% verified 2, 3, 4 & 5 BHK luxury builder floors, DDA flats, CGHS society apartments & commercial shops across Dwarka Sectors 6, 7, 8, 10, 11, 12, 19, 21, 22, 23 & Dwarka Expressway. Schedule site visit: +91 9911956274.",
+    "Shri Shyam Associate is the top-rated property dealer & real estate consultancy in Delhi & Dwarka. Find 100% verified 2, 3, 4 & 5 BHK luxury builder floors, DDA flats, CGHS society apartments, and commercial shops across Delhi, West Delhi, Dwarka & Dwarka Expressway with 3D tours. Call +91 9911956274.",
   keywords: SEO_KEYWORDS,
   authors: [{ name: "Shri Shyam Associate", url: "https://shrishyamassociate.com" }],
   creator: "Shri Shyam Associate",
