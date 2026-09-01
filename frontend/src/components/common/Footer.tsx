@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Building2, Phone, Mail, MapPin, ArrowUpRight } from 'lucide-react';
 
 export default function Footer() {
@@ -12,9 +13,11 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="mb-4">
-              <img 
+              <Image 
                 src="/logo.png" 
                 alt="Shri Shyam Associate" 
+                width={200}
+                height={56}
                 className="h-14 w-auto object-contain bg-white/95 p-2 rounded-2xl shadow-md border border-white/20" 
               />
             </div>

@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { 
   Building2, 
   LayoutDashboard, 
@@ -28,9 +29,11 @@ export default function Sidebar({ activeTab, setActiveTab, onLogout }: SidebarPr
       <div>
         {/* Brand Header */}
         <div className="p-4 border-b border-slate-100 flex items-center justify-center">
-          <img 
+          <Image 
             src="/logo.png" 
             alt="Shri Shyam Associate Admin" 
+            width={160}
+            height={48}
             className="h-12 w-auto object-contain" 
           />
         </div>

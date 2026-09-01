@@ -12,13 +12,17 @@ import WhyChooseUs from '@/components/home/WhyChooseUs';
 import HowItWorks from '@/components/home/HowItWorks';
 import TestimonialsSection from '@/components/home/TestimonialsSection';
 import LeadGenerationForm from '@/components/home/LeadGenerationForm';
-import PropertyViewer3D from '@/components/3d/PropertyViewer3D';
+import dynamic from 'next/dynamic';
+import Hero3D from '@/components/3d/Hero3D';
 import { PropertyService } from '@/services/propertyService';
 import { Property } from '@/types/property';
 import { ArrowRight, Phone, X, ShieldCheck, Star, Award } from 'lucide-react';
 
-// Lazy load the heavy 3D Hero
-const Hero3D = lazy(() => import('@/components/3d/Hero3D'));
+// Lazy load the 3D Viewer only when modal is opened by user
+const PropertyViewer3D = dynamic(() => import('@/components/3d/PropertyViewer3D'), {
+  ssr: false,
+  loading: () => null,
+});
 
 export default function HomePage() {
   const [properties, setProperties] = useState<Property[]>([]);
@@ -45,12 +49,18 @@ export default function HomePage() {
     };
     window.addEventListener('storage', handleStorage);
 
-    const timer = setTimeout(() => {
-      setIsHomePopupOpen(true);
-    }, 600);
+    // 4. Subtle delayed query popup after user has engaged with the page
+    const hasSeenPopup = typeof window !== 'undefined' ? sessionStorage.getItem('ss_popup_seen') : null;
+    let timer: NodeJS.Timeout | null = null;
+    if (!hasSeenPopup) {
+      timer = setTimeout(() => {
+        setIsHomePopupOpen(true);
+        sessionStorage.setItem('ss_popup_seen', '1');
+      }, 10000);
+    }
 
     return () => {
-      clearTimeout(timer);
+      if (timer) clearTimeout(timer);
       window.removeEventListener('storage', handleStorage);
     };
   }, []);

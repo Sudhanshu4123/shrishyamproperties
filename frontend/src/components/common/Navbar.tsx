@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Building2, Phone, Menu, X, ChevronRight, Plus, Sparkles } from 'lucide-react';
 
@@ -37,9 +38,12 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Brand Logo */}
         <Link href="/" className="flex items-center group shrink-0">
-          <img 
+          <Image 
             src="/logo.png" 
             alt="Shri Shyam Associate" 
+            width={180}
+            height={48}
+            priority
             className="h-10 sm:h-12 w-auto object-contain group-hover:scale-105 transition-transform" 
           />
         </Link>

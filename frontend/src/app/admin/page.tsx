@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import Sidebar from '@/components/admin/Sidebar';
 import Header from '@/components/admin/Header';
 import OverviewTab from '@/components/admin/dashboard/OverviewTab';
@@ -131,9 +132,11 @@ export default function AdminPage() {
 
         <div className="relative z-10 max-w-md w-full p-8 rounded-3xl bg-white border border-slate-200 shadow-2xl backdrop-blur-xl">
           <div className="flex justify-center mb-4">
-            <img 
+            <Image 
               src="/logo.png" 
               alt="Shri Shyam Associate" 
+              width={200}
+              height={64}
               className="h-16 w-auto object-contain" 
             />
           </div>
