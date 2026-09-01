@@ -166,9 +166,16 @@ export const metadata: Metadata = {
   },
   other: {
     "geo.region": "IN-DL",
-    "geo.placename": "Dwarka, New Delhi",
+    "geo.placename": "Dwarka, New Delhi, Delhi NCR, India",
     "geo.position": "28.5823;77.0700",
-    "ICBM": "28.5823, 77.0700"
+    "ICBM": "28.5823, 77.0700",
+    "DC.title": "Shri Shyam Associate (Shree Shyam Associates) — Real Estate Dwarka",
+    "DC.creator": "Shri Shyam Associate",
+    "DC.subject": "Real Estate Agency, Luxury Builder Floors, Flats for Sale, Dwarka Delhi",
+    "DC.description": "Top-rated property dealer and real estate consultant in Dwarka Sector 7, New Delhi and Dwarka Expressway.",
+    "DC.coverage": "Dwarka, New Delhi, Delhi NCR, Gurugram, India",
+    "DC.language": "en-IN",
+    "ai-content-declaration": "human-verified-real-estate"
   }
 };
 
@@ -184,19 +191,22 @@ const jsonLdSchema = {
         "Shri Shyam Associates",
         "Shri Shyam Properties",
         "Shri Shyam Properties Dwarka",
-        "Shri Shyam Associate Delhi"
+        "Shri Shyam Associate Delhi",
+        "Shri Shyam Real Estate"
       ],
       "url": "https://shrishyamassociate.com",
       "logo": "https://shrishyamassociate.com/logo.png",
       "image": "https://shrishyamassociate.com/logo.png",
-      "description": "Premier real estate consultant and property advisory in Dwarka, New Delhi offering verified luxury builder floors, DDA flats, CGHS society apartments, and commercial shops with 100% legal verification.",
+      "description": "Premier real estate consultancy & property advisory in Dwarka, New Delhi offering verified 2, 3, 4, 5 BHK luxury builder floors, DDA flats, CGHS society apartments, and commercial properties with 100% legal title verification.",
       "telephone": "+91 9911956274",
       "email": "shrishyamproperties001@gmail.com",
       "priceRange": "₹40 Lakhs - ₹10 Crore",
+      "currenciesAccepted": "INR",
+      "paymentAccepted": "Cash, Cheque, Bank Transfer, Home Loan",
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.9",
-        "reviewCount": "128",
+        "reviewCount": "142",
         "bestRating": "5",
         "worstRating": "1"
       },
@@ -213,6 +223,7 @@ const jsonLdSchema = {
         "latitude": 28.5823,
         "longitude": 77.0700
       },
+      "hasMap": "https://maps.google.com/?q=28.5823,77.0700",
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
@@ -222,18 +233,44 @@ const jsonLdSchema = {
         }
       ],
       "areaServed": [
-        {
-          "@type": "AdministrativeArea",
-          "name": "Dwarka, New Delhi"
-        },
-        {
-          "@type": "AdministrativeArea",
-          "name": "Dwarka Expressway"
-        },
-        {
-          "@type": "AdministrativeArea",
-          "name": "West Delhi"
-        }
+        { "@type": "AdministrativeArea", "name": "Dwarka Sector 1, New Delhi" },
+        { "@type": "AdministrativeArea", "name": "Dwarka Sector 2, New Delhi" },
+        { "@type": "AdministrativeArea", "name": "Dwarka Sector 3, New Delhi" },
+        { "@type": "AdministrativeArea", "name": "Dwarka Sector 4, New Delhi" },
+        { "@type": "AdministrativeArea", "name": "Dwarka Sector 5, New Delhi" },
+        { "@type": "AdministrativeArea", "name": "Dwarka Sector 6, New Delhi" },
+        { "@type": "AdministrativeArea", "name": "Dwarka Sector 7, New Delhi" },
+        { "@type": "AdministrativeArea", "name": "Dwarka Sector 8, New Delhi" },
+        { "@type": "AdministrativeArea", "name": "Dwarka Sector 9, New Delhi" },
+        { "@type": "AdministrativeArea", "name": "Dwarka Sector 10, New Delhi" },
+        { "@type": "AdministrativeArea", "name": "Dwarka Sector 11, New Delhi" },
+        { "@type": "AdministrativeArea", "name": "Dwarka Sector 12, New Delhi" },
+        { "@type": "AdministrativeArea", "name": "Dwarka Sector 13, New Delhi" },
+        { "@type": "AdministrativeArea", "name": "Dwarka Sector 14, New Delhi" },
+        { "@type": "AdministrativeArea", "name": "Dwarka Sector 16, New Delhi" },
+        { "@type": "AdministrativeArea", "name": "Dwarka Sector 17, New Delhi" },
+        { "@type": "AdministrativeArea", "name": "Dwarka Sector 18, New Delhi" },
+        { "@type": "AdministrativeArea", "name": "Dwarka Sector 19, New Delhi" },
+        { "@type": "AdministrativeArea", "name": "Dwarka Sector 21, New Delhi" },
+        { "@type": "AdministrativeArea", "name": "Dwarka Sector 22, New Delhi" },
+        { "@type": "AdministrativeArea", "name": "Dwarka Sector 23, New Delhi" },
+        { "@type": "AdministrativeArea", "name": "Dwarka Sector 24, New Delhi" },
+        { "@type": "AdministrativeArea", "name": "Ramphal Chowk, Dwarka" },
+        { "@type": "AdministrativeArea", "name": "Dwarka Expressway, Gurugram" },
+        { "@type": "AdministrativeArea", "name": "Sector 102, Dwarka Expressway" },
+        { "@type": "AdministrativeArea", "name": "West Delhi" },
+        { "@type": "AdministrativeArea", "name": "South West Delhi" },
+        { "@type": "AdministrativeArea", "name": "Delhi NCR" }
+      ],
+      "knowsAbout": [
+        "Luxury Builder Floors in Dwarka",
+        "2 BHK, 3 BHK, 4 BHK Flats in Dwarka",
+        "DDA SFS Flats Dwarka",
+        "CGHS Society Flats Dwarka",
+        "Commercial Retail Shops Dwarka",
+        "Dwarka Expressway Residential Projects",
+        "Property Freehold Title Verification",
+        "Home Loan Assistance"
       ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
@@ -241,15 +278,28 @@ const jsonLdSchema = {
         "itemListElement": [
           {
             "@type": "OfferCatalog",
-            "name": "Builder Floors in Dwarka"
+            "name": "Builder Floors in Dwarka",
+            "itemListElement": [
+              { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "2 BHK Luxury Builder Floor Dwarka" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "3 BHK Luxury Builder Floor Dwarka" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "4 BHK Luxury Builder Floor Dwarka" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "5 BHK Duplex Penthouse Dwarka" } }
+            ]
           },
           {
             "@type": "OfferCatalog",
-            "name": "DDA & Society Apartments"
+            "name": "CGHS Societies & DDA Apartments",
+            "itemListElement": [
+              { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Ready to Move Society Flats Dwarka" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "DDA MIG & HIG Apartments Dwarka" } }
+            ]
           },
           {
             "@type": "OfferCatalog",
-            "name": "Commercial Properties in Dwarka"
+            "name": "Dwarka Expressway Luxury Projects",
+            "itemListElement": [
+              { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "3 BHK & 4 BHK High-Rise Apartments Dwarka Expressway" } }
+            ]
           }
         ]
       }
@@ -274,18 +324,34 @@ const jsonLdSchema = {
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Which sectors in Dwarka are best for buying residential builder floors?",
+          "name": "Who is the best property dealer in Dwarka, New Delhi?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Dwarka Sector 6, Sector 7, Sector 8, Sector 10, Sector 19, and Sector 23 are among the most sought-after sectors for luxury builder floors with lift, car parking, and metro connectivity."
+            "text": "Shri Shyam Associate (also known as Shree Shyam Associates) is regarded as one of the most trusted and top-rated property consultants in Dwarka, New Delhi. Located in Sector 7 near Ramphal Chowk, they specialize in 100% verified luxury builder floors, DDA flats, CGHS society apartments, and Dwarka Expressway properties. Contact: +91 9911956274."
           }
         },
         {
           "@type": "Question",
-          "name": "Are the properties listed with Shri Shyam Associate verified?",
+          "name": "What is the starting price for 2 BHK, 3 BHK, and 4 BHK builder floors in Dwarka?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, 100% of properties listed with Shri Shyam Associate undergo strict document verification, title checks, and physical inspections."
+            "text": "In Dwarka, 2 BHK builder floors typically start from ₹55 Lakhs to ₹95 Lakhs, 3 BHK luxury builder floors range from ₹1.25 Crore to ₹2.60 Crore, and spacious 4 BHK luxury floors range from ₹2.20 Crore to ₹4.50 Crore depending on the sector, floor, lift, and parking availability."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which sectors in Dwarka are best for buying residential builder floors?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dwarka Sector 6, Sector 7, Sector 8, Sector 10, Sector 11, Sector 12, Sector 19, and Sector 23 are among the most sought-after sectors for builder floors with dedicated lift, stilt parking, wide roads, and walking distance to metro stations."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are the properties listed with Shri Shyam Associate verified and bank loan approved?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, 100% of properties listed with Shri Shyam Associate undergo strict document verification, freehold title checks, and physical inspections. All properties are eligible for home loans from leading banks including SBI, HDFC, and ICICI."
           }
         },
         {
@@ -293,7 +359,7 @@ const jsonLdSchema = {
           "name": "How can I schedule a site visit with Shri Shyam Associate?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "You can schedule a site visit directly by calling +91 9911956274 or clicking on the WhatsApp button on the website for instant assistance."
+            "text": "You can schedule a free in-person site visit directly by calling or sending a WhatsApp message to +91 9911956274 or visiting the office in Dwarka Sector 7, Ramphal Chowk area."
           }
         }
       ]

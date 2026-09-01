@@ -58,47 +58,84 @@ export default function PropertyDetailPage() {
 
   const propertySchema = {
     "@context": "https://schema.org",
-    "@type": "SingleFamilyResidence",
-    "name": property.title,
-    "description": property.description || `${property.title} in ${property.location}`,
-    "image": property.heroImage,
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": property.location,
-      "addressLocality": property.sector,
-      "addressRegion": "New Delhi",
-      "postalCode": "110075",
-      "addressCountry": "IN"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 28.5823,
-      "longitude": 77.0700
-    },
-    "numberOfRooms": property.bhk,
-    "numberOfBathroomsTotal": property.bathrooms,
-    "floorSize": {
-      "@type": "QuantitativeValue",
-      "value": property.areaSqFt,
-      "unitCode": "FTK"
-    },
-    "offers": {
-      "@type": "Offer",
-      "price": property.priceValue,
-      "priceCurrency": "INR",
-      "priceSpecification": {
-        "@type": "UnitPriceSpecification",
-        "price": property.priceValue,
-        "priceCurrency": "INR",
-        "name": property.priceDisplay
+    "@graph": [
+      {
+        "@type": property.type === 'Builder Floor' ? 'SingleFamilyResidence' : 'Apartment',
+        "@id": `https://shrishyamassociate.com/properties/${property.id}#property`,
+        "name": property.title,
+        "description": property.description || `${property.title} in ${property.location}, ${property.sector}`,
+        "image": property.images && property.images.length > 0 ? property.images : [property.heroImage],
+        "url": `https://shrishyamassociate.com/properties/${property.id}`,
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": property.location,
+          "addressLocality": property.sector,
+          "addressRegion": "New Delhi",
+          "postalCode": "110075",
+          "addressCountry": "IN"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 28.5823,
+          "longitude": 77.0700
+        },
+        "numberOfRooms": property.bhk,
+        "numberOfBedrooms": property.bhk,
+        "numberOfBathroomsTotal": property.bathrooms,
+        "floorSize": {
+          "@type": "QuantitativeValue",
+          "value": property.areaSqFt,
+          "unitCode": "FTK"
+        },
+        "amenityFeature": (property.amenities || []).map((amenity: string) => ({
+          "@type": "LocationFeatureSpecification",
+          "name": amenity,
+          "value": true
+        })),
+        "offers": {
+          "@type": "Offer",
+          "price": property.priceValue,
+          "priceCurrency": "INR",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": property.priceValue,
+            "priceCurrency": "INR",
+            "name": property.priceDisplay
+          },
+          "availability": "https://schema.org/InStock",
+          "seller": {
+            "@type": "RealEstateAgent",
+            "name": "Shri Shyam Associate",
+            "telephone": "+91 9911956274",
+            "url": "https://shrishyamassociate.com"
+          }
+        }
       },
-      "availability": "https://schema.org/InStock",
-      "seller": {
-        "@type": "RealEstateAgent",
-        "name": "Shri Shyam Associate",
-        "telephone": "+91 9911956274"
+      {
+        "@type": "BreadcrumbList",
+        "@id": `https://shrishyamassociate.com/properties/${property.id}#breadcrumb`,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://shrishyamassociate.com"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Properties",
+            "item": "https://shrishyamassociate.com/properties"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": property.title,
+            "item": `https://shrishyamassociate.com/properties/${property.id}`
+          }
+        ]
       }
-    }
+    ]
   };
 
   return (
