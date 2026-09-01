@@ -18,9 +18,22 @@ const playfair = Playfair_Display({
 });
 
 const SEO_KEYWORDS = [
-  // Brand Searches & User Intent Variants
+  // Exact Brand & Short Name Searches (Targeting "Shri Shyam")
+  "Shri Shyam",
+  "Shree Shyam",
+  "Shri Shyam Property",
+  "Shri Shyam Properties",
+  "Shri Shyam Real Estate",
+  "Shri Shyam Delhi",
+  "Shri Shyam Dwarka",
+  "Shri Shyam Flat",
+  "Shri Shyam Builder",
+  "Shri Shyam Builder Floor",
+  "Shri Shyam Dealer",
+  "Shri Shyam Property Dealer",
   "Shri Shyam Associate",
   "Shri Shyam Associates",
+  "Shree Shyam Associate",
   "Shree Shyam Associates",
   "Shree Shyam Associates Delhi",
   "Shri Shyam Associates New Delhi",
@@ -31,9 +44,9 @@ const SEO_KEYWORDS = [
   "Shri Shyam Associates logo",
   "Shri Shyam Associates Dwarka Sector 12",
   "Shri Shyam Associates Dwarka Sector 7",
-  "Shri Shyam Properties",
   "Shri Shyam Properties Dwarka",
   "Shri Shyam Properties Delhi",
+  "Shri Shyam official website",
 
   // Delhi-Wide Searches (High Volume)
   "real estate agent in Delhi",
@@ -105,11 +118,11 @@ const SEO_KEYWORDS = [
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://shrishyamassociate.com'),
   title: {
-    default: "Shri Shyam Associate (Shree Shyam Associates) — Best Property Dealer & Real Estate in Delhi & Dwarka",
-    template: "%s | Shri Shyam Associate Delhi"
+    default: "Shri Shyam (Shri Shyam Associate) — Best Property Dealer & Real Estate in Delhi & Dwarka",
+    template: "%s | Shri Shyam (Shri Shyam Associate)"
   },
   description:
-    "Official Shri Shyam Associate (also known as Shree Shyam Associates) — Top-rated real estate consultancy in Delhi & Dwarka. Find 100% verified 2, 3, 4 & 5 BHK luxury builder floors, DDA flats, CGHS society apartments, and commercial shops. Verified reviews & direct contact: +91 9911956274.",
+    "Official website of Shri Shyam (Shri Shyam Associate / Shree Shyam Associates) — Top-rated real estate & property consultancy in Delhi & Dwarka. Verified 2, 3, 4 & 5 BHK luxury builder floors, DDA flats, CGHS societies & commercial shops. Call: +91 9911956274.",
   keywords: SEO_KEYWORDS,
   authors: [{ name: "Shri Shyam Associate", url: "https://shrishyamassociate.com" }],
   creator: "Shri Shyam Associate",
@@ -131,9 +144,9 @@ export const metadata: Metadata = {
     apple: '/logo.png',
   },
   openGraph: {
-    title: "Shri Shyam Associate (Shree Shyam Associates) — Real Estate & Property Dealer in Dwarka",
+    title: "Shri Shyam (Shri Shyam Associate) — Real Estate & Property Dealer in Dwarka & Delhi",
     description:
-      "Looking to buy, sell, or rent in Dwarka? Explore verified 2, 3, 4 & 5 BHK luxury builder floors, DDA flats & society apartments with 3D virtual tours. Call: +91 9911956274.",
+      "Official Shri Shyam portal. Explore verified 2, 3, 4 & 5 BHK luxury builder floors, DDA flats & society apartments with 3D virtual tours. Call: +91 9911956274.",
     url: "https://shrishyamassociate.com",
     siteName: "Shri Shyam Associate",
     locale: "en_IN",
@@ -149,7 +162,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Shri Shyam Associate — Dwarka Real Estate Experts",
+    title: "Shri Shyam (Shri Shyam Associate) — Dwarka Real Estate Experts",
     description: "Verified luxury builder floors, DDA flats, and CGHS society apartments across Dwarka, New Delhi. Call: +91 9911956274.",
     images: ["https://shrishyamassociate.com/logo.png"],
   },
@@ -185,14 +198,24 @@ const jsonLdSchema = {
     {
       "@type": ["RealEstateAgent", "LocalBusiness", "ProfessionalService"],
       "@id": "https://shrishyamassociate.com/#organization",
-      "name": "Shri Shyam Associate",
+      "name": "Shri Shyam",
+      "legalName": "Shri Shyam Associate",
       "alternateName": [
-        "Shree Shyam Associates",
+        "Shri Shyam",
+        "Shree Shyam",
+        "Shri Shyam Associate",
         "Shri Shyam Associates",
+        "Shree Shyam Associate",
+        "Shree Shyam Associates",
         "Shri Shyam Properties",
+        "Shri Shyam Property",
         "Shri Shyam Properties Dwarka",
+        "Shri Shyam Properties Delhi",
         "Shri Shyam Associate Delhi",
-        "Shri Shyam Real Estate"
+        "Shri Shyam Real Estate",
+        "Shri Shyam Builder",
+        "Shri Shyam Dwarka",
+        "Shri Shyam Delhi"
       ],
       "url": "https://shrishyamassociate.com",
       "logo": "https://shrishyamassociate.com/logo.png",
@@ -324,10 +347,18 @@ const jsonLdSchema = {
       "mainEntity": [
         {
           "@type": "Question",
+          "name": "What is Shri Shyam (Shri Shyam Associate) in Delhi & Dwarka real estate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Shri Shyam (officially known as Shri Shyam Associate / Shree Shyam Associates) is a premier real estate advisory firm in Dwarka, New Delhi. Specializing in luxury builder floors, DDA flats, CGHS society apartments, and Dwarka Expressway properties, Shri Shyam provides 100% legal title clearance and verified properties. Office: Dwarka Sector 7, Ramphal Chowk. Phone: +91 9911956274."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "Who is the best property dealer in Dwarka, New Delhi?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Shri Shyam Associate (also known as Shree Shyam Associates) is regarded as one of the most trusted and top-rated property consultants in Dwarka, New Delhi. Located in Sector 7 near Ramphal Chowk, they specialize in 100% verified luxury builder floors, DDA flats, CGHS society apartments, and Dwarka Expressway properties. Contact: +91 9911956274."
+            "text": "Shri Shyam (Shri Shyam Associate / Shree Shyam Associates) is regarded as one of the most trusted and top-rated property consultants in Dwarka, New Delhi. Located in Sector 7 near Ramphal Chowk, they specialize in 100% verified luxury builder floors, DDA flats, CGHS society apartments, and Dwarka Expressway properties. Contact: +91 9911956274."
           }
         },
         {

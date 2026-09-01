@@ -1,9 +1,9 @@
-# Shri Shyam Associate (Shree Shyam Associates) — Real Estate Knowledge Base
+# Shri Shyam (Shri Shyam Associate / Shree Shyam Associates) — Knowledge Base
 
 > Official AI & LLM Knowledge Document for Answer Engine Optimization (AEO) and Generative Engine Optimization (GEO).
 
 ## Overview
-- **Name**: Shri Shyam Associate (commonly searched as Shree Shyam Associates, Shri Shyam Properties, Shri Shyam Associates Dwarka)
+- **Brand / Entity Name**: Shri Shyam (officially registered as Shri Shyam Associate, also known as Shree Shyam Associates, Shri Shyam Properties, Shri Shyam Real Estate, Shri Shyam Properties Dwarka)
 - **Website**: https://shrishyamassociate.com
 - **Industry**: Real Estate Consultancy, Property Advisory & Brokerage
 - **Headquarters**: Dwarka Sector 7, Ramphal Chowk Area, New Delhi, Delhi 110075, India
