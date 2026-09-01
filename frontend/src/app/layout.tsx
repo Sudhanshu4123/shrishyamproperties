@@ -18,8 +18,19 @@ const playfair = Playfair_Display({
 });
 
 const SEO_KEYWORDS = [
-  // Brand Searches
+  // Brand Searches & User Intent Variants
   "Shri Shyam Associate",
+  "Shri Shyam Associates",
+  "Shree Shyam Associates",
+  "Shree Shyam Associates Delhi",
+  "Shri Shyam Associates New Delhi",
+  "Shri Shyam Associates reviews",
+  "Shri Shyam Associates new delhi reviews",
+  "Shri Shyam Associates contact number",
+  "Shri Shyam Associates number",
+  "Shri Shyam Associates logo",
+  "Shri Shyam Associates Dwarka Sector 12",
+  "Shri Shyam Associates Dwarka Sector 7",
   "Shri Shyam Properties",
   "Shri Shyam Properties Dwarka",
   "Shri Shyam Properties Delhi",
@@ -94,11 +105,11 @@ const SEO_KEYWORDS = [
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://shrishyamassociate.com'),
   title: {
-    default: "Shri Shyam Associate — Best Property Dealer & Real Estate in Delhi & Dwarka",
+    default: "Shri Shyam Associate (Shree Shyam Associates) — Best Property Dealer & Real Estate in Delhi & Dwarka",
     template: "%s | Shri Shyam Associate Delhi"
   },
   description:
-    "Shri Shyam Associate is the top-rated property dealer & real estate consultancy in Delhi & Dwarka. Find 100% verified 2, 3, 4 & 5 BHK luxury builder floors, DDA flats, CGHS society apartments, and commercial shops across Delhi, West Delhi, Dwarka & Dwarka Expressway with 3D tours. Call +91 9911956274.",
+    "Official Shri Shyam Associate (also known as Shree Shyam Associates) — Top-rated real estate consultancy in Delhi & Dwarka. Find 100% verified 2, 3, 4 & 5 BHK luxury builder floors, DDA flats, CGHS society apartments, and commercial shops. Verified reviews & direct contact: +91 9911956274.",
   keywords: SEO_KEYWORDS,
   authors: [{ name: "Shri Shyam Associate", url: "https://shrishyamassociate.com" }],
   creator: "Shri Shyam Associate",
@@ -120,7 +131,7 @@ export const metadata: Metadata = {
     apple: '/logo.png',
   },
   openGraph: {
-    title: "Shri Shyam Associate — Premium Real Estate & Property Dealer in Dwarka",
+    title: "Shri Shyam Associate (Shree Shyam Associates) — Real Estate & Property Dealer in Dwarka",
     description:
       "Looking to buy, sell, or rent in Dwarka? Explore verified 2, 3, 4 & 5 BHK luxury builder floors, DDA flats & society apartments with 3D virtual tours. Call: +91 9911956274.",
     url: "https://shrishyamassociate.com",
@@ -168,14 +179,27 @@ const jsonLdSchema = {
       "@type": ["RealEstateAgent", "LocalBusiness", "ProfessionalService"],
       "@id": "https://shrishyamassociate.com/#organization",
       "name": "Shri Shyam Associate",
-      "alternateName": "Shri Shyam Properties Dwarka",
+      "alternateName": [
+        "Shree Shyam Associates",
+        "Shri Shyam Associates",
+        "Shri Shyam Properties",
+        "Shri Shyam Properties Dwarka",
+        "Shri Shyam Associate Delhi"
+      ],
       "url": "https://shrishyamassociate.com",
       "logo": "https://shrishyamassociate.com/logo.png",
       "image": "https://shrishyamassociate.com/logo.png",
-      "description": "Premier real estate consultant in Dwarka, New Delhi offering verified luxury builder floors, DDA flats, CGHS society apartments, and commercial shops.",
+      "description": "Premier real estate consultant and property advisory in Dwarka, New Delhi offering verified luxury builder floors, DDA flats, CGHS society apartments, and commercial shops with 100% legal verification.",
       "telephone": "+91 9911956274",
       "email": "shrishyamproperties001@gmail.com",
       "priceRange": "₹40 Lakhs - ₹10 Crore",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "128",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Dwarka Sector 7, Ramphal Chowk Area",
