@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Property } from '@/types/property';
@@ -12,7 +12,16 @@ interface PropertyCardProps {
   onScheduleVisit?: (property: Property) => void;
 }
 
+const DEFAULT_IMAGE = '/images/luxury_builder_floor_dwarka_1786010981126.png';
+
 export default function PropertyCard({ property, onOpen3DViewer, onScheduleVisit }: PropertyCardProps) {
+  const [imgSrc, setImgSrc] = useState<string>(property.heroImage || DEFAULT_IMAGE);
+
+  useEffect(() => {
+    setImgSrc(property.heroImage || DEFAULT_IMAGE);
+  }, [property.heroImage]);
+
+  const isDataUrl = imgSrc?.startsWith('data:') || false;
   const whatsappMsg = `Hello Shri Shyam Associate, I am interested in: ${property.title} (${property.sector}, ${property.priceDisplay}).`;
   const whatsappUrl = `https://wa.me/919911956274?text=${encodeURIComponent(whatsappMsg)}`;
 
@@ -21,9 +30,11 @@ export default function PropertyCard({ property, onOpen3DViewer, onScheduleVisit
       {/* Image */}
       <div className="relative h-52 w-full overflow-hidden bg-slate-100">
         <Image
-          src={property.heroImage}
+          src={imgSrc}
           alt={property.title}
           fill
+          unoptimized={Boolean(isDataUrl || imgSrc?.startsWith('/uploads/'))}
+          onError={() => setImgSrc(DEFAULT_IMAGE)}
           className="object-cover group-hover:scale-105 transition-transform duration-500"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />

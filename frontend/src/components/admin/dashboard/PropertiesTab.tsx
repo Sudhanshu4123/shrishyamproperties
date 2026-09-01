@@ -510,10 +510,11 @@ export default function PropertiesTab({
                         <div className="flex items-center gap-3">
                           <div className="relative group flex-shrink-0">
                             <img
-                              src={prop.heroImage || '/images/hero_luxury_villa_3d.png'}
+                              src={prop.heroImage || '/images/luxury_builder_floor_dwarka_1786010981126.png'}
                               alt={prop.title}
+                              onError={(e) => { e.currentTarget.src = '/images/luxury_builder_floor_dwarka_1786010981126.png'; }}
                               className="w-14 h-14 rounded-2xl object-cover border border-slate-200 bg-slate-100 cursor-pointer shadow-sm group-hover:opacity-90"
-                              onClick={() => setPreviewImage(prop.heroImage || '/images/hero_luxury_villa_3d.png')}
+                              onClick={() => setPreviewImage(prop.heroImage || '/images/luxury_builder_floor_dwarka_1786010981126.png')}
                             />
                             <span className="absolute bottom-0 right-0 bg-slate-900/80 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-tl-lg rounded-br-2xl flex items-center gap-0.5">
                               <ImageIcon className="w-2.5 h-2.5" />
@@ -1310,7 +1311,12 @@ export default function PropertiesTab({
                                   isHero ? 'border-amber-400 ring-2 ring-amber-400/30' : 'border-slate-200 hover:border-teal-400'
                                 }`}
                               >
-                                <img src={imgUrl} alt={`Property photo ${idx + 1}`} className="w-full h-32 object-cover" />
+                                <img 
+                                  src={imgUrl || '/images/luxury_builder_floor_dwarka_1786010981126.png'} 
+                                  alt={`Property photo ${idx + 1}`} 
+                                  onError={(e) => { e.currentTarget.src = '/images/luxury_builder_floor_dwarka_1786010981126.png'; }}
+                                  className="w-full h-32 object-cover" 
+                                />
 
                                 {isHero && (
                                   <span className="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-amber-500 text-white text-[9px] font-black flex items-center gap-1 shadow">

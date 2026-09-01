@@ -185,9 +185,11 @@ export default function PropertyDetailPage() {
             <div className="space-y-4">
               <div className="relative h-[380px] sm:h-[480px] w-full rounded-3xl overflow-hidden bg-white border border-slate-200 shadow-md">
                 <Image
-                  src={selectedImage || property.heroImage}
+                  src={selectedImage || property.heroImage || '/images/luxury_builder_floor_dwarka_1786010981126.png'}
                   alt={property.title}
                   fill
+                  unoptimized={Boolean(selectedImage?.startsWith('data:') || property.heroImage?.startsWith('data:') || selectedImage?.startsWith('/uploads/') || property.heroImage?.startsWith('/uploads/'))}
+                  onError={() => setSelectedImage('/images/luxury_builder_floor_dwarka_1786010981126.png')}
                   className="object-cover"
                   priority
                 />
@@ -204,7 +206,13 @@ export default function PropertyDetailPage() {
                         selectedImage === img ? 'border-teal-500 scale-105 shadow-md' : 'border-slate-200 opacity-70 hover:opacity-100'
                       }`}
                     >
-                      <Image src={img} alt={`Gallery ${idx}`} fill className="object-cover" />
+                      <Image 
+                        src={img || '/images/luxury_builder_floor_dwarka_1786010981126.png'} 
+                        alt={`Gallery ${idx}`} 
+                        fill 
+                        unoptimized={Boolean(img?.startsWith('data:') || img?.startsWith('/uploads/'))}
+                        className="object-cover" 
+                      />
                     </button>
                   ))}
                 </div>

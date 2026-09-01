@@ -118,39 +118,55 @@ export function compressImage(file: File, maxWidth = 1200, maxHeight = 1200, qua
   });
 }
 
-const mapBackendToAdminProperty = (item: any): AdminProperty => ({
-  id: String(item.id),
-  title: item.title || '',
-  slug: item.slug || '',
-  purpose: item.purpose || 'Buy',
-  type: item.propertyType || item.type || 'Builder Floor',
-  priceDisplay: item.priceDisplay || '',
-  priceValue: Number(item.priceValue) || 0,
-  location: item.location || '',
-  sector: item.sector || '',
-  bhk: Number(item.bhk) || 0,
-  bathrooms: Number(item.bathrooms) || 0,
-  areaSqFt: Number(item.areaSqFt) || 0,
-  carpetAreaSqFt: Number(item.carpetAreaSqFt) || 0,
-  floor: item.floor || '',
-  totalFloors: Number(item.totalFloors) || 0,
-  parking: item.parking || '',
-  furnishing: item.furnishing || '',
-  facing: item.facing || '',
-  propertyAge: item.propertyAge || '',
-  availability: item.availability || 'Ready to Move',
-  featured: Boolean(item.featured),
-  published: item.published !== false,
-  heroImage: item.heroImage || 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80',
-  images: Array.isArray(item.images) && item.images.length > 0 ? item.images : [item.heroImage || 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80'],
-  description: item.description || '',
-  amenities: item.amenities || ['24/7 Security', 'Power Backup', 'Stilt Parking', 'Modular Kitchen'],
-  highlights: item.highlights || ['Freehold Clear Title', 'Prime Dwarka Location'],
-  contactNumber: item.contactNumber || '+91 9911956274',
-  legalClearance: true,
-  createdAt: item.createdAt || new Date().toISOString(),
-  viewsCount: item.viewsCount || 0
-});
+const DEFAULT_PROP_IMAGE = '/images/luxury_builder_floor_dwarka_1786010981126.png';
+
+export const sanitizeImageUrl = (url?: string): string => {
+  if (!url || typeof url !== 'string' || url.trim() === '') {
+    return DEFAULT_PROP_IMAGE;
+  }
+  return url.trim();
+};
+
+const mapBackendToAdminProperty = (item: any): AdminProperty => {
+  const hero = sanitizeImageUrl(item.heroImage);
+  const images = Array.isArray(item.images) && item.images.length > 0 
+    ? item.images.map((img: string) => sanitizeImageUrl(img)) 
+    : [hero];
+
+  return {
+    id: String(item.id),
+    title: item.title || '',
+    slug: item.slug || '',
+    purpose: item.purpose || 'Buy',
+    type: item.propertyType || item.type || 'Builder Floor',
+    priceDisplay: item.priceDisplay || '',
+    priceValue: Number(item.priceValue) || 0,
+    location: item.location || '',
+    sector: item.sector || '',
+    bhk: Number(item.bhk) || 0,
+    bathrooms: Number(item.bathrooms) || 0,
+    areaSqFt: Number(item.areaSqFt) || 0,
+    carpetAreaSqFt: Number(item.carpetAreaSqFt) || 0,
+    floor: item.floor || '',
+    totalFloors: Number(item.totalFloors) || 0,
+    parking: item.parking || '',
+    furnishing: item.furnishing || '',
+    facing: item.facing || '',
+    propertyAge: item.propertyAge || '',
+    availability: item.availability || 'Ready to Move',
+    featured: Boolean(item.featured),
+    published: item.published !== false,
+    heroImage: hero,
+    images: images,
+    description: item.description || '',
+    amenities: item.amenities || ['24/7 Security', 'Power Backup', 'Stilt Parking', 'Modular Kitchen'],
+    highlights: item.highlights || ['Freehold Clear Title', 'Prime Dwarka Location'],
+    contactNumber: item.contactNumber || '+91 9911956274',
+    legalClearance: true,
+    createdAt: item.createdAt || new Date().toISOString(),
+    viewsCount: item.viewsCount || 0
+  };
+};
 
 export class AdminService {
   private static getItem<T>(key: string, defaultVal: T): T {

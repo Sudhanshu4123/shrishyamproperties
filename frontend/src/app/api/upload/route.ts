@@ -18,8 +18,8 @@ export async function POST(request: Request) {
     const uploadsDir = path.join(process.cwd(), 'public', 'uploads');
     await mkdir(uploadsDir, { recursive: true });
 
-    const sanitizeFilename = file.name.toLowerCase().replace(/[^a-z0-9.]/g, '_');
-    const filename = `prop_${Date.now()}_${sanitizeFilename}`;
+    const sanitizeFilename = (file.name || 'image.jpg').toLowerCase().replace(/[^a-z0-9.]/g, '_');
+    const filename = `prop_${Date.now()}_${Math.floor(Math.random() * 10000)}_${sanitizeFilename}`;
     const filePath = path.join(uploadsDir, filename);
 
     await writeFile(filePath, buffer);

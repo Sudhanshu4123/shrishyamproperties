@@ -20,38 +20,54 @@ const isDemoProperty = (p: any) => {
          slug.startsWith('test-3-bhk-luxury-builder-floor');
 };
 
-const mapBackendProperty = (p: any): Property => ({
-  id: String(p.id),
-  title: p.title || '',
-  slug: p.slug || '',
-  purpose: (p.purpose as PropertyPurpose) || 'Buy',
-  type: (p.propertyType || p.type || 'Builder Floor') as PropertyType,
-  priceDisplay: p.priceDisplay || '',
-  priceValue: Number(p.priceValue) || 0,
-  location: p.location || '',
-  sector: (p.sector || 'Dwarka Sector 7') as DwarkaSector,
-  bhk: Number(p.bhk) || 0,
-  bathrooms: Number(p.bathrooms) || 0,
-  areaSqFt: Number(p.areaSqFt) || 0,
-  carpetAreaSqFt: Number(p.carpetAreaSqFt) || 0,
-  floor: p.floor || '',
-  totalFloors: Number(p.totalFloors) || 0,
-  parking: p.parking || '',
-  furnishing: p.furnishing || '',
-  facing: p.facing || '',
-  propertyAge: p.propertyAge || '',
-  availability: p.availability || 'Ready to Move',
-  featured: Boolean(p.featured),
-  published: p.published !== false,
-  heroImage: p.heroImage || '',
-  images: Array.isArray(p.images) && p.images.length > 0 ? p.images : (p.heroImage ? [p.heroImage] : []),
-  description: p.description || '',
-  amenities: p.amenities || ['24/7 Security', 'Power Backup', 'Reserved Parking'],
-  highlights: p.highlights || ['Freehold Clear Title', 'Prime Location'],
-  contactNumber: p.contactNumber || '+91 9911956274',
-  model3dType: p.model3dType || 'luxury-villa',
-  createdAt: p.createdAt || new Date().toISOString()
-});
+const DEFAULT_PROP_IMAGE = '/images/luxury_builder_floor_dwarka_1786010981126.png';
+
+export const sanitizeImageUrl = (url?: string): string => {
+  if (!url || typeof url !== 'string' || url.trim() === '') {
+    return DEFAULT_PROP_IMAGE;
+  }
+  return url.trim();
+};
+
+const mapBackendProperty = (p: any): Property => {
+  const hero = sanitizeImageUrl(p.heroImage);
+  const images = Array.isArray(p.images) && p.images.length > 0
+    ? p.images.map((img: string) => sanitizeImageUrl(img))
+    : [hero];
+
+  return {
+    id: String(p.id),
+    title: p.title || '',
+    slug: p.slug || '',
+    purpose: (p.purpose as PropertyPurpose) || 'Buy',
+    type: (p.propertyType || p.type || 'Builder Floor') as PropertyType,
+    priceDisplay: p.priceDisplay || '',
+    priceValue: Number(p.priceValue) || 0,
+    location: p.location || '',
+    sector: (p.sector || 'Dwarka Sector 7') as DwarkaSector,
+    bhk: Number(p.bhk) || 0,
+    bathrooms: Number(p.bathrooms) || 0,
+    areaSqFt: Number(p.areaSqFt) || 0,
+    carpetAreaSqFt: Number(p.carpetAreaSqFt) || 0,
+    floor: p.floor || '',
+    totalFloors: Number(p.totalFloors) || 0,
+    parking: p.parking || '',
+    furnishing: p.furnishing || '',
+    facing: p.facing || '',
+    propertyAge: p.propertyAge || '',
+    availability: p.availability || 'Ready to Move',
+    featured: Boolean(p.featured),
+    published: p.published !== false,
+    heroImage: hero,
+    images: images,
+    description: p.description || '',
+    amenities: p.amenities || ['24/7 Security', 'Power Backup', 'Reserved Parking'],
+    highlights: p.highlights || ['Freehold Clear Title', 'Prime Location'],
+    contactNumber: p.contactNumber || '+91 9911956274',
+    model3dType: p.model3dType || 'luxury-villa',
+    createdAt: p.createdAt || new Date().toISOString()
+  };
+};
 
 export class PropertyService {
   // Properties API
