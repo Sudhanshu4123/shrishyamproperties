@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us | Shri Shyam (Shri Shyam Associate) — Real Estate in Dwarka & Delhi",
+  title: "About Us | Shri Shyam Associate — Trusted Real Estate in Dwarka, New Delhi",
   description:
-    "Learn about Shri Shyam (Shri Shyam Associate / Shree Shyam Associates), Dwarka's premier real estate consultancy. Over a decade of excellence in verified luxury builder floors, DDA flats, society apartments, and commercial shops across Sector 6, 7, 8, 10, 19 & Dwarka Expressway.",
+    "Learn about Shri Shyam Associate (Shree Shyam Associates), Dwarka's premier real estate consultancy. Over a decade of excellence in verified luxury builder floors, DDA flats, society apartments, and commercial shops across Sector 6, 7, 8, 10, 19 & Dwarka Expressway.",
   keywords: [
     "Shri Shyam",
     "Shree Shyam",

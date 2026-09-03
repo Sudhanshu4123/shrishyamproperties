@@ -1,0 +1,81 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Shri Shyam Associate Real Estate API",
+    "description": "Public machine-readable API for real estate property search, listing discovery, and agent integration in Dwarka and Delhi NCR.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Shri Shyam Associate",
+      "url": "https://shrishyamassociate.com",
+      "email": "shrishyamproperties001@gmail.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://shrishyamassociate.com/api",
+      "description": "Production API Server"
+    }
+  ],
+  "paths": {
+    "/properties": {
+      "get": {
+        "summary": "Search & List Real Estate Properties",
+        "description": "Retrieve verified luxury builder floors, DDA apartments, and commercial properties.",
+        "parameters": [
+          {
+            "name": "purpose",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": ["Buy", "Rent", "Commercial"]
+            },
+            "description": "Property purpose"
+          },
+          {
+            "name": "sector",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Dwarka Sector name (e.g., Sector 7, Sector 6)"
+          },
+          {
+            "name": "bhk",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Number of bedrooms (2, 3, 4, 5)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful property query response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": { "type": "string" },
+                      "title": { "type": "string" },
+                      "slug": { "type": "string" },
+                      "purpose": { "type": "string" },
+                      "type": { "type": "string" },
+                      "priceDisplay": { "type": "string" },
+                      "priceValue": { "type": "number" },
+                      "sector": { "type": "string" },
+                      "bhk": { "type": "integer" },
+                      "areaSqFt": { "type": "number" }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

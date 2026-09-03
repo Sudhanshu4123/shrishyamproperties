@@ -1,0 +1,43 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://shrishyamassociate.com/api",
+      "service-desc": [
+        {
+          "href": "https://shrishyamassociate.com/openapi.json",
+          "type": "application/vnd.oai.openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://shrishyamassociate.com/llms.txt",
+          "type": "text/markdown"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://shrishyamassociate.com/api/health"
+        }
+      ]
+    },
+    {
+      "anchor": "https://shrishyamassociate.com/",
+      "describedby": [
+        {
+          "href": "https://shrishyamassociate.com/llms.txt",
+          "type": "text/markdown"
+        },
+        {
+          "href": "https://shrishyamassociate.com/llms-full.txt",
+          "type": "text/markdown"
+        }
+      ],
+      "sitemap": [
+        {
+          "href": "https://shrishyamassociate.com/sitemap.xml",
+          "type": "application/xml"
+        }
+      ]
+    }
+  ]
+}

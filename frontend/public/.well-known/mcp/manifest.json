@@ -1,0 +1,13 @@
+{
+  "schema_version": "v1",
+  "name_for_model": "shri_shyam_real_estate",
+  "name_for_human": "Shri Shyam Real Estate Assistant",
+  "description_for_model": "Plugin & MCP server for querying verified real estate properties, luxury builder floors, DDA flats, pricing, and scheduling site visits in Dwarka, New Delhi.",
+  "description_for_human": "Search properties and explore luxury builder floors in Dwarka & Delhi NCR.",
+  "api": {
+    "type": "openapi",
+    "url": "https://shrishyamassociate.com/openapi.json"
+  },
+  "contact_email": "shrishyamproperties001@gmail.com",
+  "legal_info_url": "https://shrishyamassociate.com/about"
+}

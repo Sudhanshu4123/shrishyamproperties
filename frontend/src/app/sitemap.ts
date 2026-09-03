@@ -26,61 +26,64 @@ async function getAllProperties(): Promise<Property[]> {
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const properties = await getAllProperties();
 
-  // Static core routes
+  // Static core routes (Canonical URLs)
   const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: `${BASE_URL}`,
       lastModified: new Date(),
       changeFrequency: 'daily',
       priority: 1.0,
+      images: [`${BASE_URL}/logo.png`],
     },
     {
       url: `${BASE_URL}/properties`,
       lastModified: new Date(),
       changeFrequency: 'daily',
-      priority: 0.9,
+      priority: 0.95,
+      images: [`${BASE_URL}/logo.png`],
     },
     {
       url: `${BASE_URL}/about`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.7,
+      priority: 0.8,
+      images: [`${BASE_URL}/logo.png`],
     },
     {
       url: `${BASE_URL}/contact`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.85,
+      images: [`${BASE_URL}/logo.png`],
+    },
+    {
+      url: `${BASE_URL}/sitemap`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+      images: [`${BASE_URL}/logo.png`],
     },
   ];
 
-  // Dynamic property detail routes
+  // Dynamic property detail routes (Canonical URLs for each verified listing)
   const propertyRoutes: MetadataRoute.Sitemap = properties
     .filter((prop) => prop.published !== false)
-    .map((prop) => ({
-      url: `${BASE_URL}/properties/${prop.slug || prop.id}`,
-      lastModified: prop.createdAt ? new Date(prop.createdAt) : new Date(),
-      changeFrequency: 'weekly',
-      priority: prop.featured ? 0.85 : 0.75,
-    }));
+    .map((prop) => {
+      const imageUrl = prop.heroImage && prop.heroImage.startsWith('http')
+        ? prop.heroImage
+        : prop.heroImage
+        ? `${BASE_URL}${prop.heroImage.startsWith('/') ? '' : '/'}${prop.heroImage}`
+        : `${BASE_URL}/logo.png`;
 
-  // Purpose / Category routes
-  const categories = ['Buy', 'Rent', 'Projects', 'Commercial'];
-  const categoryRoutes: MetadataRoute.Sitemap = categories.map((cat) => ({
-    url: `${BASE_URL}/properties?purpose=${encodeURIComponent(cat)}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly',
-    priority: 0.8,
-  }));
+      return {
+        url: `${BASE_URL}/properties/${prop.slug || prop.id}`,
+        lastModified: prop.createdAt ? new Date(prop.createdAt) : new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: prop.featured ? 0.9 : 0.8,
+        images: [imageUrl],
+      };
+    });
 
-  // Sector-specific landing URLs for local SEO
-  const sectors = ['Sector 6', 'Sector 7', 'Sector 8', 'Sector 10', 'Sector 11', 'Sector 12', 'Sector 19', 'Sector 21', 'Sector 22', 'Sector 23', 'Dwarka Expressway'];
-  const sectorRoutes: MetadataRoute.Sitemap = sectors.map((sec) => ({
-    url: `${BASE_URL}/properties?sector=${encodeURIComponent(sec)}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly',
-    priority: 0.75,
-  }));
-
-  return [...staticRoutes, ...categoryRoutes, ...sectorRoutes, ...propertyRoutes];
+  return [...staticRoutes, ...propertyRoutes];
 }
+

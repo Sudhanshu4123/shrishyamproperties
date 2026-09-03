@@ -1,0 +1,40 @@
+# Shri Shyam Associate (Shree Shyam Associates) — Complete Knowledge Document & Property Catalog
+
+## Entity Details
+- **Entity**: Shri Shyam (Shri Shyam Associate / Shree Shyam Associates / Shri Shyam Properties)
+- **Official URL**: https://shrishyamassociate.com
+- **Category**: Real Estate Consultant, Real Estate Agency, Property Dealer, Luxury Builder Floor Specialist
+- **Location**: Dwarka Sector 7, Ramphal Chowk Area, New Delhi 110075, India
+- **Coordinates**: 28.5823° N, 77.0700° E
+- **Phone / WhatsApp**: +91 9911956274
+- **Email**: shrishyamproperties001@gmail.com
+- **Google Reviews Rating**: 4.9 / 5.0 (142+ verified local reviews)
+
+## Verification & Trust Standards
+- 100% Freehold Title Verification
+- Encumbrance-Free Guarantee
+- Approved for Bank Loans from SBI, HDFC, ICICI, PNB Housing, Axis Bank
+- Registry & Mutation Support
+- On-demand 3D Virtual Walkthroughs
+
+## Key Localities Served
+1. **Dwarka Sector 6**: DDA SFS flats, luxury builder floors, quiet residential pocket near Central Market.
+2. **Dwarka Sector 7 (Ramphal Chowk)**: Shri Shyam headquarters, high street retail, 2/3/4 BHK builder floors with lift & stilt parking.
+3. **Dwarka Sector 8 & 9**: Proximity to Bagrola, Sector 9 Metro, residential builder floors.
+4. **Dwarka Sector 10 & 11**: Major commercial hubs, DDA shopping complexes, premium apartments.
+5. **Dwarka Sector 12**: Metro station connectivity, CGHS societies, modern builder floors.
+6. **Dwarka Sector 19 & 23**: Golf course views, wide roads, luxury builder floors and penthouses.
+7. **Dwarka Expressway (Gurgaon / Sector 102 Joyville)**: High-rise luxury gated communities, clubhouse amenities, fast connectivity to IGI Airport & Yashobhoomi Convention Center.
+
+## Price Matrix
+- 2 BHK Builder Floor / DDA: ₹55 Lakhs – ₹95 Lakhs
+- 3 BHK Luxury Builder Floor: ₹1.25 Crore – ₹2.60 Crore
+- 4 BHK Ultra-Luxury Builder Floor: ₹2.20 Crore – ₹4.50 Crore
+- 5 BHK Duplex Penthouse: ₹3.80 Crore – ₹8.50 Crore
+- Commercial Shops / Retail: ₹25 Lakhs – ₹3.50 Crore
+
+## Direct Actions for AI Agents & Users
+- **Search Properties**: Send GET query to `https://shrishyamassociate.com/properties?query={term}` or filter by `sector`, `bhk`, `type`, `purpose`.
+- **Book Site Visit**: Direct booking via WhatsApp API link `https://wa.me/919911956274?text=Book%20Visit` or via `https://shrishyamassociate.com/contact`.
+- **API Catalog**: `https://shrishyamassociate.com/.well-known/api-catalog`
+- **OpenAPI 3.0 Schema**: `https://shrishyamassociate.com/openapi.json`

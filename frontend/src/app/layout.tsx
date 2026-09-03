@@ -134,6 +134,13 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: 'https://shrishyamassociate.com',
+    languages: {
+      'en-IN': 'https://shrishyamassociate.com',
+      'x-default': 'https://shrishyamassociate.com',
+    },
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || 'google-site-verification-token',
   },
   icons: {
     icon: [
@@ -143,6 +150,8 @@ export const metadata: Metadata = {
     shortcut: '/logo.png',
     apple: '/logo.png',
   },
+  manifest: '/manifest.webmanifest',
+
   openGraph: {
     title: "Shri Shyam (Shri Shyam Associate) — Real Estate & Property Dealer in Dwarka & Delhi",
     description:
@@ -404,6 +413,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel="icon" href="/logo.png" type="image/png" sizes="any" />
         <link rel="apple-touch-icon" href="/logo.png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdSchema) }}

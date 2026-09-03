@@ -41,6 +41,7 @@ export default function Footer() {
                 { name: 'Commercial Spaces', href: '/properties?type=Commercial' },
                 { name: 'About Us', href: '/about' },
                 { name: 'Contact', href: '/contact' },
+                { name: 'HTML Sitemap', href: '/sitemap' },
               ].map(item => (
                 <li key={item.name}>
                   <Link href={item.href} className="hover:text-teal-400 transition-colors flex items-center gap-1">
@@ -56,10 +57,20 @@ export default function Footer() {
           <div>
             <h4 className="text-sm font-bold text-white mb-4 border-l-2 border-teal-500 pl-3">Property Types</h4>
             <ul className="space-y-2 text-xs">
-              {['2 BHK Builder Floors', '3 BHK Luxury Floors', '4 BHK & 5 BHK Floors', 'CGHS Society Flats', 'DDA Apartments', 'Commercial Shops', 'Freehold Plots'].map(t => (
-                <li key={t} className="flex items-center gap-1.5 hover:text-teal-400 transition-colors cursor-pointer">
-                  <span className="w-1.5 h-1.5 rounded-full bg-teal-500/60" />
-                  {t}
+              {[
+                { label: '2 BHK Builder Floors', href: '/properties?bhk=2' },
+                { label: '3 BHK Luxury Floors', href: '/properties?bhk=3' },
+                { label: '4 BHK & 5 BHK Floors', href: '/properties?bhk=4' },
+                { label: 'CGHS Society Flats', href: '/properties?type=Apartment' },
+                { label: 'DDA Apartments', href: '/properties?type=Apartment' },
+                { label: 'Commercial Shops', href: '/properties?type=Commercial' },
+                { label: 'Dwarka Expressway Projects', href: '/properties?sector=Dwarka+Expressway' },
+              ].map(t => (
+                <li key={t.label}>
+                  <Link href={t.href} className="flex items-center gap-1.5 hover:text-teal-400 transition-colors">
+                    <span className="w-1.5 h-1.5 rounded-full bg-teal-500/60" />
+                    <span>{t.label}</span>
+                  </Link>
                 </li>
               ))}
             </ul>
