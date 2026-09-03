@@ -17,14 +17,7 @@ const STORAGE_KEYS = {
   SETTINGS: 'ssp_admin_settings_v5'
 };
 
-const isDemoAdminProperty = (p: any) => {
-  if (!p) return true;
-  const slug = String(p.slug || '');
-  return slug === '3-bhk-ultra-luxury-builder-floor-sector-7' ||
-         slug === '4-bhk-high-end-cghs-society-penthouse-sector-6' ||
-         slug === '2-bhk-renovated-dda-apartment-sector-10' ||
-         slug.startsWith('test-3-bhk-luxury-builder-floor');
-};
+const isDemoAdminProperty = (_p: any) => false;
 
 const getApiBaseUrl = (): string => {
   if (typeof window !== 'undefined') {
@@ -241,7 +234,7 @@ export class AdminService {
   static getProperties(): AdminProperty[] {
     const cached = this.getItem<AdminProperty[]>(STORAGE_KEYS.PROPERTIES, INITIAL_PROPERTIES);
     if (Array.isArray(cached)) {
-      return cached.filter(p => !isDemoAdminProperty(p));
+      return cached;
     }
     return [];
   }
@@ -258,8 +251,12 @@ export class AdminService {
         const data = await res.json();
         if (Array.isArray(data) && data.length > 0) {
           const mapped = data.map(mapBackendToAdminProperty);
-          this.setItem(STORAGE_KEYS.PROPERTIES, mapped);
-          return mapped;
+          const localOnly = this.getProperties().filter(
+            lp => !mapped.some(mp => String(mp.id) === String(lp.id) || (mp.slug && mp.slug === lp.slug))
+          );
+          const combined = [...mapped, ...localOnly];
+          this.setItem(STORAGE_KEYS.PROPERTIES, combined);
+          return combined;
         }
       }
     } catch (err) {

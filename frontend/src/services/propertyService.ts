@@ -11,14 +11,7 @@ const getApiBaseUrl = (): string => {
   return process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8080/api';
 };
 
-const isDemoProperty = (p: any) => {
-  if (!p) return true;
-  const slug = String(p.slug || '');
-  return slug === '3-bhk-ultra-luxury-builder-floor-sector-7' ||
-         slug === '4-bhk-high-end-cghs-society-penthouse-sector-6' ||
-         slug === '2-bhk-renovated-dda-apartment-sector-10' ||
-         slug.startsWith('test-3-bhk-luxury-builder-floor');
-};
+const isDemoProperty = (_p: any) => false;
 
 const DEFAULT_PROP_IMAGE = '/images/luxury_builder_floor_dwarka_1786010981126.png';
 
@@ -73,9 +66,8 @@ export class PropertyService {
   // Properties API
   private static saveProperties(properties: Property[]): void {
     if (typeof window !== 'undefined') {
-      const cleanProps = properties.filter(p => !isDemoProperty(p));
-      localStorage.setItem(PROPERTIES_KEY, JSON.stringify(cleanProps));
-      localStorage.setItem('ssp_admin_properties_v5', JSON.stringify(cleanProps));
+      localStorage.setItem(PROPERTIES_KEY, JSON.stringify(properties));
+      localStorage.setItem('ssp_admin_properties_v5', JSON.stringify(properties));
       window.dispatchEvent(new Event('storage'));
     }
   }
@@ -95,7 +87,7 @@ export class PropertyService {
     try {
       const parsed = JSON.parse(stored);
       if (Array.isArray(parsed)) {
-        return parsed.filter(p => !isDemoProperty(p));
+        return parsed;
       }
       return [];
     } catch {
@@ -134,8 +126,12 @@ export class PropertyService {
         const data = await response.json();
         if (Array.isArray(data) && data.length > 0) {
           const mappedList = data.map(mapBackendProperty);
-          this.saveProperties(mappedList);
-          return params ? this.searchProperties(params) : mappedList;
+          const localOnly = this.getProperties().filter(
+            lp => !mappedList.some(mp => String(mp.id) === String(lp.id) || (mp.slug && mp.slug === lp.slug))
+          );
+          const combined = [...mappedList, ...localOnly];
+          this.saveProperties(combined);
+          return params ? this.searchProperties(params) : combined;
         }
       }
     } catch (e) {

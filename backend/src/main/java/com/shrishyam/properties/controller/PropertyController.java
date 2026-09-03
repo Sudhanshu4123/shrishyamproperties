@@ -59,8 +59,9 @@ public class PropertyController {
         if (property.getTitle() == null || property.getTitle().trim().isEmpty()) {
             property.setTitle("Dwarka Property Listing");
         }
-        if (property.getSlug() == null || property.getSlug().trim().isEmpty()) {
+        if (property.getSlug() == null || property.getSlug().trim().isEmpty() || propertyRepository.findBySlug(property.getSlug().trim()).isPresent()) {
             String cleanSlug = property.getTitle().toLowerCase().replaceAll("[^a-z0-9]+", "-").replaceAll("^-|-$", "");
+            if (cleanSlug.isEmpty()) cleanSlug = "property";
             property.setSlug(cleanSlug + "-" + System.currentTimeMillis());
         }
         if (property.getPropertyType() == null || property.getPropertyType().trim().isEmpty()) {
