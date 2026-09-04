@@ -1,31 +1,30 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us | Shri Shyam Associate — Trusted Real Estate in Dwarka, New Delhi",
+  title: "About Us | Shri Shyam Associate — Home Builder & Real Estate Advisors in Dwarka Sector 7 Delhi",
   description:
-    "Learn about Shri Shyam Associate (Shree Shyam Associates), Dwarka's premier real estate consultancy. Over a decade of excellence in verified luxury builder floors, DDA flats, society apartments, and commercial shops across Sector 6, 7, 8, 10, 19 & Dwarka Expressway.",
+    "Learn about Shri Shyam Associate — Dwarka's trusted Home Builder and premier real estate consultancy headquartered at Shop No. 247, 2nd Floor, Vardhaman City Mall, Sector 7, Dwarka, Delhi 110077. Turnkey construction, verified luxury builder floors, DDA flats & society apartments.",
   keywords: [
-    "Shri Shyam",
-    "Shree Shyam",
+    "Shri Shyam associate",
+    "Shri Shyam Associate",
+    "Home builder Dwarka",
+    "Home builder Sector 7 Dwarka",
+    "Shop no 247 2nd floor vardhaman city Mall",
     "Shri Shyam About",
     "About Shri Shyam Associate",
-    "About Shree Shyam Associates",
     "Shri Shyam Property",
     "Shri Shyam Real Estate",
     "Real estate advisors Dwarka",
     "Property dealer Dwarka Sector 7",
-    "Trusted property consultants Dwarka",
-    "Shri Shyam Properties history",
-    "Dwarka real estate agency",
-    "Ramphal Chowk property consultants"
+    "Dwarka real estate agency"
   ],
   alternates: {
     canonical: "https://shrishyamassociate.com/about",
   },
   openGraph: {
-    title: "About Shri Shyam Associate — Dwarka's Trusted Real Estate Advisors",
+    title: "About Shri Shyam Associate — Home Builder & Real Estate Advisors Dwarka",
     description:
-      "Expert property advisory, 100% legal verification, and transparent real estate deals across Dwarka, New Delhi. Call +91 9911956274.",
+      "Turnkey home construction, luxury builder floors, 100% legal verification, and transparent deals at Shop No. 247, 2nd Floor, Vardhaman City Mall, Sector 7, Dwarka, Delhi 110077. Call +91 9911956274.",
     url: "https://shrishyamassociate.com/about",
     siteName: "Shri Shyam Associate",
     locale: "en_IN",
@@ -35,22 +34,22 @@ export const metadata: Metadata = {
         url: "https://shrishyamassociate.com/logo.png",
         width: 1200,
         height: 630,
-        alt: "About Shri Shyam Associate - Dwarka Real Estate",
+        alt: "About Shri Shyam Associate - Home Builder & Real Estate Dwarka",
       }
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "About Shri Shyam Associate — Dwarka Property Experts",
-    description: "Learn about Dwarka's premier real estate consultancy with 100% legal verification.",
+    title: "About Shri Shyam Associate — Home Builder & Property Experts Dwarka",
+    description: "Learn about Dwarka's premier Home Builder & real estate consultancy with 100% legal verification.",
     images: ["https://shrishyamassociate.com/logo.png"],
   },
   other: {
     "geo.region": "IN-DL",
-    "geo.placename": "Dwarka, New Delhi, Delhi NCR, India",
+    "geo.placename": "Dwarka Sector 7, New Delhi, Delhi, India",
     "geo.position": "28.5823;77.0700",
     "ICBM": "28.5823, 77.0700",
-    "DC.title": "About Shri Shyam Associate Real Estate Agency",
+    "DC.title": "About Shri Shyam Associate Home Builder & Real Estate Agency",
     "DC.coverage": "Dwarka, New Delhi, Delhi NCR, India",
     "DC.creator": "Shri Shyam Associate",
     "ai-content-declaration": "human-verified-agency-profile"

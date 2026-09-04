@@ -43,6 +43,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       images: [`${BASE_URL}/logo.png`],
     },
     {
+      url: `${BASE_URL}/home-builder`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+      images: [`${BASE_URL}/logo.png`],
+    },
+    {
       url: `${BASE_URL}/about`,
       lastModified: new Date(),
       changeFrequency: 'monthly',

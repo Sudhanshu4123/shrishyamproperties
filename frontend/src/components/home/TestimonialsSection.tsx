@@ -45,7 +45,7 @@ export default function TestimonialsSection() {
                 {current.name.charAt(0)}
               </div>
               <div className="text-left">
-                <h4 className="text-sm font-bold text-slate-800">{current.name}</h4>
+                <p className="text-sm font-bold text-slate-800">{current.name}</p>
                 <span className="text-xs text-teal-600 font-semibold">{current.propertyBought}</span>
               </div>
             </div>

@@ -34,8 +34,8 @@ const INITIAL_VISITS: SiteVisit[] = [];
 
 const INITIAL_SETTINGS: SystemSettings = {
   agencyName: 'Shri Shyam Associate',
-  tagline: 'Premier Real Estate Agency in Dwarka, New Delhi',
-  dwarkaOfficeAddress: 'Shop No. 12, Main Market, Dwarka Sector 7, New Delhi - 110075',
+  tagline: 'Premier Home Builder & Real Estate Agency in Dwarka Sector 7 Delhi',
+  dwarkaOfficeAddress: 'Shop No. 247, 2nd Floor, Vardhaman City Mall, Vaishali, Sector 7, Dwarka, Delhi - 110077',
   contactPhone: '+91 9911956274',
   whatsappHotline: '9911956274',
   emailSupport: 'info@shrishyamassociate.com',

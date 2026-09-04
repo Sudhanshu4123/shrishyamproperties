@@ -36,9 +36,13 @@ export default function ContactPage() {
                   <MapPin className="w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-slate-800">Office Location</h4>
-                  <p className="text-xs text-slate-600 mt-1">Dwarka, New Delhi, India - 110075</p>
-                  <span className="text-[10px] text-teal-600 font-semibold block mt-1">Main Service Area: All Dwarka Sectors & Nearby Areas</span>
+                  <h3 className="text-sm font-bold text-slate-800">Office Location</h3>
+                  <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                    Shop No. 247, 2nd Floor, Vardhaman City Mall, Vaishali, Sector 7, Dwarka, Delhi - 110077
+                  </p>
+                  <span className="text-[10px] text-teal-600 font-semibold block mt-1">
+                    Primary Category: Home Builder & Real Estate Advisory
+                  </span>
                 </div>
               </div>
 
@@ -47,9 +51,9 @@ export default function ContactPage() {
                   <Phone className="w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-slate-800">Phone & WhatsApp</h4>
+                  <h3 className="text-sm font-bold text-slate-800">Phone & WhatsApp</h3>
                   <a href="tel:9911956274" className="text-xs text-teal-600 font-bold hover:underline block mt-1">
-                    +91 9911956274
+                    +91 9911956274 / 09911956274
                   </a>
                 </div>
               </div>
@@ -59,7 +63,7 @@ export default function ContactPage() {
                   <Mail className="w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-slate-800">Email Address</h4>
+                  <h3 className="text-sm font-bold text-slate-800">Email Address</h3>
                   <a href="mailto:shrishyamproperties001@gmail.com" className="text-xs text-slate-600 hover:text-teal-600 transition-colors block mt-1">
                     shrishyamproperties001@gmail.com
                   </a>
@@ -71,8 +75,8 @@ export default function ContactPage() {
                   <Clock className="w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-slate-800">Working Hours</h4>
-                  <p className="text-xs text-slate-600 mt-1">Monday - Sunday: 9:30 AM - 8:30 PM IST</p>
+                  <h3 className="text-sm font-bold text-slate-800">Operating Hours</h3>
+                  <p className="text-xs text-slate-600 mt-1">Monday - Sunday: Open 24 Hours</p>
                 </div>
               </div>
             </div>

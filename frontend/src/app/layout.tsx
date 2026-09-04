@@ -118,12 +118,22 @@ const SEO_KEYWORDS = [
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://shrishyamassociate.com'),
   title: {
-    default: "Shri Shyam (Shri Shyam Associate) — Best Property Dealer & Real Estate in Delhi & Dwarka",
-    template: "%s | Shri Shyam (Shri Shyam Associate)"
+    default: "Shri Shyam Associate — Home Builder & Premier Real Estate in Dwarka Sector 7 Delhi",
+    template: "%s | Shri Shyam Associate"
   },
   description:
-    "Official website of Shri Shyam (Shri Shyam Associate / Shree Shyam Associates) — Top-rated real estate & property consultancy in Delhi & Dwarka. Verified 2, 3, 4 & 5 BHK luxury builder floors, DDA flats, CGHS societies & commercial shops. Call: +91 9911956274.",
-  keywords: SEO_KEYWORDS,
+    "Official website of Shri Shyam Associate — Professional Home Builder and premier real estate consultancy located at Shop No. 247, 2nd Floor, Vardhaman City Mall, Sector 7, Dwarka, Delhi 110077. Verified luxury builder floors, DDA flats, turnkey construction & property advisory. Open 24 Hours. Call: +91 9911956274.",
+  keywords: [
+    "Home builder in Dwarka",
+    "Home builder Dwarka Sector 7",
+    "Home builder Delhi",
+    "Shri Shyam associate",
+    "Shri Shyam Associate",
+    "Shree Shyam Associates",
+    "Vardhaman City Mall property dealer",
+    "2nd floor Vardhaman City Mall Dwarka",
+    ...SEO_KEYWORDS
+  ],
   authors: [{ name: "Shri Shyam Associate", url: "https://shrishyamassociate.com" }],
   creator: "Shri Shyam Associate",
   publisher: "Shri Shyam Associate",
@@ -153,9 +163,9 @@ export const metadata: Metadata = {
   manifest: '/manifest.webmanifest',
 
   openGraph: {
-    title: "Shri Shyam (Shri Shyam Associate) — Real Estate & Property Dealer in Dwarka & Delhi",
+    title: "Shri Shyam Associate — Home Builder & Real Estate in Dwarka Sector 7 Delhi",
     description:
-      "Official Shri Shyam portal. Explore verified 2, 3, 4 & 5 BHK luxury builder floors, DDA flats & society apartments with 3D virtual tours. Call: +91 9911956274.",
+      "Shri Shyam Associate: Trusted Home Builder and real estate agency at Shop No. 247, 2nd Floor, Vardhaman City Mall, Sector 7, Dwarka, Delhi 110077. Explore verified luxury builder floors with 3D tours. Open 24 Hours. Call: +91 9911956274.",
     url: "https://shrishyamassociate.com",
     siteName: "Shri Shyam Associate",
     locale: "en_IN",
@@ -165,14 +175,14 @@ export const metadata: Metadata = {
         url: "https://shrishyamassociate.com/logo.png",
         width: 1200,
         height: 630,
-        alt: "Shri Shyam Associate - Leading Property Dealer in Dwarka New Delhi",
+        alt: "Shri Shyam Associate - Home Builder & Real Estate in Dwarka New Delhi",
       }
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Shri Shyam (Shri Shyam Associate) — Dwarka Real Estate Experts",
-    description: "Verified luxury builder floors, DDA flats, and CGHS society apartments across Dwarka, New Delhi. Call: +91 9911956274.",
+    title: "Shri Shyam Associate — Home Builder & Dwarka Real Estate Experts",
+    description: "Turnkey home construction, luxury builder floors, and DDA flats across Dwarka, Delhi. Open 24 Hours. Call: +91 9911956274.",
     images: ["https://shrishyamassociate.com/logo.png"],
   },
   robots: {
@@ -188,13 +198,13 @@ export const metadata: Metadata = {
   },
   other: {
     "geo.region": "IN-DL",
-    "geo.placename": "Dwarka, New Delhi, Delhi NCR, India",
+    "geo.placename": "Dwarka Sector 7, New Delhi, Delhi, India",
     "geo.position": "28.5823;77.0700",
     "ICBM": "28.5823, 77.0700",
-    "DC.title": "Shri Shyam Associate (Shree Shyam Associates) — Real Estate Dwarka",
+    "DC.title": "Shri Shyam Associate — Home Builder & Real Estate Agency Dwarka",
     "DC.creator": "Shri Shyam Associate",
-    "DC.subject": "Real Estate Agency, Luxury Builder Floors, Flats for Sale, Dwarka Delhi",
-    "DC.description": "Top-rated property dealer and real estate consultant in Dwarka Sector 7, New Delhi and Dwarka Expressway.",
+    "DC.subject": "Home Builder, Real Estate Agency, Luxury Builder Floors, Flats for Sale, Dwarka Sector 7 Delhi",
+    "DC.description": "Premier Home Builder and top-rated property dealer at Shop No. 247, 2nd Floor, Vardhaman City Mall, Vaishali, Sector 7, Dwarka, Delhi 110077.",
     "DC.coverage": "Dwarka, New Delhi, Delhi NCR, Gurugram, India",
     "DC.language": "en-IN",
     "ai-content-declaration": "human-verified-real-estate"
@@ -205,16 +215,13 @@ const jsonLdSchema = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": ["RealEstateAgent", "LocalBusiness", "ProfessionalService"],
+      "@type": ["HomeAndConstructionBusiness", "RealEstateAgent", "LocalBusiness", "ProfessionalService"],
       "@id": "https://shrishyamassociate.com/#organization",
-      "name": "Shri Shyam",
+      "name": "Shri Shyam associate",
       "legalName": "Shri Shyam Associate",
       "alternateName": [
-        "Shri Shyam",
-        "Shree Shyam",
+        "Shri Shyam associate",
         "Shri Shyam Associate",
-        "Shri Shyam Associates",
-        "Shree Shyam Associate",
         "Shree Shyam Associates",
         "Shri Shyam Properties",
         "Shri Shyam Property",
@@ -223,13 +230,14 @@ const jsonLdSchema = {
         "Shri Shyam Associate Delhi",
         "Shri Shyam Real Estate",
         "Shri Shyam Builder",
+        "Shri Shyam Home Builder",
         "Shri Shyam Dwarka",
         "Shri Shyam Delhi"
       ],
       "url": "https://shrishyamassociate.com",
       "logo": "https://shrishyamassociate.com/logo.png",
       "image": "https://shrishyamassociate.com/logo.png",
-      "description": "Premier real estate consultancy & property advisory in Dwarka, New Delhi offering verified 2, 3, 4, 5 BHK luxury builder floors, DDA flats, CGHS society apartments, and commercial properties with 100% legal title verification.",
+      "description": "Professional Home Builder and premier real estate consultancy in Dwarka Sector 7, New Delhi offering turnkey home construction, verified 2, 3, 4, 5 BHK luxury builder floors, DDA flats, CGHS society apartments, and commercial properties with 100% legal title verification.",
       "telephone": "+91 9911956274",
       "email": "shrishyamproperties001@gmail.com",
       "priceRange": "₹40 Lakhs - ₹10 Crore",
@@ -244,10 +252,10 @@ const jsonLdSchema = {
       },
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Dwarka Sector 7, Ramphal Chowk Area",
+        "streetAddress": "Shop No. 247, 2nd Floor, Vardhaman City Mall, Vaishali, Sector 7",
         "addressLocality": "Dwarka",
-        "addressRegion": "New Delhi",
-        "postalCode": "110075",
+        "addressRegion": "Delhi",
+        "postalCode": "110077",
         "addressCountry": "IN"
       },
       "geo": {
@@ -255,13 +263,13 @@ const jsonLdSchema = {
         "latitude": 28.5823,
         "longitude": 77.0700
       },
-      "hasMap": "https://maps.google.com/?q=28.5823,77.0700",
+      "hasMap": "https://maps.google.com/?q=Shop+no+247+2nd+floor+vardhaman+city+Mall+sector+7+dwarka+Delhi+110077",
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
           "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-          "opens": "09:30",
-          "closes": "20:30"
+          "opens": "00:00",
+          "closes": "23:59"
         }
       ],
       "areaServed": [

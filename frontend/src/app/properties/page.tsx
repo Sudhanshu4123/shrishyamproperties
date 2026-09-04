@@ -11,7 +11,7 @@ import PropertyViewer3D from '@/components/3d/PropertyViewer3D';
 import LeadGenerationForm from '@/components/home/LeadGenerationForm';
 import { PropertyService } from '@/services/propertyService';
 import { Property } from '@/types/property';
-import { SlidersHorizontal, ArrowUpDown, X, Box } from 'lucide-react';
+import { SlidersHorizontal, ArrowUpDown, X, Box, ChevronLeft, ChevronRight } from 'lucide-react';
 
 function PropertyListingsingsContent() {
   const searchParams = useSearchParams();
@@ -23,12 +23,17 @@ function PropertyListingsingsContent() {
   const [selected3DProp, setSelected3DProp] = useState<Property | null>(null);
   const [scheduleProp, setScheduleProp] = useState<Property | null>(null);
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const ITEMS_PER_PAGE = 6;
+  const listingsRef = React.useRef<HTMLDivElement>(null);
+
   const currentPurpose = searchParams.get('purpose') || undefined;
   const currentType = searchParams.get('type') || undefined;
 
   useEffect(() => {
     let isMounted = true;
     setLoading(true);
+    setCurrentPage(1);
 
     const purpose = searchParams.get('purpose') || undefined;
     const type = searchParams.get('type') || undefined;
@@ -65,10 +70,12 @@ function PropertyListingsingsContent() {
       sorted.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
     }
     setFilteredProperties(sorted);
+    setCurrentPage(1);
   }, [sortBy]);
 
   const handleFilterSearch = async (filters: any) => {
     setLoading(true);
+    setCurrentPage(1);
     const results = await PropertyService.fetchPropertiesApi({
       purpose: filters.purpose,
       type: filters.propertyType,
@@ -78,6 +85,34 @@ function PropertyListingsingsContent() {
     });
     setFilteredProperties(results);
     setLoading(false);
+  };
+
+  const totalPages = Math.max(1, Math.ceil(filteredProperties.length / ITEMS_PER_PAGE));
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const currentDisplayedProperties = filteredProperties.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+
+  const handlePageChange = (newPage: number) => {
+    if (newPage < 1 || newPage > totalPages || newPage === currentPage) return;
+    setCurrentPage(newPage);
+    if (listingsRef.current) {
+      listingsRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  const getPageNumbers = () => {
+    const pages: (number | string)[] = [];
+    if (totalPages <= 5) {
+      for (let i = 1; i <= totalPages; i++) pages.push(i);
+    } else {
+      if (currentPage <= 3) {
+        pages.push(1, 2, 3, 4, '...', totalPages);
+      } else if (currentPage >= totalPages - 2) {
+        pages.push(1, '...', totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
+      } else {
+        pages.push(1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages);
+      }
+    }
+    return pages;
   };
 
   const getPageHeading = () => {
@@ -111,11 +146,11 @@ function PropertyListingsingsContent() {
       </div>
 
       {/* Sorting Bar */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+      <div ref={listingsRef} className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm scroll-mt-28">
         <div className="text-xs font-semibold text-slate-600 flex items-center gap-2">
           {loading && <div className="w-3 h-3 border-2 border-teal-500 border-t-transparent rounded-full animate-spin" />}
           <span>
-            Showing <strong className="text-teal-600 font-bold">{filteredProperties.length}</strong> {currentPurpose ? `${currentPurpose} ` : ''}properties
+            Showing <strong className="text-teal-600 font-bold">{filteredProperties.length > 0 ? `${startIndex + 1} - ${Math.min(startIndex + ITEMS_PER_PAGE, filteredProperties.length)}` : 0}</strong> of <strong className="text-teal-600 font-bold">{filteredProperties.length}</strong> {currentPurpose ? `${currentPurpose} ` : ''}properties (Page {currentPage} of {totalPages})
           </span>
         </div>
 
@@ -125,7 +160,7 @@ function PropertyListingsingsContent() {
           <select
             value={sortBy}
             onChange={e => setSortBy(e.target.value as any)}
-            className="bg-slate-50 text-slate-800 text-xs font-semibold px-3 py-1.5 rounded-xl border border-slate-200 focus:border-teal-500 focus:outline-none"
+            className="bg-slate-50 text-slate-800 text-xs font-semibold px-3 py-1.5 rounded-xl border border-slate-200 focus:border-teal-500 focus:outline-none cursor-pointer"
           >
             <option value="newest">Newest First</option>
             <option value="price-asc">Price: Low to High</option>
@@ -155,16 +190,73 @@ function PropertyListingsingsContent() {
           </p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProperties.map(prop => (
-            <PropertyCard
-              key={prop.id}
-              property={prop}
-              onOpen3DViewer={p => setSelected3DProp(p)}
-              onScheduleVisit={p => setScheduleProp(p)}
-            />
-          ))}
-        </div>
+        <>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {currentDisplayedProperties.map(prop => (
+              <PropertyCard
+                key={prop.id}
+                property={prop}
+                onOpen3DViewer={p => setSelected3DProp(p)}
+                onScheduleVisit={p => setScheduleProp(p)}
+              />
+            ))}
+          </div>
+
+          {/* Pagination Controls */}
+          {totalPages > 1 && (
+            <div className="mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-sm">
+              <div className="text-xs sm:text-sm text-slate-500 font-medium">
+                Page <strong className="text-slate-800">{currentPage}</strong> of <strong className="text-slate-800">{totalPages}</strong>
+              </div>
+
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                {/* Previous Button */}
+                <button
+                  onClick={() => handlePageChange(currentPage - 1)}
+                  disabled={currentPage === 1}
+                  className="flex items-center gap-1 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed bg-slate-100 text-slate-700 hover:bg-teal-50 hover:text-teal-700 active:scale-95 cursor-pointer border border-slate-200/60"
+                  aria-label="Previous page"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                  <span>Previous</span>
+                </button>
+
+                {/* Page Numbers */}
+                <div className="flex items-center gap-1 sm:gap-1.5">
+                  {getPageNumbers().map((page, idx) => (
+                    page === '...' ? (
+                      <span key={`ellipsis-${idx}`} className="w-8 text-center text-slate-400 font-bold text-xs">...</span>
+                    ) : (
+                      <button
+                        key={`page-${page}`}
+                        onClick={() => handlePageChange(page as number)}
+                        className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 flex items-center justify-center cursor-pointer ${
+                          currentPage === page
+                            ? 'bg-gradient-to-r from-teal-600 to-teal-500 text-white shadow-md shadow-teal-600/30 scale-105'
+                            : 'bg-slate-50 text-slate-700 hover:bg-teal-50 hover:text-teal-600 border border-slate-200/60'
+                        }`}
+                        aria-label={`Page ${page}`}
+                      >
+                        {page}
+                      </button>
+                    )
+                  ))}
+                </div>
+
+                {/* Next Button */}
+                <button
+                  onClick={() => handlePageChange(currentPage + 1)}
+                  disabled={currentPage === totalPages}
+                  className="flex items-center gap-1 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed bg-slate-100 text-slate-700 hover:bg-teal-50 hover:text-teal-700 active:scale-95 cursor-pointer border border-slate-200/60"
+                  aria-label="Next page"
+                >
+                  <span>Next</span>
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+          )}
+        </>
       )}
 
       {/* 3D Property Viewer Modal */}

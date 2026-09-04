@@ -1,25 +1,27 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-const HOME_MARKDOWN = `# Shri Shyam (Shri Shyam Associate / Shree Shyam Associates)
+const HOME_MARKDOWN = `# Shri Shyam Associate (Shri Shyam associate)
 
-> Premier Real Estate Consultancy & Property Advisors in Dwarka, New Delhi. 100% verified luxury builder floors, DDA flats, CGHS society apartments, and commercial retail shops.
+> Premier Home Builder & Real Estate Consultancy in Dwarka Sector 7, Delhi. Turnkey house construction, 100% verified luxury builder floors, DDA flats, CGHS society apartments, and commercial retail shops.
 
 ## Quick Contact
-- **Phone / WhatsApp**: +91 9911956274
+- **Phone / WhatsApp**: +91 9911956274 / 09911956274
 - **Email**: shrishyamproperties001@gmail.com
-- **Office Location**: Dwarka Sector 7, Ramphal Chowk Area, New Delhi 110075, India
+- **Office Location**: Shop No. 247, 2nd Floor, Vardhaman City Mall, Vaishali, Sector 7, Dwarka, Delhi 110077
+- **Operating Hours**: Open 24 Hours (Monday – Sunday)
 - **Coordinates**: 28.5823° N, 77.0700° E
 - **Website**: https://shrishyamassociate.com
 
 ---
 
-## Verified Real Estate Portfolios in Dwarka & Delhi NCR
-1. **Luxury Builder Floors**: High-end 2 BHK, 3 BHK, 4 BHK, 5 BHK with dedicated lift, stilt parking, modular Italian kitchen, and branded fittings.
-2. **Society & DDA Apartments**: Ready-to-move, freehold, gated society flats across Sectors 6, 7, 8, 10, 11, 12, 19, 21, 22, 23.
-3. **Penthouses & Duplexes**: Exclusive luxury rooftop penthouses with private terrace gardens.
-4. **Dwarka Expressway High-Rise Projects**: Sector 102 (Joyville Shapoorji Pallonji), luxury high-rise gated communities.
-5. **Commercial Shops & Office Spaces**: High footfall retail shops in Sector 7 Ramphal Chowk and surrounding markets.
+## Core Services & Portfolios
+1. **Home Builder & Turnkey Construction**: Custom house construction, luxury floor development, structural additions, and 3D architectural elevations.
+2. **Luxury Builder Floors**: High-end 2 BHK, 3 BHK, 4 BHK, 5 BHK with dedicated lift, stilt parking, modular Italian kitchen, and branded fittings.
+3. **Society & DDA Apartments**: Ready-to-move, freehold, gated society flats across Sectors 6, 7, 8, 10, 11, 12, 19, 21, 22, 23.
+4. **Penthouses & Duplexes**: Exclusive luxury rooftop penthouses with private terrace gardens.
+5. **Dwarka Expressway High-Rise Projects**: Sector 102 (Joyville Shapoorji Pallonji), luxury high-rise gated communities.
+6. **Commercial Shops & Office Spaces**: High footfall retail shops in Sector 7 Vardhaman City Mall, Ramphal Chowk and surrounding markets.
 
 ## Price Matrix
 - **2 BHK Flats / Builder Floors**: ₹50 Lakhs – ₹95 Lakhs
@@ -29,6 +31,7 @@ const HOME_MARKDOWN = `# Shri Shyam (Shri Shyam Associate / Shree Shyam Associat
 - **Commercial Retail / Shops**: ₹25 Lakhs – ₹3.50 Crore
 
 ## Navigation Links
+- [Home Builder Services](https://shrishyamassociate.com/home-builder)
 - [All Properties](https://shrishyamassociate.com/properties)
 - [About Us](https://shrishyamassociate.com/about)
 - [Contact Office & Book Site Visit](https://shrishyamassociate.com/contact)
@@ -37,39 +40,41 @@ const HOME_MARKDOWN = `# Shri Shyam (Shri Shyam Associate / Shree Shyam Associat
 - [API Catalog](https://shrishyamassociate.com/.well-known/api-catalog)
 `;
 
-const ABOUT_MARKDOWN = `# About Shri Shyam Associate (Shree Shyam Associates)
+const ABOUT_MARKDOWN = `# About Shri Shyam Associate (Shri Shyam associate)
 
-> Trusted real estate consultants in Dwarka, New Delhi for over a decade.
+> Trusted Home Builder & real estate consultants in Dwarka, Delhi for over 15 years.
 
 ## About the Agency
-Shri Shyam Associate (also known as Shree Shyam Associates / Shri Shyam Properties) is a top-rated real estate advisory firm headquartered in Dwarka Sector 7, Ramphal Chowk, New Delhi. We specialize in verified freehold builder floors, DDA flats, CGHS society apartments, and commercial properties.
+Shri Shyam Associate is a top-rated Home Builder and real estate advisory firm headquartered at Shop No. 247, 2nd Floor, Vardhaman City Mall, Vaishali, Sector 7, Dwarka, Delhi 110077. We specialize in custom house construction, verified freehold builder floors, DDA flats, CGHS society apartments, and commercial properties.
 
 ## Core Guarantees
 - **100% Legal Title Verification**: All properties are free from encumbrance and litigation.
 - **Home Loan Approved**: Pre-approved for bank loans from SBI, HDFC, ICICI, and Axis Bank.
+- **Turnkey Construction Quality**: Premium RCC structural engineering and tested branded materials.
 - **Transparent Closures**: End-to-end support for registry, mutation, and documentation.
 - **Interactive 3D Virtual Tours**: Explore layouts and architectural models online.
 
 ## Office Contact
-- **Address**: Dwarka Sector 7, Ramphal Chowk Area, New Delhi 110075
-- **Phone**: +91 9911956274
+- **Address**: Shop No. 247, 2nd Floor, Vardhaman City Mall, Vaishali, Sector 7, Dwarka, Delhi 110077
+- **Phone**: +91 9911956274 / 09911956274
 - **Email**: shrishyamproperties001@gmail.com
-- **Hours**: Monday to Sunday, 09:30 AM – 08:30 PM IST
+- **Hours**: Monday to Sunday, Open 24 Hours
 `;
 
 const CONTACT_MARKDOWN = `# Contact Shri Shyam Associate
 
-> Book an in-person guided site visit or speak directly with our Dwarka real estate advisors.
+> Book an in-person guided site visit or speak directly with our Dwarka Home Builders & real estate advisors.
 
 ## Contact Channels
 - **Direct Phone**: [+91 9911956274](tel:9911956274)
-- **WhatsApp**: [Chat on WhatsApp](https://wa.me/919911956274?text=Hi%20Shri%20Shyam%20Associate,%20I%20am%20interested%20in%20visiting%20properties)
+- **WhatsApp**: [Chat on WhatsApp](https://wa.me/919911956274?text=Hi%20Shri%20Shyam%20Associate,%20I%20am%20interested%20in%20home%20builder%20and%20property%20services)
 - **Email**: [shrishyamproperties001@gmail.com](mailto:shrishyamproperties001@gmail.com)
-- **Office Location**: Dwarka Sector 7, Ramphal Chowk Area, New Delhi 110075
-- **Google Maps**: [Location Map](https://maps.google.com/?q=28.5823,77.0700)
+- **Office Location**: Shop No. 247, 2nd Floor, Vardhaman City Mall, Vaishali, Sector 7, Dwarka, Delhi 110077
+- **Operating Hours**: Open 24 Hours (Monday to Sunday)
+- **Google Maps**: [Location Map](https://maps.google.com/?q=Shop+no+247+2nd+floor+vardhaman+city+Mall+sector+7+dwarka+Delhi+110077)
 
 ## Service Areas
-Dwarka Sectors 1 through 24, Ramphal Chowk, Mahavir Enclave, Palam, and Dwarka Expressway (Gurugram).
+Dwarka Sectors 1 through 24, Ramphal Chowk, Vaishali, Mahavir Enclave, Palam, and Dwarka Expressway (Gurugram).
 `;
 
 const PROPERTIES_MARKDOWN = `# Verified Property Listings — Shri Shyam Associate
