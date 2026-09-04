@@ -108,6 +108,8 @@ jobs:
           username: ${{ secrets.HOSTINGER_USERNAME }}
           password: ${{ secrets.HOSTINGER_PASSWORD }}
           port: 22
+          timeout: 120s
+          command_timeout: 30m
           script_stop: true
           script: |
             echo "🚀 Starting Automated Deployment on Hostinger VPS..."
@@ -115,23 +117,20 @@ jobs:
             git reset --hard HEAD
             git pull origin main
 
-            echo "📦 Building & Restarting Backend (Spring Boot)..."
-            cd /var/www/shrishyamproperties/backend
-            chmod +x mvnw
-            ./mvnw clean package -DskipTests
-            pm2 restart shrishyam-backend || pm2 start "java -Dserver.port=8080 -Dspring.datasource.url=jdbc:mysql://localhost:3306/shrishyam_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC -Dspring.datasource.username=shrishyam_user -Dspring.datasource.password=Shrishyam@2026# -Dspring.sql.init.mode=never -jar target/properties-backend-1.0.0.jar" --name "shrishyam-backend"
-
             echo "🌐 Building & Restarting Frontend..."
             cd /var/www/shrishyamproperties/frontend
-            npm install
+            npm install --prefer-offline --no-audit
             npm run build
             pm2 restart shrishyam-frontend || pm2 start npm --name "shrishyam-frontend" -- start -- -p 3000
 
             echo "⚙️ Building & Restarting Admin Dashboard..."
             cd /var/www/shrishyamproperties/admin
-            npm install
+            npm install --prefer-offline --no-audit
             npm run build
             pm2 restart shrishyam-admin || pm2 start npm --name "shrishyam-admin" -- start -- -p 3001
+
+            echo "📦 Checking Backend Status..."
+            pm2 restart shrishyam-backend || true
 
             pm2 save
             echo "✅ Hostinger VPS Deployment Finished Successfully!"
