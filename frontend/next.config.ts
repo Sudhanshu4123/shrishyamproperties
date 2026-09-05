@@ -71,6 +71,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/property/:id',
+        destination: '/properties/:id',
+        permanent: true,
+      },
+      {
         source: '/properties-list',
         destination: '/properties',
         permanent: true,
@@ -83,6 +88,21 @@ const nextConfig: NextConfig = {
       {
         source: '/contact-us',
         destination: '/contact',
+        permanent: true,
+      },
+      {
+        source: '/blogs',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/articles/:slug',
+        destination: '/blog/:slug',
+        permanent: true,
+      },
+      {
+        source: '/locations',
+        destination: '/locations/dwarka',
         permanent: true,
       },
     ];
@@ -102,4 +122,3 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
-

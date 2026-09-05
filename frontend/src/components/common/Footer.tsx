@@ -3,15 +3,15 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Building2, Phone, Mail, MapPin, ArrowUpRight, Clock, Hammer } from 'lucide-react';
+import { Building2, Phone, Mail, MapPin, ArrowUpRight, Clock, Map } from 'lucide-react';
 
 export default function Footer() {
   return (
     <footer className="bg-slate-900 text-slate-400 pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
-          {/* Brand */}
-          <div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+          {/* Brand & NAP Summary (Col 1) */}
+          <div className="lg:col-span-2">
             <div className="mb-4">
               <Image 
                 src="/logo.png" 
@@ -22,33 +22,38 @@ export default function Footer() {
               />
             </div>
             <p className="text-xs text-slate-400 leading-relaxed mb-4">
-              Dwarka's premier Home Builder & real estate consultancy offering turnkey home construction, verified 2–5 BHK luxury builder floors, society flats, commercial shops, and plots.
+              Dwarka’s premier Home Builder & real estate advisory headquartered at Shop No. 247, 2nd Floor, Vardhaman City Mall, Sector 7, Dwarka, Delhi 110077. Specializing in verified luxury builder floors, DDA flats, society apartments, and retail commercial properties with 100% legal title clearance.
             </p>
-            <div className="flex items-center gap-2 text-xs text-teal-400 font-semibold bg-slate-800 px-3 py-2 rounded-xl border border-slate-700">
+            <div className="flex items-center gap-2 text-xs text-teal-400 font-semibold bg-slate-800/80 px-3.5 py-2.5 rounded-xl border border-slate-700/80 mb-4">
               <span>✓</span>
-              <span>100% Verified Properties & Construction</span>
+              <span>100% Freehold Verified Properties & Bank Loan Approved</span>
+            </div>
+            <div className="text-xs text-slate-400 space-y-1">
+              <p><strong className="text-slate-200">Agency Name:</strong> Shri Shyam Associate</p>
+              <p><strong className="text-slate-200">Address:</strong> Shop No. 247, 2nd Floor, Vardhaman City Mall, Sector 7, Dwarka, New Delhi - 110077</p>
+              <p><strong className="text-slate-200">Direct Phone:</strong> <a href="tel:9911956274" className="text-teal-400 hover:underline">+91 9911956274</a></p>
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Quick Links & Categories (Col 2) */}
           <div>
-            <p className="text-sm font-bold text-white mb-4 border-l-2 border-teal-500 pl-3">Quick Links</p>
+            <p className="text-sm font-bold text-white mb-4 border-l-2 border-teal-500 pl-3">Property Categories</p>
             <ul className="space-y-2 text-xs">
               {[
-                { name: 'Home Builder & Construction', href: '/home-builder', highlight: true },
-                { name: 'Featured Properties', href: '/properties' },
-                { name: 'Properties for Sale', href: '/properties?purpose=Buy' },
-                { name: 'Properties for Rent', href: '/properties?purpose=Rent' },
-                { name: 'Commercial Spaces', href: '/properties?type=Commercial' },
-                { name: 'About Us', href: '/about' },
-                { name: 'Contact', href: '/contact' },
+                { name: 'Properties for Sale', href: '/properties/for-sale' },
+                { name: 'Properties for Rent', href: '/properties/for-rent' },
+                { name: 'Luxury Builder Floors', href: '/builder-floors', highlight: true },
+                { name: 'Commercial Property & Shops', href: '/commercial-property' },
+                { name: 'DDA Flats & Apartments', href: '/dda-flats' },
+                { name: 'Turnkey Home Builder', href: '/home-builder', highlight: true },
+                { name: 'All Properties Directory', href: '/properties' },
                 { name: 'HTML Sitemap', href: '/sitemap' },
               ].map(item => (
                 <li key={item.name}>
                   <Link
                     href={item.href}
                     className={`hover:text-teal-400 transition-colors flex items-center gap-1 ${
-                      item.highlight ? 'text-teal-400 font-bold' : ''
+                      item.highlight ? 'text-teal-400 font-semibold' : ''
                     }`}
                   >
                     <ArrowUpRight className="w-3 h-3 text-slate-600" />
@@ -59,19 +64,19 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Property Types */}
+          {/* Dwarka Sector Hubs (Col 3) */}
           <div>
-            <p className="text-sm font-bold text-white mb-4 border-l-2 border-teal-500 pl-3">Property Types & Services</p>
+            <p className="text-sm font-bold text-white mb-4 border-l-2 border-teal-500 pl-3">Dwarka Sector Hubs</p>
             <ul className="space-y-2 text-xs">
               {[
-                { label: 'Turnkey Home Construction', href: '/home-builder' },
-                { label: '2 BHK Builder Floors', href: '/properties?bhk=2' },
-                { label: '3 BHK Luxury Floors', href: '/properties?bhk=3' },
-                { label: '4 BHK & 5 BHK Floors', href: '/properties?bhk=4' },
-                { label: 'CGHS Society Flats', href: '/properties?type=Apartment' },
-                { label: 'DDA Apartments', href: '/properties?type=Apartment' },
-                { label: 'Commercial Shops', href: '/properties?type=Commercial' },
-                { label: 'Dwarka Expressway Projects', href: '/properties?sector=Dwarka+Expressway' },
+                { label: 'Dwarka City Overview', href: '/locations/dwarka' },
+                { label: 'Dwarka Sector 6 (Central Market)', href: '/locations/dwarka-sector-6' },
+                { label: 'Dwarka Sector 7 (Ramphal Chowk)', href: '/locations/dwarka-sector-7' },
+                { label: 'Dwarka Sector 21 (Interchange)', href: '/locations/dwarka-sector-21' },
+                { label: 'Dwarka Sector 23 (Yashobhoomi)', href: '/locations/dwarka-sector-23' },
+                { label: 'Dwarka Expressway Link', href: '/properties?sector=Dwarka+Expressway' },
+                { label: 'About Shri Shyam Associate', href: '/about' },
+                { label: 'Contact Us & Site Visits', href: '/contact' },
               ].map(t => (
                 <li key={t.label}>
                   <Link href={t.href} className="flex items-center gap-1.5 hover:text-teal-400 transition-colors">
@@ -83,33 +88,35 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact & NAP */}
+          {/* Real Estate Guides & Help Desk (Col 4) */}
           <div>
-            <p className="text-sm font-bold text-white mb-4 border-l-2 border-teal-500 pl-3">Contact & Visit Us</p>
-            <div className="space-y-3 text-xs">
-              <div className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-teal-400 shrink-0 mt-0.5" />
-                <span className="leading-relaxed">
-                  Shop No. 247, 2nd Floor, Vardhaman City Mall, Vaishali, Sector 7, Dwarka, Delhi - 110077
-                </span>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <Clock className="w-4 h-4 text-teal-400 shrink-0" />
-                <span className="text-slate-300 font-medium">Open 24 Hours (Mon – Sun)</span>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-teal-400 shrink-0" />
-                <a href="tel:9911956274" className="text-teal-400 font-bold hover:underline">+91 9911956274</a>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-teal-400 shrink-0" />
-                <a href="mailto:shrishyamproperties001@gmail.com" className="hover:text-teal-400 transition-colors">shrishyamproperties001@gmail.com</a>
+            <p className="text-sm font-bold text-white mb-4 border-l-2 border-teal-500 pl-3">Buying Guides & Help</p>
+            <ul className="space-y-2 text-xs mb-6">
+              {[
+                { label: 'Best Sectors in Dwarka', href: '/blog/best-sectors-to-buy-property-in-dwarka' },
+                { label: 'Documents Required in Delhi', href: '/blog/documents-required-for-buying-property-in-delhi' },
+                { label: 'Builder Floors vs DDA Flats', href: '/blog/builder-floors-vs-dda-flats-in-dwarka' },
+                { label: '2 BHK vs 3 BHK in Dwarka', href: '/blog/2-bhk-vs-3-bhk-in-dwarka' },
+                { label: '10 Things to Check', href: '/blog/things-to-check-before-buying-property-in-dwarka' },
+              ].map(g => (
+                <li key={g.label}>
+                  <Link href={g.href} className="hover:text-teal-400 transition-colors block line-clamp-1">
+                    • {g.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            <div className="space-y-2.5 text-xs pt-3 border-t border-slate-800">
+              <div className="flex items-center gap-2">
+                <Clock className="w-3.5 h-3.5 text-teal-400 shrink-0" />
+                <span className="text-slate-300 font-medium">Open 24 Hours / 7 Days</span>
               </div>
               <a
-                href="https://wa.me/919911956274?text=Hello%20Shri%20Shyam%20Associate,%20I%20am%20inquiring%20about%20Home%20Builder%20and%20Property%20services."
+                href="https://wa.me/919911956274?text=Hello%20Shri%20Shyam%20Associate"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center justify-center gap-2 w-full py-2.5 bg-teal-600 hover:bg-teal-500 text-white rounded-xl text-xs font-bold mt-3 transition-colors shadow-sm"
+                className="flex items-center justify-center gap-2 w-full py-2.5 bg-teal-600 hover:bg-teal-500 text-white rounded-xl text-xs font-bold transition-colors shadow-sm"
               >
                 <span>WhatsApp 24/7 Helpline</span>
               </a>
@@ -117,9 +124,14 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Footer Bottom Bar */}
         <div className="pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
           <p>© {new Date().getFullYear()} Shri Shyam Associate. All rights reserved.</p>
-          <p>Home Builder & Real Estate Advisors | Dwarka Sector 7, Delhi</p>
+          <p className="flex items-center gap-2">
+            <span>Home Builder & Premier Real Estate Agency</span>
+            <span>•</span>
+            <span>Dwarka Sector 7, New Delhi 110077</span>
+          </p>
         </div>
       </div>
     </footer>

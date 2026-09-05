@@ -1,15 +1,15 @@
 # Robots.txt for Shri Shyam Associate
-# https://shrishyamassociate.com
-# Declares AI content usage preferences with Content Signals (https://contentsignals.org)
+# Official Website: https://shrishyamassociate.com
+# Open 24/7 Real Estate Agency & Home Builder in Dwarka, New Delhi
 
 User-agent: *
 Allow: /
 Disallow: /admin
 Disallow: /admin/
 Disallow: /api/
-Disallow: /_next/
 Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
+# Major Search Engine Crawlers - Explicit Allowances
 User-agent: Googlebot
 User-agent: Googlebot-Image
 User-agent: Googlebot-News
@@ -26,9 +26,18 @@ User-agent: Twitterbot
 User-agent: LinkedInBot
 Allow: /
 Allow: /properties
+Allow: /properties/
+Allow: /locations/
+Allow: /commercial-property
+Allow: /builder-floors
+Allow: /dda-flats
+Allow: /blog
+Allow: /blog/
 Allow: /about
 Allow: /contact
+Allow: /home-builder
 Allow: /sitemap
+Allow: /sitemap.xml
 Allow: /llms.txt
 Allow: /llms-full.txt
 Allow: /.well-known/
@@ -40,9 +49,9 @@ Allow: /images/
 Disallow: /admin
 Disallow: /admin/
 Disallow: /api/
-Disallow: /_next/
 Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
+# AI & LLM Search Agents
 User-agent: GPTBot
 User-agent: ChatGPT-User
 User-agent: PerplexityBot
@@ -55,8 +64,14 @@ User-agent: Bytespider
 User-agent: CCBot
 Allow: /
 Allow: /properties
+Allow: /locations/
+Allow: /commercial-property
+Allow: /builder-floors
+Allow: /dda-flats
+Allow: /blog
 Allow: /about
 Allow: /contact
+Allow: /home-builder
 Allow: /sitemap
 Allow: /llms.txt
 Allow: /llms-full.txt
