@@ -3,7 +3,15 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { BlogPost, getAllBlogPosts, saveBlogPosts } from '@/data/blogData';
+import { 
+  BlogPost, 
+  getAllBlogPosts, 
+  saveBlogPosts, 
+  fetchBlogPostsApi, 
+  createBlogPostApi, 
+  updateBlogPostApi, 
+  deleteBlogPostApi 
+} from '@/data/blogData';
 import { 
   BookOpen, Plus, Search, Edit3, Trash2, ExternalLink, 
   Calendar, Clock, User, Tag, HelpCircle, X, CheckCircle2, 
@@ -38,13 +46,19 @@ export default function BlogsTab() {
 
   const [notification, setNotification] = useState<string | null>(null);
 
-  const loadBlogs = () => {
+  const loadBlogs = async () => {
+    // 1. Instant optimistic load from localStorage
     setBlogs(getAllBlogPosts());
+    // 2. Refresh from server API
+    const freshBlogs = await fetchBlogPostsApi();
+    if (freshBlogs) {
+      setBlogs(freshBlogs);
+    }
   };
 
   useEffect(() => {
     loadBlogs();
-    const handleStorage = () => loadBlogs();
+    const handleStorage = () => setBlogs(getAllBlogPosts());
     window.addEventListener('storage', handleStorage);
     return () => window.removeEventListener('storage', handleStorage);
   }, []);
@@ -111,7 +125,7 @@ export default function BlogsTab() {
     setIsModalOpen(true);
   };
 
-  const handleSaveBlog = (e: React.FormEvent) => {
+  const handleSaveBlog = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!title.trim() || !slug.trim()) {
       alert('Please provide Title and URL Slug');
@@ -138,32 +152,35 @@ export default function BlogsTab() {
       faqs: cleanFaqs
     };
 
-    let updatedList: BlogPost[];
     if (editingSlug) {
-      updatedList = currentBlogs.map(b => (b.slug === editingSlug ? newBlogObj : b));
+      const updated = await updateBlogPostApi(newBlogObj);
+      setBlogs(updated);
       showNotification(`Article "${title}" updated successfully!`);
     } else {
-      // Check for duplicate slug
       if (currentBlogs.some(b => b.slug === newBlogObj.slug)) {
         alert('A blog with this URL slug already exists. Please choose a unique slug.');
         return;
       }
-      updatedList = [newBlogObj, ...currentBlogs];
+      const updated = await createBlogPostApi(newBlogObj);
+      setBlogs(updated);
       showNotification(`Article "${title}" created and published!`);
     }
 
-    saveBlogPosts(updatedList);
-    setBlogs(updatedList);
     setIsModalOpen(false);
   };
 
-  const handleDeleteBlog = (blogSlug: string, blogTitle: string) => {
+  const handleDeleteBlog = async (blogSlug: string, blogTitle: string) => {
     if (confirm(`Are you sure you want to delete "${blogTitle}"?`)) {
+      // Optimistic update in UI
       const currentBlogs = getAllBlogPosts();
-      const updated = currentBlogs.filter(b => b.slug !== blogSlug);
-      saveBlogPosts(updated);
-      setBlogs(updated);
-      showNotification(`Article deleted successfully.`);
+      const updatedOptimistic = currentBlogs.filter(b => b.slug !== blogSlug);
+      setBlogs(updatedOptimistic);
+      saveBlogPosts(updatedOptimistic);
+
+      // Persistent delete via server API
+      const finalUpdated = await deleteBlogPostApi(blogSlug);
+      setBlogs(finalUpdated);
+      showNotification(`Article "${blogTitle}" deleted successfully.`);
     }
   };
 

@@ -7,14 +7,21 @@ import Navbar from '@/components/common/Navbar';
 import Footer from '@/components/common/Footer';
 import FloatingWhatsApp from '@/components/common/FloatingWhatsApp';
 import Breadcrumbs from '@/components/common/Breadcrumbs';
-import { BlogPost, getAllBlogPosts } from '@/data/blogData';
+import { BlogPost, getAllBlogPosts, fetchBlogPostsApi } from '@/data/blogData';
 import { BookOpen, Calendar, Clock, ArrowRight, Tag, ShieldCheck } from 'lucide-react';
 
 export default function BlogIndexPage() {
   const [blogs, setBlogs] = useState<BlogPost[]>([]);
 
   useEffect(() => {
+    // 1. Instant optimistic load
     setBlogs(getAllBlogPosts());
+
+    // 2. Fetch fresh from server API
+    fetchBlogPostsApi().then((fresh) => {
+      if (fresh) setBlogs(fresh);
+    });
+
     const handleStorage = () => setBlogs(getAllBlogPosts());
     window.addEventListener('storage', handleStorage);
     return () => window.removeEventListener('storage', handleStorage);
