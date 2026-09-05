@@ -8,6 +8,7 @@ import OverviewTab from '@/components/admin/dashboard/OverviewTab';
 import PropertiesTab from '@/components/admin/dashboard/PropertiesTab';
 import LeadsTab from '@/components/admin/dashboard/LeadsTab';
 import VisitsTab from '@/components/admin/dashboard/VisitsTab';
+import BlogsTab from '@/components/admin/dashboard/BlogsTab';
 import { AdminService } from '@/services/adminService';
 import { AdminProperty, AdminLead, SiteVisit, SystemSettings, ActivityLog } from '@/types/admin';
 import { Building2, ArrowRight } from 'lucide-react';
@@ -21,6 +22,7 @@ export default function AdminPage() {
   // Active Dashboard Tab
   const [activeTab, setActiveTab] = useState<string>('overview');
   const [searchTerm, setSearchTerm] = useState<string>('');
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   // State Data
   const [stats, setStats] = useState<any>({});
@@ -117,12 +119,6 @@ export default function AdminPage() {
     await refreshData();
   };
 
-  // Settings Handler
-  const handleSaveSettings = (newSettings: Partial<SystemSettings>) => {
-    AdminService.updateSettings(newSettings);
-    refreshData();
-  };
-
   // 1. LOGIN SCREEN IF NOT AUTHENTICATED
   if (!isAuthenticated) {
     return (
@@ -130,18 +126,18 @@ export default function AdminPage() {
         {/* Ambient Radial Glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-teal-500/10 via-emerald-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
 
-        <div className="relative z-10 max-w-md w-full p-8 rounded-3xl bg-white border border-slate-200 shadow-2xl backdrop-blur-xl">
+        <div className="relative z-10 max-w-md w-full p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-2xl backdrop-blur-xl">
           <div className="flex justify-center mb-4">
             <Image 
               src="/logo.png" 
               alt="Shri Shyam Associate" 
               width={200}
               height={64}
-              className="h-16 w-auto object-contain" 
+              className="h-14 sm:h-16 w-auto object-contain" 
             />
           </div>
 
-          <h1 className="text-2xl font-black text-slate-800 text-center tracking-tight" style={{ fontFamily: "'Playfair Display', serif" }}>
+          <h1 className="text-xl sm:text-2xl font-black text-slate-800 text-center tracking-tight" style={{ fontFamily: "'Playfair Display', serif" }}>
             Shri Shyam <span className="text-teal-600">Admin Control</span>
           </h1>
           <p className="text-xs text-slate-500 text-center font-semibold mt-1 mb-6">
@@ -185,7 +181,7 @@ export default function AdminPage() {
 
             <button
               type="submit"
-              className="w-full py-3.5 text-xs font-extrabold text-white bg-gradient-to-r from-teal-600 via-teal-500 to-teal-700 rounded-xl shadow-lg hover:scale-[1.02] transition-transform flex items-center justify-center gap-2"
+              className="w-full py-3.5 text-xs font-extrabold text-white bg-gradient-to-r from-teal-600 via-teal-500 to-teal-700 rounded-xl shadow-lg hover:scale-[1.02] transition-transform flex items-center justify-center gap-2 cursor-pointer"
             >
               <span>Login</span>
               <ArrowRight className="w-4 h-4" />
@@ -196,14 +192,16 @@ export default function AdminPage() {
     );
   }
 
-  // 2. MAIN DASHBOARD LAYOUT
+  // 2. MAIN DASHBOARD LAYOUT (100% Mobile-Friendly)
   return (
     <div className="min-h-screen bg-[#f0f4f8] text-slate-800 flex font-sans">
-      {/* Sidebar */}
+      {/* Sidebar with Mobile Drawer support */}
       <Sidebar
         activeTab={activeTab}
         setActiveTab={setActiveTab}
         onLogout={handleLogout}
+        isOpen={isMobileSidebarOpen}
+        onClose={() => setIsMobileSidebarOpen(false)}
       />
 
       {/* Main Content Area */}
@@ -212,9 +210,10 @@ export default function AdminPage() {
           onOpenAddProperty={() => setActiveTab('properties')}
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
+          onToggleSidebar={() => setIsMobileSidebarOpen(prev => !prev)}
         />
 
-        <main className="p-6 md:p-8 flex-1 overflow-y-auto">
+        <main className="p-3 sm:p-6 md:p-8 flex-1 overflow-y-auto">
           {activeTab === 'overview' && (
             <OverviewTab
               stats={stats}
@@ -233,6 +232,10 @@ export default function AdminPage() {
               onDeleteProperty={handleDeleteProperty}
               searchTerm={searchTerm}
             />
+          )}
+
+          {activeTab === 'blogs' && (
+            <BlogsTab />
           )}
 
           {activeTab === 'leads' && (

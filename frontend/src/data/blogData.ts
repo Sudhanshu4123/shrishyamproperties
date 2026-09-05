@@ -14,6 +14,8 @@ export interface BlogPost {
   tags: string[];
 }
 
+export const BLOG_STORAGE_KEY = 'ssp_blogs_v1';
+
 export const BLOG_POSTS: BlogPost[] = [
   {
     slug: 'best-sectors-to-buy-property-in-dwarka',
@@ -273,6 +275,30 @@ export const BLOG_POSTS: BlogPost[] = [
   }
 ];
 
+export function getAllBlogPosts(): BlogPost[] {
+  if (typeof window === 'undefined') return BLOG_POSTS;
+  try {
+    const stored = localStorage.getItem(BLOG_STORAGE_KEY);
+    if (stored) {
+      const parsed = JSON.parse(stored);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        return parsed;
+      }
+    }
+  } catch (e) {
+    console.warn('Error reading blog posts from storage:', e);
+  }
+  return BLOG_POSTS;
+}
+
+export function saveBlogPosts(posts: BlogPost[]): void {
+  if (typeof window !== 'undefined') {
+    localStorage.setItem(BLOG_STORAGE_KEY, JSON.stringify(posts));
+    window.dispatchEvent(new Event('storage'));
+  }
+}
+
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
-  return BLOG_POSTS.find(p => p.slug === slug);
+  const posts = getAllBlogPosts();
+  return posts.find(p => p.slug === slug);
 }

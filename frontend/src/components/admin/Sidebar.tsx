@@ -7,35 +7,54 @@ import {
   LayoutDashboard, 
   Layers, 
   Calendar, 
-  LogOut
+  LogOut,
+  BookOpen,
+  X
 } from 'lucide-react';
 
 interface SidebarProps {
   activeTab: string;
   setActiveTab: (tab: string) => void;
   onLogout: () => void;
+  isOpen?: boolean;
+  onClose?: () => void;
 }
 
-export default function Sidebar({ activeTab, setActiveTab, onLogout }: SidebarProps) {
+export default function Sidebar({ activeTab, setActiveTab, onLogout, isOpen = false, onClose }: SidebarProps) {
   const navItems = [
     { id: 'overview', label: 'Dashboard Overview', icon: LayoutDashboard },
     { id: 'properties', label: 'Properties Portfolio', icon: Building2 },
+    { id: 'blogs', label: 'Blogs & Guides', icon: BookOpen },
     { id: 'leads', label: 'Leads & Enquiries', icon: Layers },
     { id: 'visits', label: 'Site Visits Calendar', icon: Calendar }
   ];
 
-  return (
-    <aside className="w-64 bg-white border-r border-slate-200 flex flex-col justify-between h-screen sticky top-0 z-40 text-slate-700 shadow-sm">
+  const handleTabClick = (tabId: string) => {
+    setActiveTab(tabId);
+    if (onClose) onClose();
+  };
+
+  const sidebarContent = (
+    <div className="w-64 bg-white border-r border-slate-200 flex flex-col justify-between h-full text-slate-700 shadow-xl md:shadow-none">
       <div>
         {/* Brand Header */}
-        <div className="p-4 border-b border-slate-100 flex items-center justify-center">
+        <div className="p-4 border-b border-slate-100 flex items-center justify-between">
           <Image 
             src="/logo.png" 
             alt="Shri Shyam Associate Admin" 
             width={160}
             height={48}
-            className="h-12 w-auto object-contain" 
+            className="h-10 sm:h-12 w-auto object-contain" 
           />
+          {onClose && (
+            <button
+              onClick={onClose}
+              className="md:hidden p-1.5 rounded-xl bg-slate-100 text-slate-600 hover:text-slate-900 cursor-pointer"
+              aria-label="Close sidebar menu"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          )}
         </div>
 
         {/* System Health Status Indicator */}
@@ -57,8 +76,8 @@ export default function Sidebar({ activeTab, setActiveTab, onLogout }: SidebarPr
             return (
               <button
                 key={item.id}
-                onClick={() => setActiveTab(item.id)}
-                className={`w-full flex items-center justify-start px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all ${
+                onClick={() => handleTabClick(item.id)}
+                className={`w-full flex items-center justify-start px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
                   isActive
                     ? 'btn-teal font-bold shadow-md'
                     : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
@@ -89,12 +108,37 @@ export default function Sidebar({ activeTab, setActiveTab, onLogout }: SidebarPr
           <button
             onClick={onLogout}
             title="Logout"
-            className="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors shrink-0"
+            className="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors shrink-0 cursor-pointer"
           >
             <LogOut className="w-4 h-4" />
           </button>
         </div>
       </div>
-    </aside>
+    </div>
+  );
+
+  return (
+    <>
+      {/* Desktop Sticky Sidebar */}
+      <aside className="hidden md:flex h-screen sticky top-0 z-40">
+        {sidebarContent}
+      </aside>
+
+      {/* Mobile Slide-Over Drawer */}
+      {isOpen && (
+        <div className="fixed inset-0 z-50 md:hidden flex">
+          {/* Backdrop */}
+          <div
+            className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"
+            onClick={onClose}
+          />
+
+          {/* Drawer Panel */}
+          <div className="relative flex-1 flex flex-col max-w-xs w-full bg-white shadow-2xl z-10 animate-slideRight">
+            {sidebarContent}
+          </div>
+        </div>
+      )}
+    </>
   );
 }

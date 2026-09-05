@@ -1,14 +1,25 @@
-import React from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Navbar from '@/components/common/Navbar';
 import Footer from '@/components/common/Footer';
 import FloatingWhatsApp from '@/components/common/FloatingWhatsApp';
 import Breadcrumbs from '@/components/common/Breadcrumbs';
-import { BLOG_POSTS } from '@/data/blogData';
+import { BlogPost, getAllBlogPosts } from '@/data/blogData';
 import { BookOpen, Calendar, Clock, ArrowRight, Tag, ShieldCheck } from 'lucide-react';
 
 export default function BlogIndexPage() {
+  const [blogs, setBlogs] = useState<BlogPost[]>([]);
+
+  useEffect(() => {
+    setBlogs(getAllBlogPosts());
+    const handleStorage = () => setBlogs(getAllBlogPosts());
+    window.addEventListener('storage', handleStorage);
+    return () => window.removeEventListener('storage', handleStorage);
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#f0f4f8] text-slate-800 flex flex-col font-sans">
       <Navbar />
@@ -35,17 +46,17 @@ export default function BlogIndexPage() {
         </div>
 
         {/* Featured Article Card */}
-        {BLOG_POSTS.length > 0 && (
+        {blogs.length > 0 && (
           <div className="mb-12">
             <Link
-              href={`/blog/${BLOG_POSTS[0].slug}`}
+              href={`/blog/${blogs[0].slug}`}
               className="group block bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300"
             >
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
                 <div className="lg:col-span-6 relative h-64 sm:h-80 lg:h-auto min-h-[260px] bg-slate-100">
                   <Image
-                    src={BLOG_POSTS[0].image}
-                    alt={BLOG_POSTS[0].title}
+                    src={blogs[0].image || '/images/luxury_builder_floor_dwarka_1786010981126.png'}
+                    alt={blogs[0].title}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                     priority
@@ -61,23 +72,23 @@ export default function BlogIndexPage() {
                     <div className="flex items-center gap-3 text-xs text-slate-500 font-medium mb-3">
                       <span className="flex items-center gap-1">
                         <Calendar className="w-3.5 h-3.5 text-teal-600" />
-                        {BLOG_POSTS[0].publishedDate}
+                        {blogs[0].publishedDate}
                       </span>
                       <span>•</span>
                       <span className="flex items-center gap-1">
                         <Clock className="w-3.5 h-3.5 text-teal-600" />
-                        {BLOG_POSTS[0].readTime}
+                        {blogs[0].readTime}
                       </span>
                     </div>
                     <h2 className="text-xl sm:text-2xl font-bold text-slate-900 group-hover:text-teal-700 transition-colors mb-3 leading-snug">
-                      {BLOG_POSTS[0].title}
+                      {blogs[0].title}
                     </h2>
                     <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6">
-                      {BLOG_POSTS[0].excerpt}
+                      {blogs[0].excerpt}
                     </p>
                   </div>
                   <div className="flex items-center justify-between pt-4 border-t border-slate-100">
-                    <span className="text-xs font-semibold text-slate-500">By {BLOG_POSTS[0].author}</span>
+                    <span className="text-xs font-semibold text-slate-500">By {blogs[0].author}</span>
                     <span className="inline-flex items-center gap-1 text-xs font-bold text-teal-600 group-hover:translate-x-1 transition-transform">
                       Read Full Guide <ArrowRight className="w-4 h-4" />
                     </span>
@@ -90,7 +101,7 @@ export default function BlogIndexPage() {
 
         {/* Secondary Articles Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {BLOG_POSTS.slice(1).map((post) => (
+          {blogs.slice(1).map((post) => (
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
@@ -98,7 +109,7 @@ export default function BlogIndexPage() {
             >
               <div className="relative h-48 w-full bg-slate-100 overflow-hidden">
                 <Image
-                  src={post.image}
+                  src={post.image || '/images/luxury_builder_floor_dwarka_1786010981126.png'}
                   alt={post.title}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
