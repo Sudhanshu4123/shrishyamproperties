@@ -30,17 +30,32 @@ export default function LocationSectorPage() {
 
   useEffect(() => {
     if (!loc) return;
-    const sectorKeyword = loc.slug === 'dwarka' ? undefined : loc.name;
-    PropertyService.fetchPropertiesApi({ sector: sectorKeyword }).then((results) => {
+    PropertyService.fetchPropertiesApi().then((results) => {
       if (loc.slug === 'dwarka') {
         setProperties(results);
       } else {
-        const matched = results.filter(
-          (p) =>
-            p.sector.toLowerCase().includes(loc.slug.replace('dwarka-', '')) ||
-            p.location.toLowerCase().includes(loc.slug.replace('dwarka-', '')) ||
-            p.title.toLowerCase().includes(loc.name.toLowerCase())
-        );
+        // Extract sector number/identifier e.g. "sector-19" -> "19", "sector-2" -> "2"
+        const slugClean = loc.slug.replace('dwarka-', '').replace('dwarka-expressway-', '').toLowerCase();
+        const sectorNumMatch = slugClean.match(/\d+[a-z]?/i);
+        const sectorNum = sectorNumMatch ? sectorNumMatch[0] : slugClean;
+
+        const matched = results.filter((p) => {
+          const locStr = (p.location || '').toLowerCase();
+          const sectorStr = (p.sector || '').toLowerCase();
+          const titleStr = (p.title || '').toLowerCase();
+
+          return (
+            locStr.includes(`sector -${sectorNum}`) ||
+            locStr.includes(`sector - ${sectorNum}`) ||
+            locStr.includes(`sector-${sectorNum}`) ||
+            locStr.includes(`sector ${sectorNum}`) ||
+            sectorStr.toLowerCase().includes(sectorNum) ||
+            titleStr.includes(`sector ${sectorNum}`) ||
+            titleStr.includes(`sector-${sectorNum}`)
+          );
+        });
+
+        // If matched properties exist, show them; otherwise fallback to top featured
         setProperties(matched.length > 0 ? matched : results.slice(0, 6));
       }
       setLoading(false);
