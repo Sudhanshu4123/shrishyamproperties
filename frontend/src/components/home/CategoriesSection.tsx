@@ -6,11 +6,11 @@ import { Home, Building2, Layers, Building, Store, Trees, ArrowUpRight, Hammer }
 
 export default function CategoriesSection() {
   const categories = [
-    { title: 'Home Builder & Construction', subtitle: 'Turnkey Luxury Floors & Architecture', icon: Hammer, href: '/home-builder', color: '#0d9488', isDirect: true },
-    { title: 'Luxury Builder Floors', subtitle: 'Private Lift & Stilt Parking', icon: Layers, query: 'type=Builder+Floor', color: '#2563a8' },
+    { title: 'Home Builder & Construction', subtitle: 'Turnkey Luxury Floors & Architecture', icon: Hammer, href: '/home-builder', color: '#0d9488' },
+    { title: 'Luxury Builder Floors', subtitle: 'Private Lift & Stilt Parking', icon: Layers, href: '/builder-floors', color: '#2563a8' },
     { title: 'Residential Homes', subtitle: '2, 3, 4 & 5 BHK Builder Floors', icon: Home, query: 'type=3+BHK', color: '#0d9488' },
-    { title: 'Commercial Spaces', subtitle: 'Shops, Showrooms & Offices', icon: Store, query: 'type=Commercial', color: '#2563a8' },
-    { title: 'DDA Apartments', subtitle: 'HIG/MIG Pockets near Metro', icon: Building, query: 'type=DDA+Flat', color: '#0d9488' },
+    { title: 'Commercial Spaces', subtitle: 'Shops, Showrooms & Offices', icon: Store, href: '/commercial-property', color: '#2563a8' },
+    { title: 'DDA Apartments', subtitle: 'HIG/MIG Pockets near Metro', icon: Building, href: '/dda-flats', color: '#0d9488' },
     { title: 'CGHS Society Flats', subtitle: 'Gated Communities & Clubhouse', icon: Building2, query: 'type=Society+Flat', color: '#2563a8' }
   ];
 

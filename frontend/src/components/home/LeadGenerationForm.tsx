@@ -78,11 +78,12 @@ export default function LeadGenerationForm({ propertyTitle, onSuccessClose }: Le
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">
+              <label htmlFor="lead-name" className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">
                 Full Name *
               </label>
               <div className="relative">
                 <input
+                  id="lead-name"
                   type="text"
                   required
                   spellCheck={true}
@@ -97,15 +98,16 @@ export default function LeadGenerationForm({ propertyTitle, onSuccessClose }: Le
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">
+              <label htmlFor="lead-phone" className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">
                 Phone Number *
               </label>
               <div className="relative">
                 <input
+                  id="lead-phone"
                   type="tel"
                   required
                   spellCheck={false}
-                  placeholder="Enter your phone number"
+                  placeholder="Enter your 10-digit mobile number"
                   value={formData.phone}
                   onChange={e => setFormData({ ...formData, phone: e.target.value })}
                   className="form-input"
@@ -116,15 +118,15 @@ export default function LeadGenerationForm({ propertyTitle, onSuccessClose }: Le
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">
-                Email Address *
+              <label htmlFor="lead-email" className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">
+                Email Address
               </label>
               <div className="relative">
                 <input
+                  id="lead-email"
                   type="email"
-                  required
                   spellCheck={true}
-                  placeholder="Enter your email address"
+                  placeholder="Enter your email address (optional)"
                   value={formData.email}
                   onChange={e => setFormData({ ...formData, email: e.target.value })}
                   className="form-input"
@@ -137,10 +139,10 @@ export default function LeadGenerationForm({ propertyTitle, onSuccessClose }: Le
             <button
               type="submit"
               disabled={isSubmitting}
-              className="btn-teal w-full flex items-center justify-center gap-2 text-sm py-3 mt-2"
+              className="btn-teal w-full flex items-center justify-center gap-2 text-sm py-3.5 mt-2 font-bold shadow-md"
             >
               <Send className="w-4 h-4" />
-              <span>{isSubmitting ? 'Submitting...' : 'Submit Enquiry'}</span>
+              <span>{isSubmitting ? 'Submitting...' : 'Request Free Site Visit / Call Back'}</span>
             </button>
           </form>
         </div>

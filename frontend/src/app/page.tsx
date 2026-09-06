@@ -91,6 +91,9 @@ export default function HomePage() {
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
             {/* Left: Heading */}
             <div className="md:max-w-xl">
+              <span className="inline-block text-[11px] font-extrabold uppercase tracking-widest text-teal-950 bg-amber-300 px-3 py-1 rounded-full mb-2.5 shadow-sm">
+                Dwarka’s Premier Real Estate & Home Builder
+              </span>
               <h1
                 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight tracking-tight"
                 style={{ fontFamily: "'Playfair Display', serif" }}
@@ -110,9 +113,11 @@ export default function HomePage() {
               </p>
               <a
                 href="tel:9911956274"
-                className="rounded-full border border-white/80 bg-white text-slate-800 text-xs font-bold px-6 py-2.5 hover:bg-slate-100 shadow-sm whitespace-nowrap transition-all"
+                aria-label="Call Shri Shyam Associate at +91 9911956274"
+                className="rounded-full border border-white/80 bg-white text-slate-800 text-xs font-black px-6 py-2.5 hover:bg-slate-100 shadow-md whitespace-nowrap transition-all flex items-center gap-1.5"
               >
-                Contact Us
+                <Phone className="w-3.5 h-3.5 text-teal-600" />
+                <span>Call 9911956274</span>
               </a>
             </div>
           </div>

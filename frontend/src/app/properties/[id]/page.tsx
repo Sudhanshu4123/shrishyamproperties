@@ -188,13 +188,14 @@ export default function PropertyDetailPage() {
                     <button
                       key={idx}
                       onClick={() => setSelectedImage(img)}
+                      aria-label={`View photo ${idx + 1} of ${property.title}`}
                       className={`relative w-24 h-20 rounded-xl overflow-hidden shrink-0 border-2 transition-all ${
                         selectedImage === img ? 'border-teal-500 scale-105 shadow-md' : 'border-slate-200 opacity-70 hover:opacity-100'
                       }`}
                     >
                       <Image 
                         src={img || '/images/luxury_builder_floor_dwarka_1786010981126.png'} 
-                        alt={`Gallery ${idx}`} 
+                        alt={`${property.title} - Interior / Exterior View ${idx + 1}`} 
                         fill 
                         unoptimized={Boolean(img?.startsWith('data:') || img?.startsWith('/uploads/'))}
                         className="object-cover" 
@@ -341,6 +342,33 @@ export default function PropertyDetailPage() {
           </div>
         </div>
       </main>
+
+      {/* Sticky Mobile Conversion Bar */}
+      <div className="fixed bottom-0 left-0 right-0 z-30 sm:hidden bg-white/95 backdrop-blur-md p-3 border-t border-slate-200 shadow-[0_-4px_20px_rgba(0,0,0,0.1)] flex items-center gap-2">
+        <a
+          href="tel:9911956274"
+          className="flex-1 py-2.5 px-3 rounded-xl bg-slate-900 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm active:scale-95 transition-transform"
+        >
+          <Phone className="w-3.5 h-3.5 text-teal-400" />
+          <span>Call Agent</span>
+        </a>
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="flex-1 py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm active:scale-95 transition-transform"
+        >
+          <MessageCircle className="w-3.5 h-3.5" />
+          <span>WhatsApp</span>
+        </a>
+        <button
+          onClick={() => setIs3DOpen(true)}
+          className="py-2.5 px-3.5 rounded-xl border border-teal-500 text-teal-700 bg-teal-50 font-bold text-xs flex items-center justify-center gap-1 active:scale-95 transition-transform"
+        >
+          <Box className="w-3.5 h-3.5" />
+          <span>3D</span>
+        </button>
+      </div>
 
       <Footer />
       <FloatingWhatsApp />
