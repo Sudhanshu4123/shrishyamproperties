@@ -70,9 +70,11 @@ export default function PropertySearch({ onSearch }: { onSearch?: (filters: any)
       <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row items-stretch sm:items-end gap-4">
         {/* Property Type */}
         <div className="flex-1">
-          <label className="block text-xs font-black text-slate-800 uppercase tracking-wider mb-1.5 px-1">Type</label>
+          <label htmlFor="search-property-type" className="block text-xs font-black text-slate-800 uppercase tracking-wider mb-1.5 px-1">Type</label>
           <div className="relative">
             <select
+              id="search-property-type"
+              aria-label="Property Type"
               value={propertyType}
               onChange={e => setPropertyType(e.target.value)}
               className="w-full bg-slate-50 border border-slate-200/90 rounded-full px-5 py-3 pr-10 text-xs font-semibold text-slate-700 focus:outline-none focus:border-teal-500 focus:bg-white appearance-none transition-all shadow-sm"
@@ -86,9 +88,11 @@ export default function PropertySearch({ onSearch }: { onSearch?: (filters: any)
 
         {/* Location */}
         <div className="flex-1">
-          <label className="block text-xs font-black text-slate-800 uppercase tracking-wider mb-1.5 px-1">Location</label>
+          <label htmlFor="search-property-location" className="block text-xs font-black text-slate-800 uppercase tracking-wider mb-1.5 px-1">Location</label>
           <div className="relative">
             <select
+              id="search-property-location"
+              aria-label="Location or Dwarka Sector"
               value={sector}
               onChange={e => setSector(e.target.value)}
               className="w-full bg-slate-50 border border-slate-200/90 rounded-full px-5 py-3 pr-10 text-xs font-semibold text-slate-700 focus:outline-none focus:border-teal-500 focus:bg-white appearance-none transition-all shadow-sm"

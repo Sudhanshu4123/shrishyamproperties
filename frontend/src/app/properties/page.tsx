@@ -156,8 +156,10 @@ function PropertyListingsingsContent() {
 
         <div className="flex items-center gap-2">
           <ArrowUpDown className="w-4 h-4 text-teal-600 shrink-0" />
-          <span className="text-xs font-bold text-slate-500 uppercase">Sort By:</span>
+          <label htmlFor="property-sort-by" className="text-xs font-bold text-slate-500 uppercase cursor-pointer">Sort By:</label>
           <select
+            id="property-sort-by"
+            aria-label="Sort Properties By"
             value={sortBy}
             onChange={e => setSortBy(e.target.value as any)}
             className="bg-slate-50 text-slate-800 text-xs font-semibold px-3 py-1.5 rounded-xl border border-slate-200 focus:border-teal-500 focus:outline-none cursor-pointer"

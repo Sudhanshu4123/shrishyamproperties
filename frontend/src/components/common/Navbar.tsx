@@ -82,7 +82,7 @@ export default function Navbar() {
 
         {/* Mobile Hamburger */}
         <div className="lg:hidden flex items-center gap-2">
-          <a href="tel:9911956274" className="p-2 rounded-xl bg-teal-600 text-white">
+          <a href="tel:9911956274" aria-label="Call Shri Shyam Associate at 9911956274" className="p-2 rounded-xl bg-teal-600 text-white">
             <Phone className="w-4 h-4" />
           </a>
           <button

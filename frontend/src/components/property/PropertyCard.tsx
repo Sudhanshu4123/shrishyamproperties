@@ -125,6 +125,8 @@ export default function PropertyCard({ property, onOpen3DViewer, onScheduleVisit
             href={whatsappUrl}
             target="_blank"
             rel="noreferrer"
+            aria-label={`Chat on WhatsApp about ${property.title}`}
+            title="Chat on WhatsApp"
             className="p-2 rounded-xl bg-emerald-50 hover:bg-emerald-500 text-emerald-600 hover:text-white border border-emerald-200 transition-colors"
           >
             <MessageCircle className="w-4 h-4" />

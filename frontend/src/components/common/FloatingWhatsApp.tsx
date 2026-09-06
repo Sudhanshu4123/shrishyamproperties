@@ -11,6 +11,7 @@ export default function FloatingWhatsApp() {
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
+      aria-label="Chat with Shri Shyam Associate on WhatsApp at +91 9911956274"
       className="fixed bottom-6 right-6 z-40 flex items-center gap-3 bg-emerald-500 hover:bg-emerald-400 text-white px-4 py-3 rounded-full shadow-2xl hover:scale-105 transition-all duration-300 border-2 border-emerald-300/40"
       style={{ boxShadow: '0 8px 32px rgba(16,185,129,0.4)' }}
     >
