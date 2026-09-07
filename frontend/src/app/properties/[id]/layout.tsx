@@ -51,7 +51,8 @@ export async function generateMetadata({
     : `${BASE_URL}/logo.png`;
 
   const metaTitle = `${property.title} in ${property.sector} — For ${property.purpose} | Shri Shyam Associate`;
-  const metaDesc = `Buy/Rent: ${property.title} in ${property.location}, ${property.sector}. Features: ${property.bhk} BHK, ${property.bathrooms} Baths, ${property.areaSqFt} Sq.Ft at ${property.priceDisplay}. 100% verified freehold with 3D virtual tour. Call: +91 9911956274.`;
+  const rawDesc = `${property.purpose === 'Rent' ? 'Rent' : 'Buy'} ${property.bhk} BHK in ${property.sector}, Dwarka (${property.areaSqFt} sq ft, ${property.priceDisplay}). 100% verified freehold with 3D tour. Call Shri Shyam Associate: +91 9911956274.`;
+  const metaDesc = rawDesc.length > 158 ? `${rawDesc.slice(0, 155)}...` : rawDesc;
 
   return {
     title: metaTitle,

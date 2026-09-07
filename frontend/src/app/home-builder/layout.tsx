@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Home Builder & Turnkey Construction in Dwarka Sector 7 Delhi | Shri Shyam Associate",
   description:
-    "Top-rated Home Builder in Dwarka, Delhi. Shri Shyam Associate provides turnkey house construction, luxury builder floors development, structural additions, architectural design, and approvals at Shop No. 247, 2nd Floor, Vardhaman City Mall, Sector 7, Dwarka, Delhi 110077. Call: +91 9911956274.",
+    "Top home builder in Dwarka Sector 7, Delhi. Shri Shyam Associate offers turnkey house construction, luxury builder floor execution, design & approvals.",
   keywords: [
     "Home builder in Dwarka",
     "Home builder Dwarka Sector 7",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Home Builder & Construction Services in Dwarka Sector 7 | Shri Shyam Associate",
     description:
-      "Turnkey home construction, luxury builder floor execution, and structural additions in Dwarka, New Delhi. Office at Shop No. 247, 2nd Floor, Vardhaman City Mall, Sector 7. Call +91 9911956274.",
+      "Turnkey home construction, architectural design, and luxury builder floors in Dwarka Sector 7 Delhi by Shri Shyam Associate. Call +91 9911956274.",
     url: "https://shrishyamassociate.com/home-builder",
     siteName: "Shri Shyam Associate",
     locale: "en_IN",

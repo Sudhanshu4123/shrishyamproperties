@@ -5,7 +5,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://shrishyamassociate
 export const metadata: Metadata = {
   title: 'DDA Flats in Dwarka Delhi | LIG, MIG, HIG & SFS Flats | Shri Shyam Associate',
   description:
-    'Verified DDA flats for sale in Dwarka, New Delhi. Buy 1, 2, 3 BHK DDA LIG, MIG, HIG, and SFS apartments with clear freehold conveyance deeds, open parks & excellent metro connectivity.',
+    'Verified DDA flats for sale in Dwarka Delhi. Buy 1, 2, 3 BHK MIG, HIG & SFS apartments with clear freehold conveyance deeds and metro connectivity.',
   keywords: [
     'DDA flats in Dwarka',
     'DDA flats for sale Dwarka',

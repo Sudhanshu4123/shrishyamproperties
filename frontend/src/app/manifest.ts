@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'Shri Shyam Associate — Home Builder & Real Estate Dwarka Sector 7 Delhi',
     short_name: 'Shri Shyam',
-    description: 'Premier Home Builder & real estate consultancy located at Shop No. 247, 2nd Floor, Vardhaman City Mall, Sector 7, Dwarka, Delhi 110077. Turnkey house construction, verified luxury builder floors & DDA flats.',
+    description: 'Home Builder & real estate consultancy in Sector 7, Dwarka Delhi. Turnkey house construction, verified builder floors & DDA flats.',
     start_url: '/',
     display: 'standalone',
     background_color: '#f0f4f8',

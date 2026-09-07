@@ -128,15 +128,15 @@ function PropertyListingsingsContent() {
       {/* Header */}
       <div className="mb-8">
         <span className="section-label block mb-1">
-          Verified Real Estate API
+          Verified Dwarka Real Estate
         </span>
         <h1 className="text-3xl sm:text-4xl font-black text-slate-800 tracking-tight" style={{ fontFamily: "'Playfair Display', serif" }}>
           {getPageHeading()}
         </h1>
         <p className="text-slate-500 text-sm mt-1">
           {loading
-            ? 'Fetching latest verified properties via API...'
-            : `Showing ${filteredProperties.length} properties matching your criteria.`}
+            ? 'Loading latest verified properties...'
+            : `Showing ${filteredProperties.length} verified properties matching your criteria.`}
         </p>
       </div>
 

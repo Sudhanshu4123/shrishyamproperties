@@ -5,7 +5,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://shrishyamassociate
 export const metadata: Metadata = {
   title: 'Commercial Property & Retail Shops for Sale in Dwarka Delhi | Shri Shyam Associate',
   description:
-    'Buy and lease verified commercial property, retail shops, SCO plots, and office spaces in Dwarka, New Delhi. Prime commercial hubs including Sector 7 Ramphal Chowk, Sector 6, Sector 12, and Vardhaman Malls.',
+    'Buy & lease verified commercial properties, retail shops, SCO plots & office spaces in Dwarka Sector 7 Ramphal Chowk, Sector 6, 12 & Vardhaman Malls.',
   keywords: [
     'commercial property in Dwarka',
     'shops for sale in Dwarka',

@@ -5,7 +5,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://shrishyamassociate
 export const metadata: Metadata = {
   title: 'Properties for Sale in Dwarka Delhi | Verified Flats & Builder Floors | Shri Shyam Associate',
   description:
-    'Browse verified properties for sale in Dwarka, New Delhi. 2, 3, 4, 5 BHK luxury builder floors, DDA flats & society apartments with clear freehold titles, bank loan approvals & 3D virtual tours.',
+    'Properties for sale in Dwarka Delhi: Verified 2, 3, 4, 5 BHK builder floors, DDA flats & society apartments with freehold titles and bank approvals.',
   keywords: [
     'properties for sale in Dwarka',
     'buy flat in Dwarka',

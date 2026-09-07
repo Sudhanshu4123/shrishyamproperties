@@ -20,7 +20,7 @@ export async function generateMetadata({
   if (!loc) {
     return {
       title: 'Properties in Dwarka | Shri Shyam Associate',
-      description: 'Verified real estate in Dwarka, New Delhi.',
+      description: 'Verified real estate, luxury builder floors, DDA flats and society apartments in Dwarka, New Delhi by Shri Shyam Associate.',
     };
   }
 

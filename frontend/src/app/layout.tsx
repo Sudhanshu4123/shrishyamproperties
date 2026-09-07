@@ -122,7 +122,7 @@ export const metadata: Metadata = {
     template: "%s | Shri Shyam Associate"
   },
   description:
-    "Official website of Shri Shyam Associate — Professional Home Builder and premier real estate consultancy located at Shop No. 247, 2nd Floor, Vardhaman City Mall, Sector 7, Dwarka, Delhi 110077. Verified luxury builder floors, DDA flats, turnkey construction & property advisory. Open 24 Hours. Call: +91 9911956274.",
+    "Shri Shyam Associate: Trusted home builder & real estate consultancy in Dwarka Sector 7 Delhi. Verified luxury builder floors, DDA flats & turnkey homes.",
   keywords: [
     "Home builder in Dwarka",
     "Home builder Dwarka Sector 7",
@@ -165,7 +165,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Shri Shyam Associate — Home Builder & Real Estate in Dwarka Sector 7 Delhi",
     description:
-      "Shri Shyam Associate: Trusted Home Builder and real estate agency at Shop No. 247, 2nd Floor, Vardhaman City Mall, Sector 7, Dwarka, Delhi 110077. Explore verified luxury builder floors with 3D tours. Open 24 Hours. Call: +91 9911956274.",
+      "Discover verified luxury builder floors, DDA flats, and turnkey home construction in Dwarka Delhi by Shri Shyam Associate. Call +91 9911956274.",
     url: "https://shrishyamassociate.com",
     siteName: "Shri Shyam Associate",
     locale: "en_IN",

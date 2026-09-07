@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "HTML Sitemap — All Properties, Sectors & Directory | Shri Shyam Associate",
   description:
-    "Complete directory and sitemap of Shri Shyam Associate. Discover all verified luxury builder floors, DDA apartments, society flats, and commercial properties across Dwarka sectors and Delhi NCR.",
+    "HTML sitemap of Shri Shyam Associate. Browse verified luxury builder floors, DDA flats, society apartments and commercial spaces in Dwarka & Delhi NCR.",
   alternates: {
     canonical: "https://shrishyamassociate.com/sitemap",
   },

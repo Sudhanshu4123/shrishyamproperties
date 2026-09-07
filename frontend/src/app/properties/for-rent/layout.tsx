@@ -5,7 +5,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://shrishyamassociate
 export const metadata: Metadata = {
   title: 'Properties for Rent in Dwarka Delhi | Flats & Builder Floors | Shri Shyam Associate',
   description:
-    'Verified properties for rent in Dwarka, New Delhi. Rent furnished & semi-furnished 2, 3, 4 BHK builder floors and society apartments near metro stations with zero brokerage hassle.',
+    'Verified properties for rent in Dwarka Delhi. Furnished & semi-furnished 2, 3, 4 BHK builder floors and society apartments near prime metro stations.',
   keywords: [
     'properties for rent in Dwarka',
     'flats for rent in Dwarka',

@@ -5,7 +5,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://shrishyamassociate
 export const metadata: Metadata = {
   title: 'Luxury Builder Floors in Dwarka Delhi | 2, 3, 4, 5 BHK Floors | Shri Shyam Associate',
   description:
-    'Explore luxury builder floors in Dwarka, New Delhi. Featuring dedicated stilt parking, private OTIS lift, Italian marble, modular kitchen & 100% freehold titles across Sector 6, 7, 8, 19, 21, and 23.',
+    'Luxury builder floors in Dwarka Delhi with private lift, stilt parking & freehold titles across Sector 6, 7, 8, 19, 21 & 23 by Shri Shyam Associate.',
   keywords: [
     'builder floor in Dwarka',
     'luxury builder floors Dwarka',

@@ -17,7 +17,7 @@ export const LOCATION_DETAILS: Record<string, LocationDetail> = {
     slug: 'dwarka',
     name: 'Dwarka, New Delhi',
     metaTitle: 'Property in Dwarka New Delhi | Real Estate Agent & Builder Floors | Shri Shyam Associate',
-    metaDescription: 'Explore verified residential property, luxury builder floors, DDA flats and commercial spaces in Dwarka, New Delhi. Comprehensive sector guide, price trends & 100% legal verification.',
+    metaDescription: 'Verified residential property, luxury builder floors, DDA flats and commercial spaces in Dwarka, New Delhi. Complete sector guide & price trends.',
     heading: 'Real Estate in Dwarka, New Delhi — Complete City Hub',
     intro: 'Dwarka, located in South West Delhi, is one of Asia’s largest master-planned residential sub-cities. Boasting wide 60-meter and 45-meter sector roads, dedicated green belts, DDA sports complexes in every quadrant, and exceptional tri-line metro connectivity (Blue Line, Magenta Line, and Airport Express Line), Dwarka is the premier destination for homebuyers and commercial investors alike.',
     connectivity: [
@@ -537,7 +537,7 @@ export const LOCATION_DETAILS: Record<string, LocationDetail> = {
     slug: 'dwarka-sector-21',
     name: 'Dwarka Sector 21',
     metaTitle: 'Property in Dwarka Sector 21 | Flats near Metro Interchange | Shri Shyam Associate',
-    metaDescription: 'Find verified properties in Dwarka Sector 21 near Metro Interchange & Pacific D21 Mall. Luxury apartments, builder floors & penthouses with express airport link.',
+    metaDescription: 'Find verified properties in Dwarka Sector 21 near Metro Interchange & Pacific D21 Mall. Luxury apartments, builder floors & airport express connectivity.',
     heading: 'Property in Dwarka Sector 21 — Metro Interchange & Express Hub',
     intro: 'Dwarka Sector 21 is Dwarka’s primary transportation and lifestyle gateway. Home to the massive Delhi Metro Blue Line and Airport Express Line interchange, Pacific D21 Mall, and adjacent to the world-class Delhi Golf Course in Sector 24, Sector 21 offers unmatched connectivity for frequent flyers, embassy staff, and corporate executives.',
     connectivity: [
