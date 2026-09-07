@@ -6,14 +6,17 @@ import Navbar from '@/components/common/Navbar';
 import Footer from '@/components/common/Footer';
 import FloatingWhatsApp from '@/components/common/FloatingWhatsApp';
 import Breadcrumbs from '@/components/common/Breadcrumbs';
-import { getBlogPostBySlug, BLOG_POSTS } from '@/data/blogData';
+import { getBlogPostBySlug, getAllBlogPosts, BLOG_POSTS } from '@/data/blogData';
 import { 
   Calendar, Clock, User, ArrowLeft, ArrowRight, 
   HelpCircle, CheckCircle, Phone, Share2, Tag, Building2 
 } from 'lucide-react';
 
+export const dynamicParams = true;
+
 export async function generateStaticParams() {
-  return BLOG_POSTS.map((post) => ({
+  const posts = getAllBlogPosts();
+  return posts.map((post) => ({
     slug: post.slug,
   }));
 }

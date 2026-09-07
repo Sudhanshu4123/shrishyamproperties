@@ -1,13 +1,9 @@
 import type { Metadata } from 'next';
-import { getBlogPostBySlug, BLOG_POSTS } from '@/data/blogData';
+import { getBlogPostBySlug } from '@/data/blogData';
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://shrishyamassociate.com';
 
-export async function generateStaticParams() {
-  return BLOG_POSTS.map((post) => ({
-    slug: post.slug,
-  }));
-}
+export const dynamicParams = true;
 
 export async function generateMetadata({
   params,

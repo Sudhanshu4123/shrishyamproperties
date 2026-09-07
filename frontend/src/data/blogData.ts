@@ -361,6 +361,15 @@ export async function deleteBlogPostApi(slug: string): Promise<BlogPost[]> {
   return updated;
 }
 
+function mergeWithDefaults(storedList: BlogPost[]): BlogPost[] {
+  if (!Array.isArray(storedList) || storedList.length === 0) {
+    return BLOG_POSTS;
+  }
+  const existingSlugs = new Set(storedList.map(b => b.slug));
+  const missingDefaults = BLOG_POSTS.filter(b => !existingSlugs.has(b.slug));
+  return [...storedList, ...missingDefaults];
+}
+
 export function getAllBlogPosts(): BlogPost[] {
   if (typeof window === 'undefined') {
     try {
@@ -371,8 +380,8 @@ export function getAllBlogPosts(): BlogPost[] {
       if (fs.existsSync(blogsPath)) {
         const raw = fs.readFileSync(blogsPath, 'utf-8');
         const parsed = JSON.parse(raw);
-        if (Array.isArray(parsed)) {
-          return parsed;
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return mergeWithDefaults(parsed);
         }
       }
     } catch {
@@ -385,13 +394,12 @@ export function getAllBlogPosts(): BlogPost[] {
     const stored = localStorage.getItem(BLOG_STORAGE_KEY);
     if (stored !== null) {
       const parsed = JSON.parse(stored);
-      if (Array.isArray(parsed)) {
-        return parsed;
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        return mergeWithDefaults(parsed);
       }
-    } else {
-      // First time initialization in browser
-      localStorage.setItem(BLOG_STORAGE_KEY, JSON.stringify(BLOG_POSTS));
     }
+    // First time initialization in browser
+    localStorage.setItem(BLOG_STORAGE_KEY, JSON.stringify(BLOG_POSTS));
   } catch (e) {
     console.warn('Error reading blog posts from storage:', e);
   }
@@ -407,6 +415,11 @@ export function saveBlogPosts(posts: BlogPost[]): void {
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   const posts = getAllBlogPosts();
-  return posts.find(p => p.slug === slug);
+  let found = posts.find(p => p.slug === slug);
+  if (!found) {
+    found = BLOG_POSTS.find(p => p.slug === slug);
+  }
+  return found;
 }
+
 
