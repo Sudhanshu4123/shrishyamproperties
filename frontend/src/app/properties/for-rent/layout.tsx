@@ -3,9 +3,9 @@ import type { Metadata } from 'next';
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://shrishyamassociate.com';
 
 export const metadata: Metadata = {
-  title: 'Properties for Rent in Dwarka Delhi | Flats & Builder Floors | Shri Shyam Associate',
+  title: 'Properties for Rent in Dwarka | Flats & Builder Floors',
   description:
-    'Verified properties for rent in Dwarka Delhi. Furnished & semi-furnished 2, 3, 4 BHK builder floors and society apartments near prime metro stations.',
+    'Verified properties for rent in Dwarka Delhi: 2, 3 & 4 BHK builder floors and society apartments near prime metro stations. Call +91 9911956274.',
   keywords: [
     'properties for rent in Dwarka',
     'flats for rent in Dwarka',
@@ -19,19 +19,19 @@ export const metadata: Metadata = {
     canonical: `${BASE_URL}/properties/for-rent`,
   },
   openGraph: {
-    title: 'Properties for Rent in Dwarka Delhi | Shri Shyam Associate',
+    title: 'Properties for Rent in Dwarka | Shri Shyam Associate',
     description: 'Verified builder floors and apartments for rent across prime Dwarka sectors.',
     url: `${BASE_URL}/properties/for-rent`,
     siteName: 'Shri Shyam Associate',
     locale: 'en_IN',
     type: 'website',
-    images: [{ url: `${BASE_URL}/logo.png`, width: 1200, height: 630, alt: 'Properties for Rent in Dwarka' }],
+    images: [{ url: `${BASE_URL}/images/hero_luxury_villa_3d.png`, width: 1200, height: 630, alt: 'Properties for Rent in Dwarka' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Properties for Rent in Dwarka | Shri Shyam Associate',
     description: 'Verified residential rentals in Dwarka Sector 6, 7, 21, 23 & more.',
-    images: [`${BASE_URL}/logo.png`],
+    images: [`${BASE_URL}/images/hero_luxury_villa_3d.png`],
   },
 };
 

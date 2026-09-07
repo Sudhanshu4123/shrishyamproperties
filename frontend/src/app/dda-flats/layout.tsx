@@ -3,9 +3,9 @@ import type { Metadata } from 'next';
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://shrishyamassociate.com';
 
 export const metadata: Metadata = {
-  title: 'DDA Flats in Dwarka Delhi | LIG, MIG, HIG & SFS Flats | Shri Shyam Associate',
+  title: 'DDA Flats in Dwarka Delhi | MIG, HIG & SFS Flats',
   description:
-    'Verified DDA flats for sale in Dwarka Delhi. Buy 1, 2, 3 BHK MIG, HIG & SFS apartments with clear freehold conveyance deeds and metro connectivity.',
+    'Verified DDA flats for sale in Dwarka Delhi. Buy 1, 2 & 3 BHK MIG, HIG & SFS apartments with clear freehold titles near metro. Call +91 9911956274.',
   keywords: [
     'DDA flats in Dwarka',
     'DDA flats for sale Dwarka',
@@ -25,13 +25,13 @@ export const metadata: Metadata = {
     siteName: 'Shri Shyam Associate',
     locale: 'en_IN',
     type: 'website',
-    images: [{ url: `${BASE_URL}/logo.png`, width: 1200, height: 630, alt: 'DDA Flats in Dwarka' }],
+    images: [{ url: `${BASE_URL}/images/hero_luxury_villa_3d.png`, width: 1200, height: 630, alt: 'DDA Flats in Dwarka' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'DDA Flats in Dwarka | Shri Shyam Associate',
     description: 'Explore verified DDA MIG & HIG flats across Dwarka sectors.',
-    images: [`${BASE_URL}/logo.png`],
+    images: [`${BASE_URL}/images/hero_luxury_villa_3d.png`],
   },
 };
 

@@ -3,9 +3,9 @@ import type { Metadata } from 'next';
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://shrishyamassociate.com';
 
 export const metadata: Metadata = {
-  title: 'Commercial Property & Retail Shops for Sale in Dwarka Delhi | Shri Shyam Associate',
+  title: 'Commercial Property & Shops for Sale in Dwarka',
   description:
-    'Buy & lease verified commercial properties, retail shops, SCO plots & office spaces in Dwarka Sector 7 Ramphal Chowk, Sector 6, 12 & Vardhaman Malls.',
+    'Buy verified commercial shops, retail showrooms & office spaces in Dwarka Sector 7, Ramphal Chowk & Vardhaman Malls Delhi. Call +91 9911956274.',
   keywords: [
     'commercial property in Dwarka',
     'shops for sale in Dwarka',
@@ -20,19 +20,19 @@ export const metadata: Metadata = {
     canonical: `${BASE_URL}/commercial-property`,
   },
   openGraph: {
-    title: 'Commercial Property in Dwarka Delhi | Shri Shyam Associate',
+    title: 'Commercial Property in Dwarka | Shri Shyam Associate',
     description: 'Verified commercial shops, office spaces and retail showrooms in Dwarka.',
     url: `${BASE_URL}/commercial-property`,
     siteName: 'Shri Shyam Associate',
     locale: 'en_IN',
     type: 'website',
-    images: [{ url: `${BASE_URL}/logo.png`, width: 1200, height: 630, alt: 'Commercial Property in Dwarka' }],
+    images: [{ url: `${BASE_URL}/images/hero_luxury_villa_3d.png`, width: 1200, height: 630, alt: 'Commercial Property in Dwarka' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Commercial Property in Dwarka | Shri Shyam Associate',
     description: 'Retail shops & office spaces with high footfall across Dwarka, Delhi.',
-    images: [`${BASE_URL}/logo.png`],
+    images: [`${BASE_URL}/images/hero_luxury_villa_3d.png`],
   },
 };
 

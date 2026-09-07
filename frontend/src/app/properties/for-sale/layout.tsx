@@ -3,9 +3,9 @@ import type { Metadata } from 'next';
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://shrishyamassociate.com';
 
 export const metadata: Metadata = {
-  title: 'Properties for Sale in Dwarka Delhi | Verified Flats & Builder Floors | Shri Shyam Associate',
+  title: 'Properties for Sale in Dwarka Delhi | Verified Flats',
   description:
-    'Properties for sale in Dwarka Delhi: Verified 2, 3, 4, 5 BHK builder floors, DDA flats & society apartments with freehold titles and bank approvals.',
+    'Properties for sale in Dwarka Delhi: Verified 2, 3, 4 & 5 BHK luxury builder floors, DDA flats & society apartments with freehold titles. Call: 9911956274.',
   keywords: [
     'properties for sale in Dwarka',
     'buy flat in Dwarka',
@@ -20,19 +20,19 @@ export const metadata: Metadata = {
     canonical: `${BASE_URL}/properties/for-sale`,
   },
   openGraph: {
-    title: 'Properties for Sale in Dwarka Delhi | Shri Shyam Associate',
+    title: 'Properties for Sale in Dwarka | Shri Shyam Associate',
     description: 'Verified residential & luxury builder floors for sale across prime sectors in Dwarka.',
     url: `${BASE_URL}/properties/for-sale`,
     siteName: 'Shri Shyam Associate',
     locale: 'en_IN',
     type: 'website',
-    images: [{ url: `${BASE_URL}/logo.png`, width: 1200, height: 630, alt: 'Properties for Sale in Dwarka' }],
+    images: [{ url: `${BASE_URL}/images/hero_luxury_villa_3d.png`, width: 1200, height: 630, alt: 'Properties for Sale in Dwarka' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Properties for Sale in Dwarka | Shri Shyam Associate',
     description: 'Explore verified luxury builder floors and flats for sale in Dwarka with 3D tours.',
-    images: [`${BASE_URL}/logo.png`],
+    images: [`${BASE_URL}/images/hero_luxury_villa_3d.png`],
   },
 };
 

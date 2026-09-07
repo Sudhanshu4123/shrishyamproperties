@@ -13,11 +13,12 @@ import LeadGenerationForm from '@/components/home/LeadGenerationForm';
 import PropertyCard from '@/components/property/PropertyCard';
 import { PropertyService } from '@/services/propertyService';
 import { Property } from '@/types/property';
+import { getPropertySeo } from '@/utils/propertySeo';
 import { 
   MapPin, BedDouble, Bath, Maximize, Car, Compass, Layers, Calendar, 
   CheckCircle2, Box, Phone, MessageCircle, ArrowLeft, ShieldCheck, 
   Share2, ChevronRight, Calculator, Building, Home, Clock, Award, 
-  Sparkles, Check, FileCheck, Eye, ArrowUpRight
+  Sparkles, Check, FileCheck, Eye, ArrowUpRight, HelpCircle
 } from 'lucide-react';
 
 const DEFAULT_IMAGE = '/images/luxury_builder_floor_dwarka_1786010981126.png';
@@ -31,6 +32,9 @@ export default function PropertyDetailPage() {
   const [selectedImage, setSelectedImage] = useState<string>('');
   const [is3DOpen, setIs3DOpen] = useState(false);
   const [copied, setCopied] = useState(false);
+
+  // SEO Calculation
+  const seo = useMemo(() => property ? getPropertySeo(property) : null, [property]);
 
   // EMI Calculator State
   const [loanTenure, setLoanTenure] = useState<number>(20);
@@ -227,7 +231,7 @@ export default function PropertyDetailPage() {
             items={[
               { label: 'Properties', href: '/properties' },
               { label: property.sector, href: `/locations/${sectorSlug}` },
-              { label: property.title },
+              { label: seo ? seo.cleanTitle : property.title },
             ]}
           />
 
@@ -272,12 +276,12 @@ export default function PropertyDetailPage() {
                 )}
               </div>
 
-              {/* Title */}
+              {/* Title with H1 Tag */}
               <h1
                 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight"
                 style={{ fontFamily: "'Playfair Display', serif" }}
               >
-                {property.title}
+                {seo ? seo.cleanTitle : property.title}
               </h1>
 
               {/* Location */}
@@ -548,6 +552,61 @@ export default function PropertyDetailPage() {
                 *Pre-approved home loans available from SBI, HDFC, ICICI, and Axis Bank with 100% legal document support.
               </p>
             </div>
+
+            {/* Property FAQs & Location Verification (High-ranking SEO Block) */}
+            {seo && seo.faqs.length > 0 && (
+              <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                <div className="flex items-center gap-2">
+                  <HelpCircle className="w-5 h-5 text-teal-600 shrink-0" />
+                  <h2 className="text-lg sm:text-xl font-bold text-slate-900">
+                    Frequently Asked Questions about this {property.bhk ? `${property.bhk} BHK` : 'Property'}
+                  </h2>
+                </div>
+
+                <div className="space-y-4">
+                  {seo.faqs.map((faq, idx) => (
+                    <div key={idx} className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
+                      <h3 className="text-xs sm:text-sm font-bold text-slate-900 flex items-start gap-2">
+                        <span className="text-teal-600 font-extrabold">Q:</span>
+                        <span>{faq.question}</span>
+                      </h3>
+                      <p className="text-xs text-slate-600 leading-relaxed pl-5">
+                        {faq.answer}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Internal SEO Linking Pills */}
+                <div className="pt-4 border-t border-slate-100 flex flex-wrap items-center gap-2">
+                  <span className="text-xs font-semibold text-slate-400">Explore More:</span>
+                  <Link
+                    href={`/locations/${sectorSlug}`}
+                    className="text-xs font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-full border border-teal-200 hover:bg-teal-100 transition-colors"
+                  >
+                    All Properties in {property.sector}
+                  </Link>
+                  <Link
+                    href="/builder-floors"
+                    className="text-xs font-bold text-slate-700 bg-slate-100 px-3 py-1 rounded-full border border-slate-200 hover:bg-slate-200 transition-colors"
+                  >
+                    Luxury Builder Floors
+                  </Link>
+                  <Link
+                    href="/dda-flats"
+                    className="text-xs font-bold text-slate-700 bg-slate-100 px-3 py-1 rounded-full border border-slate-200 hover:bg-slate-200 transition-colors"
+                  >
+                    DDA Flats
+                  </Link>
+                  <Link
+                    href="/blog/things-to-check-before-buying-property-in-dwarka"
+                    className="text-xs font-bold text-slate-700 bg-slate-100 px-3 py-1 rounded-full border border-slate-200 hover:bg-slate-200 transition-colors"
+                  >
+                    Dwarka Buying Checklist
+                  </Link>
+                </div>
+              </div>
+            )}
 
           </div>
 

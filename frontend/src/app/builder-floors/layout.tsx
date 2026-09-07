@@ -3,9 +3,9 @@ import type { Metadata } from 'next';
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://shrishyamassociate.com';
 
 export const metadata: Metadata = {
-  title: 'Luxury Builder Floors in Dwarka Delhi | 2, 3, 4, 5 BHK Floors | Shri Shyam Associate',
+  title: 'Luxury Builder Floors in Dwarka | 2, 3 & 4 BHK Flats',
   description:
-    'Luxury builder floors in Dwarka Delhi with private lift, stilt parking & freehold titles across Sector 6, 7, 8, 19, 21 & 23 by Shri Shyam Associate.',
+    'Verified luxury builder floors in Dwarka Delhi with private lift, stilt parking & freehold titles across Sector 6, 7, 8, 19 & 23. Call +91 9911956274.',
   keywords: [
     'builder floor in Dwarka',
     'luxury builder floors Dwarka',
@@ -19,19 +19,19 @@ export const metadata: Metadata = {
     canonical: `${BASE_URL}/builder-floors`,
   },
   openGraph: {
-    title: 'Luxury Builder Floors in Dwarka Delhi | Shri Shyam Associate',
+    title: 'Luxury Builder Floors in Dwarka | Shri Shyam Associate',
     description: 'Verified luxury builder floors with private lifts, stilt parking & 3D virtual tours in Dwarka.',
     url: `${BASE_URL}/builder-floors`,
     siteName: 'Shri Shyam Associate',
     locale: 'en_IN',
     type: 'website',
-    images: [{ url: `${BASE_URL}/logo.png`, width: 1200, height: 630, alt: 'Luxury Builder Floors in Dwarka' }],
+    images: [{ url: `${BASE_URL}/images/hero_luxury_villa_3d.png`, width: 1200, height: 630, alt: 'Luxury Builder Floors in Dwarka' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Builder Floors in Dwarka | Shri Shyam Associate',
     description: 'Explore 2, 3, 4, and 5 BHK luxury builder floors with verified freehold registry.',
-    images: [`${BASE_URL}/logo.png`],
+    images: [`${BASE_URL}/images/hero_luxury_villa_3d.png`],
   },
 };
 

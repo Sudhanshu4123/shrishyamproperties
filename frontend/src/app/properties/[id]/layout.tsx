@@ -1,9 +1,12 @@
 import type { Metadata } from 'next';
 import { INITIAL_PROPERTIES } from '@/data/mockData';
 import { Property } from '@/types/property';
+import { getPropertySeo, extractSectorName } from '@/utils/propertySeo';
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://shrishyamassociate.com';
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080/api';
+
+export const dynamicParams = true;
 
 async function getPropertyData(idOrSlug: string): Promise<Property | null> {
   try {
@@ -35,44 +38,33 @@ export async function generateMetadata({
 
   if (!property) {
     return {
-      title: 'Property Details | Shri Shyam Associate',
-      description: 'Verified real estate properties, luxury builder floors and flats in Dwarka, New Delhi.',
+      title: 'Verified Dwarka Property | Shri Shyam Associate',
+      description: 'Explore verified builder floors, luxury apartments, and flats in Dwarka, Delhi. Call +91 9911956274.',
       alternates: {
         canonical: `${BASE_URL}/properties/${resolvedParams.id}`,
       },
     };
   }
 
+  const seo = getPropertySeo(property);
   const canonicalUrl = `${BASE_URL}/properties/${property.slug || property.id}`;
   const heroImg = property.heroImage && property.heroImage.startsWith('http')
     ? property.heroImage
     : property.heroImage
     ? `${BASE_URL}${property.heroImage.startsWith('/') ? '' : '/'}${property.heroImage}`
-    : `${BASE_URL}/logo.png`;
-
-  const metaTitle = `${property.title} in ${property.sector} — For ${property.purpose} | Shri Shyam Associate`;
-  const rawDesc = `${property.purpose === 'Rent' ? 'Rent' : 'Buy'} ${property.bhk} BHK in ${property.sector}, Dwarka (${property.areaSqFt} sq ft, ${property.priceDisplay}). 100% verified freehold with 3D tour. Call Shri Shyam Associate: +91 9911956274.`;
-  const metaDesc = rawDesc.length > 158 ? `${rawDesc.slice(0, 155)}...` : rawDesc;
+    : `${BASE_URL}/images/hero_luxury_villa_3d.png`;
 
   return {
-    title: metaTitle,
-    description: metaDesc,
-    keywords: [
-      property.title,
-      `${property.bhk} BHK in ${property.sector}`,
-      `${property.type} in ${property.sector}`,
-      `Properties in ${property.sector}`,
-      'Shri Shyam Associate',
-      'Shri Shyam Properties Dwarka',
-      'Dwarka Real Estate',
-      'Verified Builder Floor Dwarka',
-    ],
+    title: seo.metaTitle,
+    description: seo.metaDescription,
+    keywords: seo.keywords,
+    authors: [{ name: 'Shri Shyam Associate', url: BASE_URL }],
     alternates: {
       canonical: canonicalUrl,
     },
     openGraph: {
-      title: metaTitle,
-      description: metaDesc,
+      title: seo.metaTitle,
+      description: seo.metaDescription,
       url: canonicalUrl,
       siteName: 'Shri Shyam Associate',
       locale: 'en_IN',
@@ -82,14 +74,14 @@ export async function generateMetadata({
           url: heroImg,
           width: 1200,
           height: 630,
-          alt: property.title,
+          alt: seo.cleanTitle,
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: metaTitle,
-      description: metaDesc,
+      title: seo.metaTitle,
+      description: seo.metaDescription,
       images: [heroImg],
     },
     robots: {
@@ -115,22 +107,23 @@ export default async function PropertyLayout({
 }) {
   const resolvedParams = await params;
   const property = await getPropertyData(resolvedParams.id);
+  const seo = property ? getPropertySeo(property) : null;
 
-  const propertySchema = property
+  const propertySchema = property && seo
     ? {
         "@context": "https://schema.org",
         "@graph": [
           {
             "@type": property.type === 'Builder Floor' ? 'SingleFamilyResidence' : 'Apartment',
             "@id": `${BASE_URL}/properties/${property.slug || property.id}#property`,
-            "name": property.title,
-            "description": property.description || `${property.title} in ${property.location}, ${property.sector}`,
+            "name": seo.cleanTitle,
+            "description": seo.metaDescription,
             "image": property.images && property.images.length > 0 ? property.images : [property.heroImage],
             "url": `${BASE_URL}/properties/${property.slug || property.id}`,
             "address": {
               "@type": "PostalAddress",
-              "streetAddress": property.location,
-              "addressLocality": property.sector,
+              "streetAddress": property.location || seo.societyName,
+              "addressLocality": seo.sectorName,
               "addressRegion": "New Delhi",
               "postalCode": "110075",
               "addressCountry": "IN"
@@ -140,26 +133,26 @@ export default async function PropertyLayout({
               "latitude": 28.5823,
               "longitude": 77.0700
             },
-            "numberOfRooms": property.bhk,
-            "numberOfBedrooms": property.bhk,
-            "numberOfBathroomsTotal": property.bathrooms,
+            "numberOfRooms": property.bhk || 3,
+            "numberOfBedrooms": property.bhk || 3,
+            "numberOfBathroomsTotal": property.bathrooms || 2,
             "floorSize": {
               "@type": "QuantitativeValue",
-              "value": property.areaSqFt,
+              "value": property.areaSqFt || 1800,
               "unitCode": "FTK"
             },
-            "amenityFeature": (property.amenities || []).map((amenity: string) => ({
+            "amenityFeature": (property.amenities || ['24/7 Security', 'Lift Access', 'Reserved Parking']).map((amenity: string) => ({
               "@type": "LocationFeatureSpecification",
               "name": amenity,
               "value": true
             })),
             "offers": {
               "@type": "Offer",
-              "price": property.priceValue,
+              "price": property.priceValue || 0,
               "priceCurrency": "INR",
               "priceSpecification": {
                 "@type": "UnitPriceSpecification",
-                "price": property.priceValue,
+                "price": property.priceValue || 0,
                 "priceCurrency": "INR",
                 "name": property.priceDisplay
               },
@@ -191,10 +184,22 @@ export default async function PropertyLayout({
               {
                 "@type": "ListItem",
                 "position": 3,
-                "name": property.title,
+                "name": seo.cleanTitle,
                 "item": `${BASE_URL}/properties/${property.slug || property.id}`
               }
             ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": `${BASE_URL}/properties/${property.slug || property.id}#faq`,
+            "mainEntity": seo.faqs.map(f => ({
+              "@type": "Question",
+              "name": f.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": f.answer
+              }
+            }))
           }
         ]
       }
