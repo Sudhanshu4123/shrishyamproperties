@@ -116,16 +116,16 @@ function PropertyListingsingsContent() {
   };
 
   const getPageHeading = () => {
-    if (currentPurpose === 'Buy') return 'Properties for Sale in Dwarka';
-    if (currentPurpose === 'Rent') return 'Properties for Rent in Dwarka';
-    if (currentPurpose === 'Projects') return 'Upcoming & New Projects in Dwarka';
-    if (currentType === 'Commercial') return 'Commercial Spaces & Shops';
-    return 'Explore Dwarka Properties';
+    if (currentPurpose === 'Projects') return 'Upcoming & New Construction Projects in Dwarka';
+    if (currentPurpose === 'Rent') return 'Verified Properties for Rent in Dwarka';
+    if (currentPurpose === 'Buy') return 'Verified Properties for Sale in Dwarka';
+    if (currentType === 'Commercial') return 'Commercial Spaces & Shops in Dwarka';
+    return 'Explore Verified Properties in Dwarka';
   };
 
   return (
-    <main className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
-      {/* Header */}
+    <main className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex-1">
+      {/* Header with H1 Tag */}
       <div className="mb-8">
         <span className="section-label block mb-1">
           Verified Dwarka Real Estate
@@ -289,11 +289,39 @@ function PropertyListingsingsContent() {
   );
 }
 
+function PropertiesFallback() {
+  return (
+    <main className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex-1">
+      <div className="mb-8">
+        <span className="section-label block mb-1">
+          Verified Dwarka Real Estate
+        </span>
+        <h1 className="text-3xl sm:text-4xl font-black text-slate-800 tracking-tight" style={{ fontFamily: "'Playfair Display', serif" }}>
+          Explore Verified Properties in Dwarka
+        </h1>
+        <p className="text-slate-500 text-sm mt-1">
+          Loading verified luxury builder floors, DDA flats, society apartments and commercial listings...
+        </p>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {[1, 2, 3, 4, 5, 6].map(i => (
+          <div key={i} className="bg-white rounded-3xl p-5 border border-slate-200 shadow-sm animate-pulse space-y-4">
+            <div className="w-full h-48 bg-slate-200 rounded-2xl" />
+            <div className="h-4 bg-slate-200 rounded w-3/4" />
+            <div className="h-3 bg-slate-200 rounded w-1/2" />
+            <div className="h-8 bg-slate-200 rounded-xl w-full" />
+          </div>
+        ))}
+      </div>
+    </main>
+  );
+}
+
 export default function PropertiesingsPage() {
   return (
     <div className="min-h-screen bg-[#f0f4f8] text-slate-800 flex flex-col font-sans">
       <Navbar />
-      <Suspense fallback={<div className="pt-32 text-center text-teal-600 font-bold">Loading listings...</div>}>
+      <Suspense fallback={<PropertiesFallback />}>
         <PropertyListingsingsContent />
       </Suspense>
       <Footer />
