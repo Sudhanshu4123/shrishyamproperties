@@ -98,8 +98,7 @@ export default function HomePage() {
                 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight tracking-tight"
                 style={{ fontFamily: "'Playfair Display', serif" }}
               >
-                We provide <span className="text-amber-300">the best house</span><br />
-                to be your home
+                Luxury Builder Floors &amp; <span className="text-amber-300">Homes in Dwarka</span>
               </h1>
             </div>
 

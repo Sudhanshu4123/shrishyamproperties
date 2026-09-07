@@ -118,7 +118,7 @@ const SEO_KEYWORDS = [
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://shrishyamassociate.com'),
   title: {
-    default: "Shri Shyam Associate — Home Builder & Premier Real Estate in Dwarka Sector 7 Delhi",
+    default: "Shri Shyam Associate — Premier Real Estate & Builder in Dwarka",
     template: "%s | Shri Shyam Associate"
   },
   description:
@@ -163,16 +163,16 @@ export const metadata: Metadata = {
   manifest: '/manifest.webmanifest',
 
   openGraph: {
-    title: "Shri Shyam Associate — Home Builder & Real Estate in Dwarka Sector 7 Delhi",
+    title: "Shri Shyam Associate — Real Estate & Builder in Dwarka Delhi",
     description:
-      "Discover verified luxury builder floors, DDA flats, and turnkey home construction in Dwarka Delhi by Shri Shyam Associate. Call +91 9911956274.",
+      "Verified luxury builder floors, DDA flats & turnkey home construction in Dwarka Sector 7, Delhi. Call +91 9911956274.",
     url: "https://shrishyamassociate.com",
     siteName: "Shri Shyam Associate",
     locale: "en_IN",
     type: "website",
     images: [
       {
-        url: "https://shrishyamassociate.com/logo.png",
+        url: "https://shrishyamassociate.com/images/hero_luxury_villa_3d.png",
         width: 1200,
         height: 630,
         alt: "Shri Shyam Associate - Home Builder & Real Estate in Dwarka New Delhi",
@@ -181,9 +181,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Shri Shyam Associate — Home Builder & Dwarka Real Estate Experts",
-    description: "Turnkey home construction, luxury builder floors, and DDA flats across Dwarka, Delhi. Open 24 Hours. Call: +91 9911956274.",
-    images: ["https://shrishyamassociate.com/logo.png"],
+    title: "Shri Shyam Associate — Real Estate & Builder in Dwarka",
+    description: "Turnkey home construction, luxury builder floors, and DDA flats across Dwarka, Delhi. Call +91 9911956274.",
+    images: ["https://shrishyamassociate.com/images/hero_luxury_villa_3d.png"],
   },
   robots: {
     index: true,
