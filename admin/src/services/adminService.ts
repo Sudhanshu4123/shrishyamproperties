@@ -26,7 +26,197 @@ const getApiBaseUrl = (): string => {
   return process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8080/api';
 };
 
-const INITIAL_PROPERTIES: AdminProperty[] = [];
+const INITIAL_PROPERTIES: AdminProperty[] = [
+  {
+    id: 'prop-101',
+    title: '3 BHK Ultra Luxury Builder Floor with Private Lift & Stilt Parking',
+    slug: '3-bhk-ultra-luxury-builder-floor-sector-7',
+    purpose: 'Buy',
+    type: '3 BHK',
+    priceDisplay: '₹ 1.65 Cr',
+    priceValue: 16500000,
+    location: 'Ramphal Chowk Road, Dwarka Sector 7, New Delhi',
+    sector: 'Dwarka Sector 7',
+    bhk: 3,
+    bathrooms: 3,
+    areaSqFt: 1850,
+    carpetAreaSqFt: 1650,
+    floor: '2nd Floor',
+    totalFloors: 4,
+    parking: 'Reserved Stilt Parking',
+    furnishing: 'Semi-Furnished',
+    facing: 'North-East',
+    propertyAge: 'Brand New Construction',
+    availability: 'Ready to Move',
+    featured: true,
+    published: true,
+    heroImage: '/images/luxury_builder_floor_dwarka_1786010981126.png',
+    images: [
+      '/images/luxury_builder_floor_dwarka_1786010981126.png',
+      '/images/luxury_penthouse_interior_1786011006488.png',
+      '/images/dwarka_society_flat_1786010993235.png'
+    ],
+    description: 'Exclusive 3 BHK luxury builder floor with Italian marble, modular kitchen, branded bath fittings, wide balcony and private lift access in Dwarka Sector 7.',
+    amenities: ['Private Lift', '24/7 Security', 'Modular Kitchen', 'Power Backup', 'Stilt Parking'],
+    highlights: ['Near Ramphal Chowk Market', 'Walkable to Sector 9 Metro', 'Freehold Clear Title'],
+    contactNumber: '+91 9911956274',
+    legalClearance: true,
+    model3dType: 'luxury-villa',
+    viewsCount: 142,
+    createdAt: new Date().toISOString()
+  },
+  {
+    id: 'prop-102',
+    title: '4 BHK High-End CGHS Society Flat Park Facing',
+    slug: '4-bhk-high-end-cghs-society-penthouse-sector-6',
+    purpose: 'Buy',
+    type: '4 BHK',
+    priceDisplay: '₹ 2.85 Cr',
+    priceValue: 28500000,
+    location: 'CGHS Society, Dwarka Sector 6, New Delhi',
+    sector: 'Dwarka Sector 6',
+    bhk: 4,
+    bathrooms: 4,
+    areaSqFt: 2800,
+    carpetAreaSqFt: 2500,
+    floor: 'Top Floor with Terrace',
+    totalFloors: 10,
+    parking: '2 Covered Parkings',
+    furnishing: 'Fully Furnished',
+    facing: 'East',
+    propertyAge: '1-3 Years',
+    availability: 'Ready to Move',
+    featured: true,
+    published: true,
+    heroImage: '/images/dwarka_society_flat_1786010993235.png',
+    images: [
+      '/images/dwarka_society_flat_1786010993235.png',
+      '/images/luxury_penthouse_interior_1786011006488.png',
+      '/images/luxury_builder_floor_dwarka_1786010981126.png'
+    ],
+    description: 'Spacious 4 BHK flat in premium CGHS society featuring wooden flooring, panoramic green park views, and gated 3-tier security in Sector 6.',
+    amenities: ['Gated Society', 'Clubhouse', 'Gym', 'Swimming Pool', 'Terrace Garden'],
+    highlights: ['Corner Property', 'Park Facing', '100% Power Backup'],
+    contactNumber: '+91 9911956274',
+    legalClearance: true,
+    model3dType: 'penthouse-suite',
+    viewsCount: 218,
+    createdAt: new Date().toISOString()
+  },
+  {
+    id: 'prop-103',
+    title: 'Duplex Penthouse with Private Terrace Garden in Sector 21',
+    slug: 'duplex-penthouse-terrace-garden-sector-21',
+    purpose: 'Buy',
+    type: 'Penthouse',
+    priceDisplay: '₹ 3.45 Cr',
+    priceValue: 34500000,
+    location: 'Dwarka Sector 21, New Delhi',
+    sector: 'Dwarka Sector 21',
+    bhk: 4,
+    bathrooms: 5,
+    areaSqFt: 3500,
+    carpetAreaSqFt: 3100,
+    floor: '9th & 10th Duplex',
+    totalFloors: 10,
+    parking: '3 Covered Parkings',
+    furnishing: 'Fully Furnished',
+    facing: 'North-East',
+    propertyAge: 'Brand New',
+    availability: 'Ready to Move',
+    featured: true,
+    published: true,
+    heroImage: '/images/luxury_penthouse_interior_1786011006488.png',
+    images: [
+      '/images/luxury_penthouse_interior_1786011006488.png',
+      '/images/luxury_builder_floor_dwarka_1786010981126.png',
+      '/images/dwarka_society_flat_1786010993235.png'
+    ],
+    description: 'Ultra-luxurious duplex penthouse with expansive private terrace garden, Italian marble flooring, and panoramic views near Yashobhoomi & Metro.',
+    amenities: ['Private Terrace', 'Jacuzzi', 'Italian Marble', '24/7 Power Backup', 'Club Access'],
+    highlights: ['Near Airport Express Line', 'Panoramic City Views', '100% Vastu Compliant'],
+    contactNumber: '+91 9911956274',
+    legalClearance: true,
+    model3dType: 'penthouse-suite',
+    viewsCount: 305,
+    createdAt: new Date().toISOString()
+  },
+  {
+    id: 'prop-104',
+    title: '2 BHK Renovated DDA Apartment near Sector 10 Metro',
+    slug: '2-bhk-renovated-dda-apartment-sector-10',
+    purpose: 'Buy',
+    type: '2 BHK',
+    priceDisplay: '₹ 95.00 Lakhs',
+    priceValue: 9500000,
+    location: 'Pocket 2, Dwarka Sector 10, New Delhi',
+    sector: 'Dwarka Sector 10',
+    bhk: 2,
+    bathrooms: 2,
+    areaSqFt: 1100,
+    carpetAreaSqFt: 980,
+    floor: '1st Floor',
+    totalFloors: 4,
+    parking: 'Open Parking',
+    furnishing: 'Semi-Furnished',
+    facing: 'North-West',
+    propertyAge: '5-10 Years',
+    availability: 'Ready to Move',
+    featured: false,
+    published: true,
+    heroImage: '/images/luxury_builder_floor_dwarka_1786010981126.png',
+    images: [
+      '/images/luxury_builder_floor_dwarka_1786010981126.png',
+      '/images/dwarka_society_flat_1786010993235.png'
+    ],
+    description: 'Well-maintained 2 BHK DDA flat on first floor with modular fittings, ample sunlight, and 2-minute walk to Sector 10 Metro Station.',
+    amenities: ['Park Facing', 'Metro Connectivity', 'Security Guard'],
+    highlights: ['Prime Location', 'Close to Market', 'Low Maintenance'],
+    contactNumber: '+91 9911956274',
+    legalClearance: true,
+    model3dType: 'high-tower',
+    viewsCount: 89,
+    createdAt: new Date().toISOString()
+  },
+  {
+    id: 'prop-105',
+    title: '5 BHK Independent Luxury Builder Floor with Private Lift',
+    slug: '5-bhk-independent-luxury-builder-floor-sector-23',
+    purpose: 'Buy',
+    type: '5 BHK',
+    priceDisplay: '₹ 3.85 Cr',
+    priceValue: 38500000,
+    location: 'Dwarka Sector 23, New Delhi',
+    sector: 'Dwarka Sector 23',
+    bhk: 5,
+    bathrooms: 5,
+    areaSqFt: 3600,
+    carpetAreaSqFt: 3200,
+    floor: '1st Floor',
+    totalFloors: 4,
+    parking: '3 Reserved Stilt Parkings',
+    furnishing: 'Fully Furnished',
+    facing: 'North-East',
+    propertyAge: 'Brand New',
+    availability: 'Ready to Move',
+    featured: true,
+    published: true,
+    heroImage: '/images/hero_luxury_villa_3d.png',
+    images: [
+      '/images/hero_luxury_villa_3d.png',
+      '/images/luxury_builder_floor_dwarka_1786010981126.png',
+      '/images/luxury_penthouse_interior_1786011006488.png'
+    ],
+    description: 'Grand 5 BHK luxury floor situated in elite Sector 23 near Yashobhoomi. Features private lift, spacious drawing dining, modern kitchen, and Italian fittings.',
+    amenities: ['Private Lift', '3 Stilt Parkings', 'Modular Kitchen', 'Power Backup', 'CCTV'],
+    highlights: ['Near Yashobhoomi Convention Center', '100% Freehold Title', 'Wide 18M Road'],
+    contactNumber: '+91 9911956274',
+    legalClearance: true,
+    model3dType: 'luxury-villa',
+    viewsCount: 167,
+    createdAt: new Date().toISOString()
+  }
+];
 
 const INITIAL_LEADS: AdminLead[] = [];
 const INITIAL_AGENTS: AgentStaff[] = [];
@@ -157,7 +347,11 @@ export class AdminService {
       const stored = localStorage.getItem(key);
       if (!stored) return defaultVal;
 
-      return JSON.parse(stored);
+      const parsed = JSON.parse(stored);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        return parsed as T;
+      }
+      return defaultVal;
     } catch {
       return defaultVal;
     }

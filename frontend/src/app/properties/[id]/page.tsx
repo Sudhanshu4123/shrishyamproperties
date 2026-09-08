@@ -326,8 +326,12 @@ export default function PropertyDetailPage() {
                   src={selectedImage || property.heroImage || DEFAULT_IMAGE}
                   alt={`${property.title} - Main View`}
                   fill
-                  unoptimized={Boolean(selectedImage?.startsWith('data:') || property.heroImage?.startsWith('data:') || selectedImage?.startsWith('/uploads/') || property.heroImage?.startsWith('/uploads/'))}
-                  onError={() => setSelectedImage(DEFAULT_IMAGE)}
+                  unoptimized={true}
+                  onError={() => {
+                    if (selectedImage !== DEFAULT_IMAGE) {
+                      setSelectedImage(DEFAULT_IMAGE);
+                    }
+                  }}
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                   priority
                 />
@@ -374,7 +378,7 @@ export default function PropertyDetailPage() {
                           src={img || DEFAULT_IMAGE}
                           alt={`${property.title} - Thumbnail ${idx + 1}`}
                           fill
-                          unoptimized={Boolean(img?.startsWith('data:') || img?.startsWith('/uploads/'))}
+                          unoptimized={true}
                           className="object-cover"
                         />
                       </button>

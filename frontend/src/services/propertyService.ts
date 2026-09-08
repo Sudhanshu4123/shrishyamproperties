@@ -82,16 +82,22 @@ export class PropertyService {
 
     const adminStored = localStorage.getItem('ssp_admin_properties_v5');
     const stored = adminStored !== null ? adminStored : localStorage.getItem(PROPERTIES_KEY);
-    if (!stored) return [];
+    if (!stored) {
+      if (INITIAL_PROPERTIES.length > 0) {
+        localStorage.setItem(PROPERTIES_KEY, JSON.stringify(INITIAL_PROPERTIES));
+        return INITIAL_PROPERTIES;
+      }
+      return [];
+    }
 
     try {
       const parsed = JSON.parse(stored);
-      if (Array.isArray(parsed)) {
+      if (Array.isArray(parsed) && parsed.length > 0) {
         return parsed;
       }
-      return [];
+      return INITIAL_PROPERTIES;
     } catch {
-      return [];
+      return INITIAL_PROPERTIES;
     }
   }
 
