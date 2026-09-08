@@ -42,8 +42,6 @@ async function runFullUpdate() {
       // 1. Pull Latest GitHub Code
       await executeCommand(conn, `
         cd /var/www/shrishyamproperties
-        git reset --hard HEAD
-        git clean -fd
         git fetch origin main
         git reset --hard origin/main
         git pull origin main
