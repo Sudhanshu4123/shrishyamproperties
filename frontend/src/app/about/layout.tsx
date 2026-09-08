@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us | Shri Shyam Associate — Home Builder & Real Estate Advisors in Dwarka Sector 7 Delhi",
+  title: "About Us | Shri Shyam Associate Dwarka Real Estate",
   description:
     "About Shri Shyam Associate: Trusted home builder and premier real estate advisory in Dwarka Sector 7 Delhi. Verified luxury builder floors & DDA flats.",
   keywords: [
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     canonical: "https://shrishyamassociate.com/about",
   },
   openGraph: {
-    title: "About Shri Shyam Associate — Home Builder & Real Estate Advisors Dwarka",
+    title: "About Us | Shri Shyam Associate Dwarka",
     description:
       "Discover Shri Shyam Associate: Trusted home builder and real estate consultancy in Sector 7, Dwarka, New Delhi. Call: +91 9911956274.",
     url: "https://shrishyamassociate.com/about",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://shrishyamassociate.com/logo.png",
+        url: "https://shrishyamassociate.com/images/hero_luxury_villa_3d.png",
         width: 1200,
         height: 630,
         alt: "About Shri Shyam Associate - Home Builder & Real Estate Dwarka",
@@ -40,9 +40,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "About Shri Shyam Associate — Home Builder & Property Experts Dwarka",
+    title: "About Us | Shri Shyam Associate Dwarka",
     description: "Learn about Dwarka's premier Home Builder & real estate consultancy with 100% legal verification.",
-    images: ["https://shrishyamassociate.com/logo.png"],
+    images: ["https://shrishyamassociate.com/images/hero_luxury_villa_3d.png"],
   },
   other: {
     "geo.region": "IN-DL",

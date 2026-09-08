@@ -259,7 +259,7 @@ export default function BlogsTab() {
         </div>
         <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
           <span className="text-[10px] uppercase font-bold text-slate-400 block">Categories</span>
-          <span className="text-xl sm:text-2xl font-black text-slate-800">{categories.length - 1}</span>
+          <span className="text-xl sm:text-2xl font-black text-slate-800">{categories.length > 1 ? categories.length - 1 : 0}</span>
         </div>
         <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
           <span className="text-[10px] uppercase font-bold text-emerald-600 block">Schema Verified</span>
@@ -298,11 +298,17 @@ export default function BlogsTab() {
       {filteredBlogs.length === 0 ? (
         <div className="bg-white rounded-3xl p-12 text-center border border-slate-200 shadow-sm">
           <BookOpen className="w-12 h-12 text-teal-400/40 mx-auto mb-3" />
-          <h3 className="text-base font-bold text-slate-800">No blog articles match your search</h3>
-          <p className="text-xs text-slate-500 mt-1 mb-4">Try clearing your filters or create a new article.</p>
+          <h3 className="text-base font-bold text-slate-800">
+            {blogs.length === 0 ? 'No blog articles published yet' : 'No blog articles match your search'}
+          </h3>
+          <p className="text-xs text-slate-500 mt-1 mb-4">
+            {blogs.length === 0 
+              ? 'Start creating SEO buying guides, price trend articles, and property checklists directly from here.' 
+              : 'Try clearing your search query or filters.'}
+          </p>
           <button
             onClick={openCreateModal}
-            className="btn-teal text-xs px-4 py-2 rounded-xl font-bold inline-flex items-center gap-1.5"
+            className="btn-teal text-xs px-5 py-2.5 rounded-xl font-bold inline-flex items-center gap-1.5 shadow-md hover:scale-105 transition-all cursor-pointer"
           >
             <Plus className="w-4 h-4" />
             <span>Write New Article</span>

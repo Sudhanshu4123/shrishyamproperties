@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Home Builder & Turnkey Construction in Dwarka Sector 7 Delhi | Shri Shyam Associate",
+  title: "Home Builder & Construction in Dwarka Sector 7 Delhi",
   description:
     "Top home builder in Dwarka Sector 7, Delhi. Shri Shyam Associate offers turnkey house construction, luxury builder floor execution, design & approvals.",
   keywords: [
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     canonical: "https://shrishyamassociate.com/home-builder",
   },
   openGraph: {
-    title: "Home Builder & Construction Services in Dwarka Sector 7 | Shri Shyam Associate",
+    title: "Home Builder & Construction in Dwarka | Shri Shyam",
     description:
       "Turnkey home construction, architectural design, and luxury builder floors in Dwarka Sector 7 Delhi by Shri Shyam Associate. Call +91 9911956274.",
     url: "https://shrishyamassociate.com/home-builder",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://shrishyamassociate.com/logo.png",
+        url: "https://shrishyamassociate.com/images/hero_luxury_villa_3d.png",
         width: 1200,
         height: 630,
         alt: "Home Builder Dwarka - Shri Shyam Associate",
@@ -38,9 +38,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Home Builder & Construction Services in Dwarka | Shri Shyam Associate",
+    title: "Home Builder & Construction in Dwarka | Shri Shyam",
     description: "Expert turnkey home construction and luxury builder floor development in Dwarka Sector 7, Delhi.",
-    images: ["https://shrishyamassociate.com/logo.png"],
+    images: ["https://shrishyamassociate.com/images/hero_luxury_villa_3d.png"],
   },
   other: {
     "geo.region": "IN-DL",

@@ -12,7 +12,7 @@ export default function PropertySearch({ onSearch }: { onSearch?: (filters: any)
   const [sector, setSector] = useState<string>('All Locations');
 
   const propertyTypes: string[] = [
-    '2 BHK', '3 BHK', '4 BHK', '5 BHK',
+    '1 BHK', '2 BHK', '3 BHK', '4 BHK', '5 BHK',
     'Builder Floor', 'DDA Flat', 'Society Flat',
     'Projects', 'New Launch',
     'Commercial', 'Shop', 'Plot', 'Land'

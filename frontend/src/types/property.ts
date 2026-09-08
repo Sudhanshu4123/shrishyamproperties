@@ -1,6 +1,7 @@
 export type PropertyPurpose = 'Buy' | 'Rent' | 'Projects' | 'Commercial';
 
 export type PropertyType = 
+  | '1 BHK'
   | '2 BHK'
   | '3 BHK'
   | '4 BHK'

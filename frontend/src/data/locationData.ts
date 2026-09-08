@@ -16,7 +16,7 @@ export const LOCATION_DETAILS: Record<string, LocationDetail> = {
   'dwarka': {
     slug: 'dwarka',
     name: 'Dwarka, New Delhi',
-    metaTitle: 'Property in Dwarka New Delhi | Real Estate Agent & Builder Floors | Shri Shyam Associate',
+    metaTitle: 'Property in Dwarka Delhi | Builder Floors & Flats for Sale',
     metaDescription: 'Verified residential property, luxury builder floors, DDA flats and commercial spaces in Dwarka, New Delhi. Complete sector guide & price trends.',
     heading: 'Real Estate in Dwarka, New Delhi — Complete City Hub',
     intro: 'Dwarka, located in South West Delhi, is one of Asia’s largest master-planned residential sub-cities. Boasting wide 60-meter and 45-meter sector roads, dedicated green belts, DDA sports complexes in every quadrant, and exceptional tri-line metro connectivity (Blue Line, Magenta Line, and Airport Express Line), Dwarka is the premier destination for homebuyers and commercial investors alike.',

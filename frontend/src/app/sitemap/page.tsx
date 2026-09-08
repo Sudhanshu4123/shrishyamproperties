@@ -4,7 +4,7 @@ import Navbar from '@/components/common/Navbar';
 import Footer from '@/components/common/Footer';
 import FloatingWhatsApp from '@/components/common/FloatingWhatsApp';
 import { INITIAL_PROPERTIES } from '@/data/mockData';
-import { BLOG_POSTS } from '@/data/blogData';
+import { getAllBlogPosts } from '@/data/blogData';
 import { LOCATION_DETAILS } from '@/data/locationData';
 import { Property } from '@/types/property';
 import { 
@@ -34,6 +34,7 @@ async function getProperties(): Promise<Property[]> {
 
 export default async function SitemapPage() {
   const properties = await getProperties();
+  const blogPosts = getAllBlogPosts();
 
   const corePages = [
     { title: 'Homepage', url: '/', desc: 'Main real estate portal & 3D virtual building explorer' },
@@ -186,25 +187,29 @@ export default async function SitemapPage() {
             </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {BLOG_POSTS.map((post) => (
-              <Link
-                key={post.slug}
-                href={`/blog/${post.slug}`}
-                className="p-4 rounded-2xl bg-slate-50 hover:bg-white hover:border-amber-400 border border-slate-200 hover:shadow-md transition-all group flex flex-col justify-between"
-              >
-                <div>
-                  <span className="text-[10px] font-bold text-amber-700 uppercase tracking-wider block mb-1">
-                    {post.category}
+            {blogPosts.length === 0 ? (
+              <p className="text-xs text-slate-500 col-span-full py-4">No published articles currently.</p>
+            ) : (
+              blogPosts.map((post) => (
+                <Link
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  className="p-4 rounded-2xl bg-slate-50 hover:bg-white hover:border-amber-400 border border-slate-200 hover:shadow-md transition-all group flex flex-col justify-between"
+                >
+                  <div>
+                    <span className="text-[10px] font-bold text-amber-700 uppercase tracking-wider block mb-1">
+                      {post.category}
+                    </span>
+                    <h3 className="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-amber-700 transition-colors line-clamp-2">
+                      {post.title}
+                    </h3>
+                  </div>
+                  <span className="text-[11px] text-slate-400 mt-3 pt-2 border-t border-slate-200/60 block">
+                    {post.readTime}
                   </span>
-                  <h3 className="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-amber-700 transition-colors line-clamp-2">
-                    {post.title}
-                  </h3>
-                </div>
-                <span className="text-[11px] text-slate-400 mt-3 pt-2 border-t border-slate-200/60 block">
-                  {post.readTime}
-                </span>
-              </Link>
-            ))}
+                </Link>
+              ))
+            )}
           </div>
         </div>
 

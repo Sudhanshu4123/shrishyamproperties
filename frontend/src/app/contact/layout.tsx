@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Shri Shyam Associate — Home Builder & Property Dealer in Dwarka Sector 7 Delhi",
+  title: "Contact Us | Shri Shyam Associate Dwarka Sector 7",
   description:
     "Contact Shri Shyam Associate at Vardhaman City Mall, Sector 7 Dwarka Delhi. Home builder & luxury builder floor advisory. Open 24/7. Call: +91 9911956274.",
   keywords: [
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     canonical: "https://shrishyamassociate.com/contact",
   },
   openGraph: {
-    title: "Contact Shri Shyam Associate — Home Builder & Real Estate Office Dwarka Sector 7",
+    title: "Contact Us | Shri Shyam Associate Dwarka",
     description:
       "Visit Shri Shyam Associate at Vardhaman City Mall, Sector 7, Dwarka, Delhi. Home construction & luxury builder floors. Call +91 9911956274.",
     url: "https://shrishyamassociate.com/contact",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://shrishyamassociate.com/logo.png",
+        url: "https://shrishyamassociate.com/images/hero_luxury_villa_3d.png",
         width: 1200,
         height: 630,
         alt: "Contact Shri Shyam Associate",
@@ -42,9 +42,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Contact Shri Shyam Associate — Home Builder & Real Estate Office Dwarka",
+    title: "Contact Us | Shri Shyam Associate Dwarka",
     description: "Book property visits, consult on home building & luxury builder floors in Dwarka.",
-    images: ["https://shrishyamassociate.com/logo.png"],
+    images: ["https://shrishyamassociate.com/images/hero_luxury_villa_3d.png"],
   },
   other: {
     "geo.region": "IN-DL",

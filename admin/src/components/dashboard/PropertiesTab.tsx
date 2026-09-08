@@ -448,6 +448,7 @@ export default function PropertiesTab({
             className="bg-slate-50 text-slate-800 text-xs font-bold px-3.5 py-2.5 rounded-xl border border-slate-200 focus:border-teal-500 focus:outline-none cursor-pointer"
           >
             <option value="All">All Property Types</option>
+            <option value="1 BHK">1 BHK</option>
             <option value="2 BHK">2 BHK</option>
             <option value="3 BHK">3 BHK</option>
             <option value="4 BHK">4 BHK</option>
@@ -757,6 +758,7 @@ export default function PropertiesTab({
                           onChange={e => setFormData({ ...formData, type: e.target.value as PropertyType })}
                           className="w-full bg-white text-slate-900 rounded-xl p-3 border border-slate-300 focus:border-teal-600 focus:ring-2 focus:ring-teal-500/20 focus:outline-none font-semibold shadow-sm cursor-pointer"
                         >
+                          <option value="1 BHK">1 BHK</option>
                           <option value="2 BHK">2 BHK</option>
                           <option value="3 BHK">3 BHK</option>
                           <option value="4 BHK">4 BHK</option>

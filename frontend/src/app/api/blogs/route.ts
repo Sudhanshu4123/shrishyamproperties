@@ -12,21 +12,15 @@ async function getStoredBlogs(): Promise<BlogPost[]> {
     if (existsSync(BLOGS_FILE)) {
       const data = await readFile(BLOGS_FILE, 'utf-8');
       const parsed = JSON.parse(data);
-      if (Array.isArray(parsed) && parsed.length > 0) {
-        const existingSlugs = new Set(parsed.map((b: BlogPost) => b.slug));
-        const missing = BLOG_POSTS.filter(b => !existingSlugs.has(b.slug));
-        const merged = [...parsed, ...missing];
-        if (missing.length > 0) {
-          await persistBlogs(merged);
-        }
-        return merged;
+      if (Array.isArray(parsed)) {
+        return parsed;
       }
     }
   } catch (error) {
     console.error('Error reading blogs.json:', error);
   }
 
-  // Initialize with default BLOG_POSTS if file does not exist or is empty
+  // Initialize with default BLOG_POSTS only if file does not exist at all
   try {
     await mkdir(DATA_DIR, { recursive: true });
     await writeFile(BLOGS_FILE, JSON.stringify(BLOG_POSTS, null, 2), 'utf-8');

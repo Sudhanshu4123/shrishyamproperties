@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next';
 import { INITIAL_PROPERTIES } from '@/data/mockData';
-import { BLOG_POSTS } from '@/data/blogData';
+import { getAllBlogPosts } from '@/data/blogData';
 import { LOCATION_DETAILS } from '@/data/locationData';
 import { Property } from '@/types/property';
 
@@ -126,7 +126,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   // 3. Blog articles routes
-  const blogRoutes: MetadataRoute.Sitemap = BLOG_POSTS.map((post) => ({
+  const dynamicBlogPosts = getAllBlogPosts();
+  const blogRoutes: MetadataRoute.Sitemap = dynamicBlogPosts.map((post) => ({
     url: `${BASE_URL}/blog/${post.slug}`,
     lastModified: new Date(post.publishedDate),
     changeFrequency: 'monthly' as const,

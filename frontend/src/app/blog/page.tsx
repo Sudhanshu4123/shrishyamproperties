@@ -53,7 +53,7 @@ export default function BlogIndexPage() {
         </div>
 
         {/* Featured Article Card */}
-        {blogs.length > 0 && (
+        {blogs.length > 0 ? (
           <div className="mb-12">
             <Link
               href={`/blog/${blogs[0].slug}`}
@@ -103,6 +103,12 @@ export default function BlogIndexPage() {
                 </div>
               </div>
             </Link>
+          </div>
+        ) : (
+          <div className="bg-white rounded-3xl p-12 text-center border border-slate-200 mb-12 shadow-sm">
+            <BookOpen className="w-12 h-12 text-slate-300 mx-auto mb-3" />
+            <h3 className="text-lg font-bold text-slate-700">No blog posts available</h3>
+            <p className="text-xs text-slate-500 mt-1">Check back soon for new guides and articles.</p>
           </div>
         )}
 
