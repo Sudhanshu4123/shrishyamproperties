@@ -39,33 +39,24 @@ export default function Footer() {
             <div>
               <p className="text-xs font-semibold text-slate-300 mb-2">Connect With Us:</p>
               <div className="flex items-center gap-2.5">
-                <a
-                  href="https://www.instagram.com/shyampropertiesshri/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Follow Shri Shyam Associate on Instagram"
-                  className="w-8 h-8 rounded-lg bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 flex items-center justify-center text-white hover:opacity-90 hover:scale-105 transition-all shadow-sm"
+                <span
+                  aria-label="Shri Shyam Associate on Instagram"
+                  className="w-8 h-8 rounded-lg bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 flex items-center justify-center text-white hover:opacity-90 hover:scale-105 transition-all shadow-sm cursor-default"
                 >
                   <InstagramIcon className="w-4 h-4" />
-                </a>
-                <a
-                  href="https://www.facebook.com/profile.php?id=61573243274598"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Follow Shri Shyam Associate on Facebook"
-                  className="w-8 h-8 rounded-lg bg-[#1877F2] flex items-center justify-center text-white hover:opacity-90 hover:scale-105 transition-all shadow-sm"
+                </span>
+                <span
+                  aria-label="Shri Shyam Associate on Facebook"
+                  className="w-8 h-8 rounded-lg bg-[#1877F2] flex items-center justify-center text-white hover:opacity-90 hover:scale-105 transition-all shadow-sm cursor-default"
                 >
                   <FacebookIcon className="w-4 h-4" />
-                </a>
-                <a
-                  href="https://www.linkedin.com/company/shri-shyam-associate/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Connect with Shri Shyam Associate on LinkedIn"
-                  className="w-8 h-8 rounded-lg bg-[#0A66C2] flex items-center justify-center text-white hover:opacity-90 hover:scale-105 transition-all shadow-sm"
+                </span>
+                <span
+                  aria-label="Shri Shyam Associate on LinkedIn"
+                  className="w-8 h-8 rounded-lg bg-[#0A66C2] flex items-center justify-center text-white hover:opacity-90 hover:scale-105 transition-all shadow-sm cursor-default"
                 >
                   <LinkedinIcon className="w-4 h-4" />
-                </a>
+                </span>
               </div>
             </div>
           </div>
