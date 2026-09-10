@@ -32,6 +32,7 @@ export default function Footer() {
               <p><strong className="text-slate-200">Agency Name:</strong> Shri Shyam Associate</p>
               <p><strong className="text-slate-200">Address:</strong> Shop No. 247, 2nd Floor, Vardhaman City Mall, Sector 7, Dwarka, New Delhi - 110077</p>
               <p><strong className="text-slate-200">Direct Phone:</strong> <a href="tel:9911956274" className="text-teal-400 hover:underline">+91 9911956274</a></p>
+              <p><strong className="text-slate-200">Email:</strong> <a href="mailto:shrishyamhelpdesk@gmail.com" className="text-teal-400 hover:underline">shrishyamhelpdesk@gmail.com</a></p>
             </div>
           </div>
 

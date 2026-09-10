@@ -7,7 +7,7 @@ const HOME_MARKDOWN = `# Shri Shyam Associate (Shri Shyam associate)
 
 ## Quick Contact
 - **Phone / WhatsApp**: +91 9911956274 / 09911956274
-- **Email**: shrishyamproperties001@gmail.com
+- **Email**: shrishyamhelpdesk@gmail.com
 - **Office Location**: Shop No. 247, 2nd Floor, Vardhaman City Mall, Vaishali, Sector 7, Dwarka, Delhi 110077
 - **Operating Hours**: Open 24 Hours (Monday – Sunday)
 - **Coordinates**: 28.5823° N, 77.0700° E
@@ -57,7 +57,7 @@ Shri Shyam Associate is a top-rated Home Builder and real estate advisory firm h
 ## Office Contact
 - **Address**: Shop No. 247, 2nd Floor, Vardhaman City Mall, Vaishali, Sector 7, Dwarka, Delhi 110077
 - **Phone**: +91 9911956274 / 09911956274
-- **Email**: shrishyamproperties001@gmail.com
+- **Email**: shrishyamhelpdesk@gmail.com
 - **Hours**: Monday to Sunday, Open 24 Hours
 `;
 
@@ -68,7 +68,7 @@ const CONTACT_MARKDOWN = `# Contact Shri Shyam Associate
 ## Contact Channels
 - **Direct Phone**: [+91 9911956274](tel:9911956274)
 - **WhatsApp**: [Chat on WhatsApp](https://wa.me/919911956274?text=Hi%20Shri%20Shyam%20Associate,%20I%20am%20interested%20in%20home%20builder%20and%20property%20services)
-- **Email**: [shrishyamproperties001@gmail.com](mailto:shrishyamproperties001@gmail.com)
+- **Email**: [shrishyamhelpdesk@gmail.com](mailto:shrishyamhelpdesk@gmail.com)
 - **Office Location**: Shop No. 247, 2nd Floor, Vardhaman City Mall, Vaishali, Sector 7, Dwarka, Delhi 110077
 - **Operating Hours**: Open 24 Hours (Monday to Sunday)
 - **Google Maps**: [Location Map](https://maps.google.com/?q=Shop+no+247+2nd+floor+vardhaman+city+Mall+sector+7+dwarka+Delhi+110077)

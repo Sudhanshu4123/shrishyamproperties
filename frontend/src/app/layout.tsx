@@ -239,7 +239,7 @@ const jsonLdSchema = {
       "image": "https://shrishyamassociate.com/logo.png",
       "description": "Professional Home Builder and premier real estate consultancy in Dwarka Sector 7, New Delhi offering turnkey home construction, verified 2, 3, 4, 5 BHK luxury builder floors, DDA flats, CGHS society apartments, and commercial properties with 100% legal title verification.",
       "telephone": "+91 9911956274",
-      "email": "shrishyamproperties001@gmail.com",
+      "email": "shrishyamhelpdesk@gmail.com",
       "priceRange": "₹40 Lakhs - ₹10 Crore",
       "currenciesAccepted": "INR",
       "paymentAccepted": "Cash, Cheque, Bank Transfer, Home Loan",

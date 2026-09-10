@@ -64,7 +64,7 @@ const homeBuilderJsonLd = {
       "name": "Shri Shyam associate — Home Builder",
       "legalName": "Shri Shyam Associate",
       "telephone": "+91 9911956274",
-      "email": "shrishyamproperties001@gmail.com",
+      "email": "shrishyamhelpdesk@gmail.com",
       "priceRange": "₹₹₹₹",
       "address": {
         "@type": "PostalAddress",

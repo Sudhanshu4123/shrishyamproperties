@@ -64,8 +64,8 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="text-sm font-bold text-slate-800">Email Address</h3>
-                  <a href="mailto:shrishyamproperties001@gmail.com" className="text-xs text-slate-600 hover:text-teal-600 transition-colors block mt-1">
-                    shrishyamproperties001@gmail.com
+                  <a href="mailto:shrishyamhelpdesk@gmail.com" className="text-xs text-slate-600 hover:text-teal-600 transition-colors block mt-1">
+                    shrishyamhelpdesk@gmail.com
                   </a>
                 </div>
               </div>

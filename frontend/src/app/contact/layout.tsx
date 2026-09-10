@@ -75,7 +75,7 @@ const contactJsonLd = {
         "name": "Shri Shyam associate",
         "legalName": "Shri Shyam Associate",
         "telephone": "+91 9911956274",
-        "email": "shrishyamproperties001@gmail.com",
+        "email": "shrishyamhelpdesk@gmail.com",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Shop No. 247, 2nd Floor, Vardhaman City Mall, Vaishali, Sector 7",

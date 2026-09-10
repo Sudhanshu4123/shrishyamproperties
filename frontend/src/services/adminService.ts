@@ -228,7 +228,7 @@ const INITIAL_SETTINGS: SystemSettings = {
   dwarkaOfficeAddress: 'Shop No. 247, 2nd Floor, Vardhaman City Mall, Vaishali, Sector 7, Dwarka, Delhi - 110077',
   contactPhone: '+91 9911956274',
   whatsappHotline: '9911956274',
-  emailSupport: 'info@shrishyamassociate.com',
+  emailSupport: 'shrishyamhelpdesk@gmail.com',
   enable3DViewer: true,
   backendApiUrl: '/api',
   currencySymbol: '₹',

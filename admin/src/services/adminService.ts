@@ -228,7 +228,7 @@ const INITIAL_SETTINGS: SystemSettings = {
   dwarkaOfficeAddress: 'Shop No. 12, Main Market, Dwarka Sector 7, New Delhi - 110075',
   contactPhone: '+91 9911956274',
   whatsappHotline: '9911956274',
-  emailSupport: 'info@shrishyamassociate.com',
+  emailSupport: 'shrishyamhelpdesk@gmail.com',
   enable3DViewer: true,
   backendApiUrl: '/api',
   currencySymbol: '₹',
