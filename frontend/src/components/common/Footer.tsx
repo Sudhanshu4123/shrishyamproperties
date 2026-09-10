@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Building2, Phone, Mail, MapPin, ArrowUpRight, Clock, Map } from 'lucide-react';
+import { InstagramIcon, FacebookIcon, LinkedinIcon } from '@/components/common/SocialIcons';
 
 export default function Footer() {
   return (
@@ -28,10 +29,44 @@ export default function Footer() {
               <span>✓</span>
               <span>100% Freehold Verified Properties & Bank Loan Approved</span>
             </div>
-            <div className="text-xs text-slate-400 space-y-1">
+            <div className="text-xs text-slate-400 space-y-1 mb-4">
               <p><strong className="text-slate-200">Address:</strong> Shop No. 247, 2nd Floor, Vardhaman City Mall, Sector 7, Dwarka, New Delhi - 110077</p>
               <p><strong className="text-slate-200">Direct Phone:</strong> <a href="tel:9911956274" className="text-teal-400 hover:underline">+91 9911956274</a></p>
               <p><strong className="text-slate-200">Email:</strong> <a href="mailto:shrishyamhelpdesk@gmail.com" className="text-teal-400 hover:underline">shrishyamhelpdesk@gmail.com</a></p>
+            </div>
+
+            {/* Social Media Links */}
+            <div>
+              <p className="text-xs font-semibold text-slate-300 mb-2">Connect With Us:</p>
+              <div className="flex items-center gap-2.5">
+                <a
+                  href="https://www.instagram.com/shrishyamassociate"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Follow Shri Shyam Associate on Instagram"
+                  className="w-8 h-8 rounded-lg bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 flex items-center justify-center text-white hover:opacity-90 hover:scale-105 transition-all shadow-sm"
+                >
+                  <InstagramIcon className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://www.facebook.com/shrishyamassociate"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Follow Shri Shyam Associate on Facebook"
+                  className="w-8 h-8 rounded-lg bg-[#1877F2] flex items-center justify-center text-white hover:opacity-90 hover:scale-105 transition-all shadow-sm"
+                >
+                  <FacebookIcon className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/shrishyamassociate"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Connect with Shri Shyam Associate on LinkedIn"
+                  className="w-8 h-8 rounded-lg bg-[#0A66C2] flex items-center justify-center text-white hover:opacity-90 hover:scale-105 transition-all shadow-sm"
+                >
+                  <LinkedinIcon className="w-4 h-4" />
+                </a>
+              </div>
             </div>
           </div>
 

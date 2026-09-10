@@ -6,6 +6,7 @@ import Footer from '@/components/common/Footer';
 import FloatingWhatsApp from '@/components/common/FloatingWhatsApp';
 import LeadGenerationForm from '@/components/home/LeadGenerationForm';
 import { Phone, Mail, MapPin, Clock, MessageCircle } from 'lucide-react';
+import { InstagramIcon, FacebookIcon, LinkedinIcon } from '@/components/common/SocialIcons';
 
 export default function ContactPage() {
   const whatsappUrl = "https://wa.me/919911956274?text=Hello%20Shri%20Shyam%20Associate,%20I%20want%20to%20schedule%20a%20site%20visit%20in%20Dwarka.";
@@ -77,6 +78,40 @@ export default function ContactPage() {
                 <div>
                   <h3 className="text-sm font-bold text-slate-800">Operating Hours</h3>
                   <p className="text-xs text-slate-600 mt-1">Monday - Sunday: Open 24 Hours</p>
+                </div>
+              </div>
+
+              {/* Social Channels */}
+              <div className="pt-4 border-t border-slate-100">
+                <h3 className="text-sm font-bold text-slate-800 mb-2">Connect on Social Media</h3>
+                <div className="flex items-center gap-3">
+                  <a
+                    href="https://www.instagram.com/shrishyamassociate"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 text-white text-xs font-bold shadow-sm hover:opacity-95 transition-all"
+                  >
+                    <InstagramIcon className="w-4 h-4" />
+                    <span>Instagram</span>
+                  </a>
+                  <a
+                    href="https://www.facebook.com/shrishyamassociate"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#1877F2] text-white text-xs font-bold shadow-sm hover:opacity-95 transition-all"
+                  >
+                    <FacebookIcon className="w-4 h-4" />
+                    <span>Facebook</span>
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/company/shrishyamassociate"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#0A66C2] text-white text-xs font-bold shadow-sm hover:opacity-95 transition-all"
+                  >
+                    <LinkedinIcon className="w-4 h-4" />
+                    <span>LinkedIn</span>
+                  </a>
                 </div>
               </div>
             </div>
