@@ -235,6 +235,11 @@ const jsonLdSchema = {
         "Shri Shyam Delhi"
       ],
       "url": "https://shrishyamassociate.com",
+      "sameAs": [
+        "https://www.instagram.com/shyampropertiesshri/",
+        "https://www.facebook.com/profile.php?id=61573243274598",
+        "https://www.linkedin.com/company/shri-shyam-associate/"
+      ],
       "logo": "https://shrishyamassociate.com/logo.png",
       "image": "https://shrishyamassociate.com/logo.png",
       "description": "Professional Home Builder and premier real estate consultancy in Dwarka Sector 7, New Delhi offering turnkey home construction, verified 2, 3, 4, 5 BHK luxury builder floors, DDA flats, CGHS society apartments, and commercial properties with 100% legal title verification.",

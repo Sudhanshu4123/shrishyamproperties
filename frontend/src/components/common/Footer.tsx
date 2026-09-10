@@ -40,7 +40,7 @@ export default function Footer() {
               <p className="text-xs font-semibold text-slate-300 mb-2">Connect With Us:</p>
               <div className="flex items-center gap-2.5">
                 <a
-                  href="https://www.instagram.com/shrishyamassociate"
+                  href="https://www.instagram.com/shyampropertiesshri/"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Follow Shri Shyam Associate on Instagram"
@@ -49,7 +49,7 @@ export default function Footer() {
                   <InstagramIcon className="w-4 h-4" />
                 </a>
                 <a
-                  href="https://www.facebook.com/shrishyamassociate"
+                  href="https://www.facebook.com/profile.php?id=61573243274598"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Follow Shri Shyam Associate on Facebook"
@@ -58,7 +58,7 @@ export default function Footer() {
                   <FacebookIcon className="w-4 h-4" />
                 </a>
                 <a
-                  href="https://www.linkedin.com/company/shrishyamassociate"
+                  href="https://www.linkedin.com/company/shri-shyam-associate/"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Connect with Shri Shyam Associate on LinkedIn"
