@@ -132,12 +132,8 @@ export class PropertyService {
         const data = await response.json();
         if (Array.isArray(data) && data.length > 0) {
           const mappedList = data.map(mapBackendProperty);
-          const localOnly = this.getProperties().filter(
-            lp => !mappedList.some(mp => String(mp.id) === String(lp.id) || (mp.slug && mp.slug === lp.slug))
-          );
-          const combined = [...mappedList, ...localOnly];
-          this.saveProperties(combined);
-          return params ? this.searchProperties(params) : combined;
+          this.saveProperties(mappedList);
+          return params ? this.searchProperties(params) : mappedList;
         }
       }
     } catch (e) {

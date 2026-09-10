@@ -116,6 +116,10 @@ jobs:
             cd /var/www/shrishyamproperties
             git reset --hard HEAD
             git pull origin main
+            mkdir -p /var/www/shrishyam_uploads
+            chmod 777 /var/www/shrishyam_uploads
+            ln -sfn /var/www/shrishyam_uploads /var/www/shrishyamproperties/frontend/public/uploads
+            ln -sfn /var/www/shrishyam_uploads /var/www/shrishyamproperties/admin/public/uploads
 
             echo "🌐 Building & Restarting Frontend..."
             cd /var/www/shrishyamproperties/frontend

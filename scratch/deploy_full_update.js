@@ -45,6 +45,10 @@ async function runFullUpdate() {
         git fetch origin main
         git reset --hard origin/main
         git pull origin main
+        mkdir -p /var/www/shrishyam_uploads
+        chmod 777 /var/www/shrishyam_uploads
+        ln -sfn /var/www/shrishyam_uploads /var/www/shrishyamproperties/frontend/public/uploads
+        ln -sfn /var/www/shrishyam_uploads /var/www/shrishyamproperties/admin/public/uploads
       `, '1. Pull Latest Code');
 
       // 2. Build Frontend

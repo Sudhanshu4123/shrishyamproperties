@@ -24,6 +24,13 @@ export async function POST(request: Request) {
 
     await writeFile(filePath, buffer);
 
+    // Also persist to persistent server storage /var/www/shrishyam_uploads
+    try {
+      const persistentDir = '/var/www/shrishyam_uploads';
+      await mkdir(persistentDir, { recursive: true });
+      await writeFile(path.join(persistentDir, filename), buffer);
+    } catch (_) {}
+
     return NextResponse.json({
       url: `/uploads/${filename}`,
       filename,
