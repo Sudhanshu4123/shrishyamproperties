@@ -7,7 +7,6 @@ import FloatingWhatsApp from '@/components/common/FloatingWhatsApp';
 import PropertySearch from '@/components/home/PropertySearch';
 import FeaturedProperties from '@/components/home/FeaturedProperties';
 import CategoriesSection from '@/components/home/CategoriesSection';
-import MapExplorer from '@/components/home/MapExplorer';
 import WhyChooseUs from '@/components/home/WhyChooseUs';
 import HowItWorks from '@/components/home/HowItWorks';
 import TestimonialsSection from '@/components/home/TestimonialsSection';
@@ -147,11 +146,6 @@ export default function HomePage() {
       {/* ===================== CATEGORIES ===================== */}
       <div className="section-bg-light">
         <CategoriesSection />
-      </div>
-
-      {/* ===================== DWARKA MAP ===================== */}
-      <div className="section-bg-white">
-        <MapExplorer />
       </div>
 
       {/* ===================== WHY CHOOSE US ===================== */}
