@@ -9,16 +9,7 @@ const nextConfig: NextConfig = {
     ]
   },
   async rewrites() {
-    return [
-      {
-        source: '/api/upload',
-        destination: '/api/upload',
-      },
-      {
-        source: '/api/:path*',
-        destination: 'http://127.0.0.1:8080/api/:path*',
-      },
-    ];
+    return [];
   },
 };
 

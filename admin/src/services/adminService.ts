@@ -529,44 +529,42 @@ export class AdminService {
     this.setItem(STORAGE_KEYS.PROPERTIES, properties);
     this.logActivity('Update Property', properties[index].title, 'update');
 
-    if (!isNaN(Number(id))) {
-      try {
-        const apiUrl = getApiBaseUrl();
-        const updatedObj = properties[index];
-        await fetch(`${apiUrl}/properties/${id}`, {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            title: updatedObj.title,
-            slug: updatedObj.slug,
-            purpose: updatedObj.purpose,
-            propertyType: updatedObj.type,
-            priceDisplay: updatedObj.priceDisplay,
-            priceValue: updatedObj.priceValue,
-            location: updatedObj.location,
-            sector: updatedObj.sector,
-            bhk: updatedObj.bhk,
-            bathrooms: updatedObj.bathrooms,
-            areaSqFt: updatedObj.areaSqFt,
-            carpetAreaSqFt: updatedObj.carpetAreaSqFt,
-            floor: updatedObj.floor,
-            totalFloors: updatedObj.totalFloors,
-            parking: updatedObj.parking,
-            furnishing: updatedObj.furnishing,
-            facing: updatedObj.facing,
-            propertyAge: updatedObj.propertyAge,
-            availability: updatedObj.availability,
-            featured: updatedObj.featured,
-            published: updatedObj.published,
-            heroImage: updatedObj.heroImage,
-            images: updatedObj.images,
-            description: updatedObj.description,
-            contactNumber: updatedObj.contactNumber
-          })
-        }).catch(e => console.warn('Backend property update notice:', e));
-      } catch (e) {
-        console.warn('Property update notice:', e);
-      }
+    try {
+      const apiUrl = getApiBaseUrl();
+      const updatedObj = properties[index];
+      await fetch(`${apiUrl}/properties/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title: updatedObj.title,
+          slug: updatedObj.slug,
+          purpose: updatedObj.purpose,
+          propertyType: updatedObj.type,
+          priceDisplay: updatedObj.priceDisplay,
+          priceValue: updatedObj.priceValue,
+          location: updatedObj.location,
+          sector: updatedObj.sector,
+          bhk: updatedObj.bhk,
+          bathrooms: updatedObj.bathrooms,
+          areaSqFt: updatedObj.areaSqFt,
+          carpetAreaSqFt: updatedObj.carpetAreaSqFt,
+          floor: updatedObj.floor,
+          totalFloors: updatedObj.totalFloors,
+          parking: updatedObj.parking,
+          furnishing: updatedObj.furnishing,
+          facing: updatedObj.facing,
+          propertyAge: updatedObj.propertyAge,
+          availability: updatedObj.availability,
+          featured: updatedObj.featured,
+          published: updatedObj.published,
+          heroImage: updatedObj.heroImage,
+          images: updatedObj.images,
+          description: updatedObj.description,
+          contactNumber: updatedObj.contactNumber
+        })
+      }).catch(e => console.warn('Backend property update notice:', e));
+    } catch (e) {
+      console.warn('Property update notice:', e);
     }
 
     return properties[index];
@@ -579,13 +577,11 @@ export class AdminService {
     this.setItem(STORAGE_KEYS.PROPERTIES, filtered);
     if (prop) this.logActivity('Delete Property', prop.title, 'delete');
 
-    if (!isNaN(Number(id))) {
-      try {
-        const apiUrl = getApiBaseUrl();
-        await fetch(`${apiUrl}/properties/${id}`, { method: 'DELETE' }).catch(e => console.warn('Backend property delete notice:', e));
-      } catch (e) {
-        console.warn('Property delete notice:', e);
-      }
+    try {
+      const apiUrl = getApiBaseUrl();
+      await fetch(`${apiUrl}/properties/${id}`, { method: 'DELETE' }).catch(e => console.warn('Backend property delete notice:', e));
+    } catch (e) {
+      console.warn('Property delete notice:', e);
     }
 
     return true;
@@ -642,14 +638,15 @@ export class AdminService {
     this.setItem(STORAGE_KEYS.LEADS, leads);
     this.logActivity('Update Lead Status', `${leads[index].name} -> ${status}`, 'update');
 
-    if (!isNaN(Number(id))) {
-      try {
-        const apiUrl = getApiBaseUrl();
-        await fetch(`${apiUrl}/leads/${id}/status?status=${encodeURIComponent(status)}`, { method: 'PATCH' })
-          .catch(e => console.warn('Backend lead status update notice:', e));
-      } catch (e) {
-        console.warn('Lead status update notice:', e);
-      }
+    try {
+      const apiUrl = getApiBaseUrl();
+      await fetch(`${apiUrl}/leads/${id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status, notes })
+      }).catch(e => console.warn('Backend lead status update notice:', e));
+    } catch (e) {
+      console.warn('Lead status update notice:', e);
     }
 
     return leads[index];
@@ -660,13 +657,11 @@ export class AdminService {
     const filtered = leads.filter(l => String(l.id) !== String(id));
     this.setItem(STORAGE_KEYS.LEADS, filtered);
 
-    if (!isNaN(Number(id))) {
-      try {
-        const apiUrl = getApiBaseUrl();
-        await fetch(`${apiUrl}/leads/${id}`, { method: 'DELETE' }).catch(e => console.warn('Backend lead delete notice:', e));
-      } catch (e) {
-        console.warn('Lead delete notice:', e);
-      }
+    try {
+      const apiUrl = getApiBaseUrl();
+      await fetch(`${apiUrl}/leads/${id}`, { method: 'DELETE' }).catch(e => console.warn('Backend lead delete notice:', e));
+    } catch (e) {
+      console.warn('Lead delete notice:', e);
     }
 
     return true;

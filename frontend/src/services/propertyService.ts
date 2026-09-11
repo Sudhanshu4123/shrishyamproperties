@@ -270,43 +270,41 @@ export class PropertyService {
     properties[index] = updated;
     this.saveProperties(properties);
 
-    if (!isNaN(Number(id))) {
-      try {
-        const apiUrl = getApiBaseUrl();
-        await fetch(`${apiUrl}/properties/${id}`, {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            title: updated.title,
-            slug: updated.slug,
-            purpose: updated.purpose,
-            propertyType: updated.type,
-            priceDisplay: updated.priceDisplay,
-            priceValue: updated.priceValue,
-            location: updated.location,
-            sector: updated.sector,
-            bhk: updated.bhk,
-            bathrooms: updated.bathrooms,
-            areaSqFt: updated.areaSqFt,
-            carpetAreaSqFt: updated.carpetAreaSqFt,
-            floor: updated.floor,
-            totalFloors: updated.totalFloors,
-            parking: updated.parking,
-            furnishing: updated.furnishing,
-            facing: updated.facing,
-            propertyAge: updated.propertyAge,
-            availability: updated.availability,
-            featured: updated.featured,
-            published: updated.published,
-            heroImage: updated.heroImage,
-            images: updated.images,
-            description: updated.description,
-            contactNumber: updated.contactNumber
-          })
-        }).catch(e => console.warn('Update API sync notice:', e));
-      } catch (e) {
-        console.warn('Update property notice:', e);
-      }
+    try {
+      const apiUrl = getApiBaseUrl();
+      await fetch(`${apiUrl}/properties/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title: updated.title,
+          slug: updated.slug,
+          purpose: updated.purpose,
+          propertyType: updated.type,
+          priceDisplay: updated.priceDisplay,
+          priceValue: updated.priceValue,
+          location: updated.location,
+          sector: updated.sector,
+          bhk: updated.bhk,
+          bathrooms: updated.bathrooms,
+          areaSqFt: updated.areaSqFt,
+          carpetAreaSqFt: updated.carpetAreaSqFt,
+          floor: updated.floor,
+          totalFloors: updated.totalFloors,
+          parking: updated.parking,
+          furnishing: updated.furnishing,
+          facing: updated.facing,
+          propertyAge: updated.propertyAge,
+          availability: updated.availability,
+          featured: updated.featured,
+          published: updated.published,
+          heroImage: updated.heroImage,
+          images: updated.images,
+          description: updated.description,
+          contactNumber: updated.contactNumber
+        })
+      }).catch(e => console.warn('Update API sync notice:', e));
+    } catch (e) {
+      console.warn('Update property notice:', e);
     }
 
     return properties[index];
@@ -317,13 +315,11 @@ export class PropertyService {
     const filtered = properties.filter(p => String(p.id) !== String(id));
     this.saveProperties(filtered);
 
-    if (!isNaN(Number(id))) {
-      try {
-        const apiUrl = getApiBaseUrl();
-        await fetch(`${apiUrl}/properties/${id}`, { method: 'DELETE' }).catch(e => console.warn('Delete sync notice:', e));
-      } catch (e) {
-        console.warn('Delete property notice:', e);
-      }
+    try {
+      const apiUrl = getApiBaseUrl();
+      await fetch(`${apiUrl}/properties/${id}`, { method: 'DELETE' }).catch(e => console.warn('Delete sync notice:', e));
+    } catch (e) {
+      console.warn('Delete property notice:', e);
     }
     return true;
   }
