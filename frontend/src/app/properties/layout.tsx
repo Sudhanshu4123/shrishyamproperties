@@ -5,6 +5,11 @@ export const metadata: Metadata = {
   description:
     "Verified 2, 3, 4, 5 BHK luxury builder floors, DDA flats, CGHS apartments & commercial shops for sale and rent in Dwarka & Delhi NCR with 3D tours.",
   keywords: [
+    "real estate business Delhi",
+    "real estate business Dwarka",
+    "real estate agency Dwarka",
+    "real estate company in Delhi",
+    "best property dealer in Dwarka",
     "Shri Shyam",
     "Shree Shyam",
     "Shri Shyam Property",

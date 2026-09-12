@@ -108,6 +108,8 @@ export function getPropertySeo(property: Property): PropertySeoMetadata {
     `Ready to move flats in ${sector}`,
     `${society} Dwarka price`,
     'Shri Shyam Associate',
+    'Real estate business Dwarka',
+    'Real estate agent in Delhi',
     'Dwarka Real Estate',
     'Verified Properties in Dwarka'
   ];

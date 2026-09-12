@@ -5,6 +5,11 @@ export const metadata: Metadata = {
   description:
     "About Shri Shyam Associate: Trusted home builder and premier real estate advisory in Dwarka Sector 7 Delhi. Verified luxury builder floors & DDA flats.",
   keywords: [
+    "real estate business Dwarka",
+    "real estate business Delhi",
+    "real estate agency Dwarka",
+    "real estate company Dwarka Sector 7",
+    "trusted real estate advisors Delhi",
     "Shri Shyam associate",
     "Shri Shyam Associate",
     "Home builder Dwarka",

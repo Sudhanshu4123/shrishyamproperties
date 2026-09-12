@@ -7,7 +7,6 @@ Allow: /
 Disallow: /admin
 Disallow: /admin/
 Disallow: /api/
-Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # Major Search Engine Crawlers - Explicit Allowances
 User-agent: Googlebot
@@ -49,7 +48,6 @@ Allow: /images/
 Disallow: /admin
 Disallow: /admin/
 Disallow: /api/
-Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # AI & LLM Search Agents
 User-agent: GPTBot
@@ -80,7 +78,6 @@ Allow: /openapi.json
 Disallow: /admin
 Disallow: /admin/
 Disallow: /api/
-Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 Sitemap: https://shrishyamassociate.com/sitemap.xml
-Host: shrishyamassociate.com
+

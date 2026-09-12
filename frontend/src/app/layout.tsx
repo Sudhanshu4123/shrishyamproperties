@@ -48,11 +48,28 @@ const SEO_KEYWORDS = [
   "Shri Shyam Properties Delhi",
   "Shri Shyam official website",
 
-  // Delhi-Wide Searches (High Volume)
-  "real estate agent in Delhi",
-  "property dealer in Delhi",
-  "best property dealer in Delhi",
+  // Real Estate Business & Brokerage Searches
+  "real estate business Delhi",
+  "real estate business Dwarka",
+  "real estate agency Delhi",
+  "real estate company Delhi NCR",
   "top real estate consultants in Delhi",
+  "best real estate broker Dwarka",
+  "real estate advisory Dwarka Delhi",
+  "property dealer in Delhi",
+  "property dealer in Dwarka New Delhi",
+  "best property dealer in Delhi",
+  "best property dealer near me Dwarka",
+  "property consultant in Dwarka",
+  "real estate agent in Delhi",
+  "real estate agent in Dwarka",
+  "real estate agent near me",
+  "trusted real estate brokers Dwarka",
+  "real estate office Dwarka Sector 7",
+  "commercial real estate business",
+  "residential real estate business",
+
+  // Delhi-Wide Searches (High Volume)
   "properties for sale in Delhi",
   "buy flat in Delhi",
   "builder floors in Delhi",
@@ -66,16 +83,11 @@ const SEO_KEYWORDS = [
   "freehold property in Delhi",
   "commercial property for sale in Delhi",
   "shops for sale in Delhi",
-  "real estate company Delhi NCR",
   "property for sale in West Delhi",
   "property dealer in West Delhi",
   "real estate agent in South West Delhi",
 
   // Dwarka & Micro-Market Specific
-  "real estate agent in Dwarka",
-  "property dealer in Dwarka New Delhi",
-  "best property dealer near me Dwarka",
-  "property consultant in Dwarka",
   "real estate consultants Dwarka Delhi",
   "properties for sale in Dwarka",
   "buy flat in Dwarka",
@@ -124,6 +136,10 @@ export const metadata: Metadata = {
   description:
     "Shri Shyam Associate: Trusted home builder & real estate consultancy in Dwarka Sector 7 Delhi. Verified luxury builder floors, DDA flats & turnkey homes.",
   keywords: [
+    "Real estate business Delhi",
+    "Real estate business Dwarka",
+    "Real estate agency Delhi",
+    "Real estate company Dwarka",
     "Home builder in Dwarka",
     "Home builder Dwarka Sector 7",
     "Home builder Delhi",

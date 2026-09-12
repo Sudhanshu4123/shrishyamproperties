@@ -5,6 +5,8 @@ export const metadata: Metadata = {
   description:
     "Top home builder in Dwarka Sector 7, Delhi. Shri Shyam Associate offers turnkey house construction, luxury builder floor execution, design & approvals.",
   keywords: [
+    "real estate builder Delhi",
+    "real estate construction business",
     "Home builder in Dwarka",
     "Home builder Dwarka Sector 7",
     "Home builder Delhi",

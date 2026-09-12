@@ -5,6 +5,10 @@ export const metadata: Metadata = {
   description:
     "Contact Shri Shyam Associate at Vardhaman City Mall, Sector 7 Dwarka Delhi. Home builder & luxury builder floor advisory. Open 24/7. Call: +91 9911956274.",
   keywords: [
+    "real estate business contact",
+    "real estate agency Dwarka",
+    "real estate office Dwarka Sector 7",
+    "property dealer contact number Dwarka",
     "Shri Shyam associate",
     "Shri Shyam Associate",
     "Home builder Dwarka",

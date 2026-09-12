@@ -7,6 +7,8 @@ export const metadata: Metadata = {
   description:
     'Buy verified commercial shops, retail showrooms & office spaces in Dwarka Sector 7, Ramphal Chowk & Vardhaman Malls Delhi. Call +91 9911956274.',
   keywords: [
+    'commercial real estate business',
+    'commercial real estate Dwarka',
     'commercial property in Dwarka',
     'shops for sale in Dwarka',
     'office space for sale Dwarka',
@@ -14,6 +16,7 @@ export const metadata: Metadata = {
     'Vardhaman City Mall shops',
     'commercial space Dwarka Sector 7',
     'SCO plots Dwarka',
+    'high ROI commercial property Delhi',
     'Shri Shyam Associate commercial property',
   ],
   alternates: {
