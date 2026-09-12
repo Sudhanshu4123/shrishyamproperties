@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://shrishyamassociate.com';
 
 export const metadata: Metadata = {
-  title: 'Commercial Property & Shops for Sale in Dwarka',
+  title: 'Commercial Properties in Dwarka',
   description:
     'Buy verified commercial shops, retail showrooms & office spaces in Dwarka Sector 7, Ramphal Chowk & Vardhaman Malls Delhi. Call +91 9911956274.',
   keywords: [
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     canonical: `${BASE_URL}/commercial-property`,
   },
   openGraph: {
-    title: 'Commercial Property in Dwarka | Shri Shyam Associate',
+    title: 'Commercial Properties in Dwarka | Shri Shyam',
     description: 'Verified commercial shops, office spaces and retail showrooms in Dwarka.',
     url: `${BASE_URL}/commercial-property`,
     siteName: 'Shri Shyam Associate',

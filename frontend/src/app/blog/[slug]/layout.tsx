@@ -24,7 +24,9 @@ export async function generateMetadata({
   const imgUrl = `${BASE_URL}${post.image.startsWith('/') ? '' : '/'}${post.image}`;
 
   return {
-    title: post.metaTitle,
+    title: {
+      absolute: post.metaTitle,
+    },
     description: post.metaDescription,
     keywords: post.tags,
     authors: [{ name: post.author, url: BASE_URL }],

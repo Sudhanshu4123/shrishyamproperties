@@ -3,9 +3,9 @@ import type { Metadata } from 'next';
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://shrishyamassociate.com';
 
 export const metadata: Metadata = {
-  title: 'Real Estate Blog & Buying Guides in Dwarka Delhi | Shri Shyam Associate',
+  title: 'Real Estate Guides & Dwarka Blog',
   description:
-    'Expert real estate guides, property price trends, legal checklists, sector comparisons, and home buying tips for Dwarka, New Delhi by Shri Shyam Associate.',
+    'Expert real estate guides, property price trends, legal checklists, sector reviews and home buying tips in Dwarka Delhi by Shri Shyam Associate.',
   keywords: [
     'Dwarka real estate blog',
     'property guide Dwarka',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     canonical: `${BASE_URL}/blog`,
   },
   openGraph: {
-    title: 'Dwarka Real Estate Blog & Property Guides | Shri Shyam Associate',
+    title: 'Real Estate Guides & Blog | Shri Shyam',
     description:
       'In-depth real estate buying guides, legal checklists, sector comparisons, and property market insights for Dwarka, New Delhi.',
     url: `${BASE_URL}/blog`,

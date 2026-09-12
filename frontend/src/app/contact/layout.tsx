@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Shri Shyam Associate Dwarka Sector 7",
+  title: "Contact Us — Office & Site Visit",
   description:
-    "Contact Shri Shyam Associate at Vardhaman City Mall, Sector 7 Dwarka Delhi. Home builder & luxury builder floor advisory. Open 24/7. Call: +91 9911956274.",
+    "Contact Shri Shyam Associate at Vardhaman City Mall, Sector 7 Dwarka Delhi for builder floors and home construction. Open 24/7. Call: +91 9911956274.",
   keywords: [
     "real estate business contact",
     "real estate agency Dwarka",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     canonical: "https://shrishyamassociate.com/contact",
   },
   openGraph: {
-    title: "Contact Us | Shri Shyam Associate Dwarka",
+    title: "Contact Us | Shri Shyam Associate",
     description:
       "Visit Shri Shyam Associate at Vardhaman City Mall, Sector 7, Dwarka, Delhi. Home construction & luxury builder floors. Call +91 9911956274.",
     url: "https://shrishyamassociate.com/contact",

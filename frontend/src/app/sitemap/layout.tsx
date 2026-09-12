@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "HTML Sitemap — All Properties, Sectors & Directory | Shri Shyam Associate",
+  title: "HTML Sitemap & Property Directory",
   description:
     "HTML sitemap of Shri Shyam Associate. Browse verified luxury builder floors, DDA flats, society apartments and commercial spaces in Dwarka & Delhi NCR.",
   alternates: {

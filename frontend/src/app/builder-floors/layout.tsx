@@ -3,9 +3,9 @@ import type { Metadata } from 'next';
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://shrishyamassociate.com';
 
 export const metadata: Metadata = {
-  title: 'Luxury Builder Floors in Dwarka | 2, 3 & 4 BHK Flats',
+  title: 'Luxury Builder Floors in Dwarka',
   description:
-    'Verified luxury builder floors in Dwarka Delhi with private lift, stilt parking & freehold titles across Sector 6, 7, 8, 19 & 23. Call +91 9911956274.',
+    'Verified luxury builder floors in Dwarka Delhi with private lift, stilt parking & freehold titles across Sector 6, 7, 8 & 19. Call +91 9911956274.',
   keywords: [
     'builder floor in Dwarka',
     'luxury builder floors Dwarka',
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     canonical: `${BASE_URL}/builder-floors`,
   },
   openGraph: {
-    title: 'Luxury Builder Floors in Dwarka | Shri Shyam Associate',
+    title: 'Luxury Builder Floors in Dwarka | Shri Shyam',
     description: 'Verified luxury builder floors with private lifts, stilt parking & 3D virtual tours in Dwarka.',
     url: `${BASE_URL}/builder-floors`,
     siteName: 'Shri Shyam Associate',

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Properties for Sale & Rent in Delhi & Dwarka | Shri Shyam Associate",
+  title: "Properties for Sale & Rent in Dwarka",
   description:
     "Verified 2, 3, 4, 5 BHK luxury builder floors, DDA flats, CGHS apartments & commercial shops for sale and rent in Dwarka & Delhi NCR with 3D tours.",
   keywords: [
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     canonical: "https://shrishyamassociate.com/properties",
   },
   openGraph: {
-    title: "Properties for Sale & Rent in Delhi & Dwarka | Shri Shyam Associate",
+    title: "Properties for Sale & Rent in Dwarka | Shri Shyam",
     description:
       "Browse our full catalog of verified builder floors, society apartments, and commercial shops across Delhi and Dwarka. Call +91 9911956274.",
     url: "https://shrishyamassociate.com/properties",

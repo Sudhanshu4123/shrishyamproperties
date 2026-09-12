@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://shrishyamassociate.com';
 
 export const metadata: Metadata = {
-  title: 'DDA Flats in Dwarka Delhi | MIG, HIG & SFS Flats',
+  title: 'DDA Flats for Sale in Dwarka Delhi',
   description:
     'Verified DDA flats for sale in Dwarka Delhi. Buy 1, 2 & 3 BHK MIG, HIG & SFS apartments with clear freehold titles near metro. Call +91 9911956274.',
   keywords: [
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     canonical: `${BASE_URL}/dda-flats`,
   },
   openGraph: {
-    title: 'DDA Flats in Dwarka Delhi | Shri Shyam Associate',
+    title: 'DDA Flats in Dwarka Delhi | Shri Shyam',
     description: 'Verified DDA flats with clear freehold conveyance deeds across prime Dwarka sectors.',
     url: `${BASE_URL}/dda-flats`,
     siteName: 'Shri Shyam Associate',

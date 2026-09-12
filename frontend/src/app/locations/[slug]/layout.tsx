@@ -27,7 +27,9 @@ export async function generateMetadata({
   const canonicalUrl = `${BASE_URL}/locations/${loc.slug}`;
 
   return {
-    title: loc.metaTitle,
+    title: {
+      absolute: loc.metaTitle,
+    },
     description: loc.metaDescription,
     keywords: [
       `property in ${loc.name}`,

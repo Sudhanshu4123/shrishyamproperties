@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://shrishyamassociate.com';
 
 export const metadata: Metadata = {
-  title: 'Properties for Rent in Dwarka | Flats & Builder Floors',
+  title: 'Properties for Rent in Dwarka Delhi',
   description:
     'Verified properties for rent in Dwarka Delhi: 2, 3 & 4 BHK builder floors and society apartments near prime metro stations. Call +91 9911956274.',
   keywords: [
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     canonical: `${BASE_URL}/properties/for-rent`,
   },
   openGraph: {
-    title: 'Properties for Rent in Dwarka | Shri Shyam Associate',
+    title: 'Properties for Rent in Dwarka | Shri Shyam',
     description: 'Verified builder floors and apartments for rent across prime Dwarka sectors.',
     url: `${BASE_URL}/properties/for-rent`,
     siteName: 'Shri Shyam Associate',

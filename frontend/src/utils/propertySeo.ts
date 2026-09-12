@@ -79,23 +79,26 @@ export function getPropertySeo(property: Property): PropertySeoMetadata {
   // 1. Clean Title (for H1 heading on page)
   const cleanTitle = `${bhkStr} ${typeStr} in ${society}, ${sector}`;
 
-  // 2. Meta Title (Max 60 chars for Google & Bing zero-truncation)
+  // 2. Meta Title (Max 58 chars for Google & Bing zero-truncation)
   let metaTitle = `${bhkStr} in ${society}, ${sector} (${price})`;
-  if (metaTitle.length > 60) {
+  if (metaTitle.length > 58) {
     metaTitle = `${bhkStr} in ${society}, ${sector}`;
   }
-  if (metaTitle.length > 60) {
+  if (metaTitle.length > 58) {
     metaTitle = `${bhkStr} in ${society} (${price})`;
   }
-  if (metaTitle.length > 60) {
-    metaTitle = `${bhkStr} Flat in ${sector} — ${price}`;
+  if (metaTitle.length > 58) {
+    metaTitle = `${bhkStr} Flat in ${sector}`;
   }
 
-  // 3. Meta Description (140-155 chars strictly for Bing & Google)
-  const floorInfo = property.floor ? `, ${property.floor}` : '';
-  const areaInfo = property.areaSqFt ? `${property.areaSqFt} sq ft` : 'Spacious';
-  const rawDesc = `Verified ${bhkStr} ${purposeWord} in ${society}, ${sector} (${areaInfo}, ${price}${floorInfo}). Lift & parking. 100% freehold title. Call +91 9911956274.`;
-  const metaDescription = rawDesc.length > 158 ? `${rawDesc.slice(0, 154)}...` : rawDesc;
+  // 3. Meta Description (Strictly 135-155 chars for Bing & Google)
+  let metaDescription = `Verified ${bhkStr} ${purposeWord} in ${society}, ${sector} (${price}). Freehold title, lift & parking. Call +91 9911956274.`;
+  if (metaDescription.length < 135) {
+    metaDescription = `Verified ${bhkStr} ${purposeWord} in ${society}, ${sector} (${price}). 100% freehold registry, lift & parking by Shri Shyam. Call +91 9911956274.`;
+  }
+  if (metaDescription.length > 158) {
+    metaDescription = `Verified ${bhkStr} ${purposeWord} in ${society}, ${sector} (${price}). Clear freehold title, lift & car parking. Call +91 9911956274.`;
+  }
 
   // 4. High-Ranking Keywords
   const keywords = [

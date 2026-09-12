@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us | Shri Shyam Associate Dwarka Real Estate",
+  title: "About Us — Real Estate Agency",
   description:
     "About Shri Shyam Associate: Trusted home builder and premier real estate advisory in Dwarka Sector 7 Delhi. Verified luxury builder floors & DDA flats.",
   keywords: [
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     canonical: "https://shrishyamassociate.com/about",
   },
   openGraph: {
-    title: "About Us | Shri Shyam Associate Dwarka",
+    title: "About Us | Shri Shyam Associate",
     description:
       "Discover Shri Shyam Associate: Trusted home builder and real estate consultancy in Sector 7, Dwarka, New Delhi. Call: +91 9911956274.",
     url: "https://shrishyamassociate.com/about",

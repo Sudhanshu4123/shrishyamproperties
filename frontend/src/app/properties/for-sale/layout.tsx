@@ -3,9 +3,9 @@ import type { Metadata } from 'next';
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://shrishyamassociate.com';
 
 export const metadata: Metadata = {
-  title: 'Properties for Sale in Dwarka Delhi | Verified Flats',
+  title: 'Properties for Sale in Dwarka Delhi',
   description:
-    'Properties for sale in Dwarka Delhi: Verified 2, 3, 4 & 5 BHK luxury builder floors, DDA flats & society apartments with freehold titles. Call: 9911956274.',
+    'Properties for sale in Dwarka Delhi: Verified 2, 3, 4 & 5 BHK luxury builder floors, DDA flats & apartments with freehold titles. Call: 9911956274.',
   keywords: [
     'properties for sale in Dwarka',
     'buy flat in Dwarka',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     canonical: `${BASE_URL}/properties/for-sale`,
   },
   openGraph: {
-    title: 'Properties for Sale in Dwarka | Shri Shyam Associate',
+    title: 'Properties for Sale in Dwarka | Shri Shyam',
     description: 'Verified residential & luxury builder floors for sale across prime sectors in Dwarka.',
     url: `${BASE_URL}/properties/for-sale`,
     siteName: 'Shri Shyam Associate',

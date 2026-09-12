@@ -130,7 +130,7 @@ const SEO_KEYWORDS = [
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://shrishyamassociate.com'),
   title: {
-    default: "Shri Shyam Associate — Premier Real Estate & Builder in Dwarka",
+    default: "Shri Shyam Associate | Real Estate & Builder in Dwarka",
     template: "%s | Shri Shyam Associate"
   },
   description:

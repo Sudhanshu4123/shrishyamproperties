@@ -16,7 +16,7 @@ export const LOCATION_DETAILS: Record<string, LocationDetail> = {
   'dwarka': {
     slug: 'dwarka',
     name: 'Dwarka, New Delhi',
-    metaTitle: 'Property in Dwarka Delhi | Builder Floors & Flats for Sale',
+    metaTitle: 'Property in Dwarka Delhi | Builder Floors & Flats',
     metaDescription: 'Verified residential property, luxury builder floors, DDA flats and commercial spaces in Dwarka, New Delhi. Complete sector guide & price trends.',
     heading: 'Real Estate in Dwarka, New Delhi — Complete City Hub',
     intro: 'Dwarka, located in South West Delhi, is one of Asia’s largest master-planned residential sub-cities. Boasting wide 60-meter and 45-meter sector roads, dedicated green belts, DDA sports complexes in every quadrant, and exceptional tri-line metro connectivity (Blue Line, Magenta Line, and Airport Express Line), Dwarka is the premier destination for homebuyers and commercial investors alike.',
@@ -65,8 +65,8 @@ export const LOCATION_DETAILS: Record<string, LocationDetail> = {
   'dwarka-sector-2': {
     slug: 'dwarka-sector-2',
     name: 'Dwarka Sector 2',
-    metaTitle: 'Property in Dwarka Sector 2 | 2 & 3 BHK Flats & Apartments for Sale',
-    metaDescription: 'Find verified 2 & 3 BHK apartments in Mahalaxmi Apartment and NPSC Apartment, Dwarka Sector 2. Prime location near Main Palam Flyover & Sector 6 market.',
+    metaTitle: 'Flats in Dwarka Sector 2 | Shri Shyam Associate',
+    metaDescription: 'Verified 2 & 3 BHK apartments in Mahalaxmi & NPSC Apartment, Dwarka Sector 2 near Main Palam Flyover & Sector 6 market. Call +91 9911956274.',
     heading: 'Property in Dwarka Sector 2 — Prime Society Living & Connectivity',
     intro: 'Dwarka Sector 2 is an established residential sector known for premium CGHS societies including Mahalaxmi Apartment and NPSC Apartment. Located conveniently near the Palam Flyover and Sector 6 market, it offers quick access to both Central Delhi and South Delhi.',
     connectivity: [
@@ -99,8 +99,8 @@ export const LOCATION_DETAILS: Record<string, LocationDetail> = {
   'dwarka-sector-4': {
     slug: 'dwarka-sector-4',
     name: 'Dwarka Sector 4',
-    metaTitle: 'Property in Dwarka Sector 4 | 3 & 4 BHK Society Flats for Sale',
-    metaDescription: 'Explore verified 3 & 4 BHK flats in Bahawalpur Apartment and top societies in Dwarka Sector 4. Walking distance to market, school, and metro.',
+    metaTitle: 'Flats in Dwarka Sector 4 | Shri Shyam Associate',
+    metaDescription: 'Explore verified 3 & 4 BHK flats in Bahawalpur Apartment and top CGHS societies in Dwarka Sector 4 near market & metro. Call +91 9911956274.',
     heading: 'Property in Dwarka Sector 4 — Premium CGHS Societies & Green Parks',
     intro: 'Dwarka Sector 4 is among the most sought-after residential sectors, hosting prominent CGHS complexes like Bahawalpur Apartment. It features lush parks, reputed schools, and instant access to Sector 4 and Sector 5 shopping hubs.',
     connectivity: [
@@ -132,8 +132,8 @@ export const LOCATION_DETAILS: Record<string, LocationDetail> = {
   'dwarka-sector-5': {
     slug: 'dwarka-sector-5',
     name: 'Dwarka Sector 5',
-    metaTitle: 'Property in Dwarka Sector 5 | 3 & 4 BHK Luxury Flats for Sale',
-    metaDescription: 'Find verified 3 & 4 BHK society apartments in Antriksh Management Apartment and top societies in Dwarka Sector 5. 100% verified freehold titles.',
+    metaTitle: 'Flats in Dwarka Sector 5 | Shri Shyam Associate',
+    metaDescription: 'Verified 3 & 4 BHK society apartments in Antriksh Management Apartment and top societies in Dwarka Sector 5. Call +91 9911956274 for visits.',
     heading: 'Property in Dwarka Sector 5 — Central Dwarka Premium Living',
     intro: 'Dwarka Sector 5 is situated at the heart of Dwarka sub-city, adjacent to Sector 4 and Sector 6. It is renowned for established societies such as Antriksh Management Apartment, boasting spacious 3 and 4 BHK layouts with dual parking facilities.',
     connectivity: [
@@ -165,8 +165,8 @@ export const LOCATION_DETAILS: Record<string, LocationDetail> = {
   'dwarka-sector-6': {
     slug: 'dwarka-sector-6',
     name: 'Dwarka Sector 6',
-    metaTitle: 'Property in Dwarka Sector 6 | 3 & 4 BHK Builder Floors for Sale | Shri Shyam Associate',
-    metaDescription: 'Find verified 2, 3, and 4 BHK luxury builder floors and DDA flats in Dwarka Sector 6. Prime residential location near Central Market, top schools & metro.',
+    metaTitle: 'Builder Floors in Dwarka Sector 6 | Shri Shyam',
+    metaDescription: 'Verified 2, 3 & 4 BHK luxury builder floors and DDA flats in Dwarka Sector 6 near Central Market, top schools & metro. Call +91 9911956274.',
     heading: 'Property in Dwarka Sector 6 — Residential & Family Preferred Hub',
     intro: 'Dwarka Sector 6 is celebrated for its peaceful residential neighborhoods, proximity to Sector 6 Central Market, top-rated schools, and expansive community parks. It is one of the most mature sectors in Dwarka, offering premium 3 BHK and 4 BHK luxury builder floors with dedicated stilt parking and private lifts.',
     connectivity: [
@@ -202,8 +202,8 @@ export const LOCATION_DETAILS: Record<string, LocationDetail> = {
   'dwarka-sector-7': {
     slug: 'dwarka-sector-7',
     name: 'Dwarka Sector 7',
-    metaTitle: 'Property in Dwarka Sector 7 | Luxury Builder Floors & Commercial | Shri Shyam Associate',
-    metaDescription: 'Buy 2, 3, 4 BHK builder floors & commercial property in Dwarka Sector 7, Ramphal Chowk & Brahma Apartment. Contact Shri Shyam Associate (+91 9911956274).',
+    metaTitle: 'Builder Floors in Dwarka Sector 7 | Shri Shyam',
+    metaDescription: 'Buy 2, 3 & 4 BHK builder floors & commercial shops in Dwarka Sector 7, Ramphal Chowk & Brahma Apartment. Call Shri Shyam at +91 9911956274.',
     heading: 'Property in Dwarka Sector 7 — The Commercial & Commercial Core',
     intro: 'Dwarka Sector 7 is the commercial heartbeat of Dwarka, home to the famous Ramphal Chowk market, Brahma Apartment, and Vardhaman City Mall. It provides the highest rental yield and commercial footfall in South West Delhi.',
     connectivity: [
@@ -240,8 +240,8 @@ export const LOCATION_DETAILS: Record<string, LocationDetail> = {
   'dwarka-sector-8': {
     slug: 'dwarka-sector-8',
     name: 'Dwarka Sector 8',
-    metaTitle: 'Property in Dwarka Sector 8 | 3 & 4 BHK Flats in Sukh Sagar Apartment',
-    metaDescription: 'Find verified 3 BHK society apartments in Sukh Sagar Apartment, Dwarka Sector 8. Direct metro connectivity to Blue Line & airport road.',
+    metaTitle: 'Flats in Dwarka Sector 8 | Shri Shyam Associate',
+    metaDescription: 'Find verified 3 BHK society apartments in Sukh Sagar Apartment, Dwarka Sector 8 with direct Blue Line metro connectivity. Call +91 9911956274.',
     heading: 'Property in Dwarka Sector 8 — Metro Hub & Quiet Residential Enclave',
     intro: 'Dwarka Sector 8 is home to the Dwarka Sector 8 Blue Line Metro station and prominent societies like Sukh Sagar Apartment. Its location offers effortless commuting across Delhi NCR and quiet green residential avenues.',
     connectivity: [
@@ -273,8 +273,8 @@ export const LOCATION_DETAILS: Record<string, LocationDetail> = {
   'dwarka-sector-10': {
     slug: 'dwarka-sector-10',
     name: 'Dwarka Sector 10',
-    metaTitle: 'Property in Dwarka Sector 10 | 3 BHK Flats in Saral Apartment & Top Societies',
-    metaDescription: 'Buy verified 3 BHK apartments in Saral Apartment and top CGHS in Dwarka Sector 10. Near Sector 10 District Centre, Venkateshwar Hospital & Metro.',
+    metaTitle: 'Flats in Dwarka Sector 10 | Shri Shyam Associate',
+    metaDescription: 'Verified 3 BHK flats in Saral Apartment & top CGHS in Dwarka Sector 10 near District Centre, Venkateshwar Hospital. Call +91 9911956274.',
     heading: 'Property in Dwarka Sector 10 — Vibrant District Centre & Society Enclave',
     intro: 'Dwarka Sector 10 is one of the most vibrant sectors in Dwarka, featuring the famous Sector 10 District Centre, Venkateshwar Hospital, and premier societies like Saral Apartment. It offers superior lifestyle amenities and robust investment returns.',
     connectivity: [
@@ -306,8 +306,8 @@ export const LOCATION_DETAILS: Record<string, LocationDetail> = {
   'dwarka-sector-11': {
     slug: 'dwarka-sector-11',
     name: 'Dwarka Sector 11',
-    metaTitle: 'Property in Dwarka Sector 11 | 3 & 4 BHK Flats in Sri Durga Apartment',
-    metaDescription: 'Find 3 & 4 BHK apartments in Sri Durga Apartment and CGHS societies in Dwarka Sector 11. Near Sector 11 Metro Station and DDA Sports Complex.',
+    metaTitle: 'Flats in Dwarka Sector 11 | Shri Shyam Associate',
+    metaDescription: 'Find 3 & 4 BHK apartments in Sri Durga Apartment and CGHS societies in Dwarka Sector 11 near Sports Complex & Metro. Call +91 9911956274.',
     heading: 'Property in Dwarka Sector 11 — Sports Complex & Premium Society Hub',
     intro: 'Dwarka Sector 11 boasts the DDA Sports Complex, Sector 11 Metro Station, and established societies like Sri Durga Apartment. It is the premier choice for sports enthusiasts and families seeking spacious society living.',
     connectivity: [
@@ -339,8 +339,8 @@ export const LOCATION_DETAILS: Record<string, LocationDetail> = {
   'dwarka-sector-12': {
     slug: 'dwarka-sector-12',
     name: 'Dwarka Sector 12',
-    metaTitle: 'Property in Dwarka Sector 12 | 2 & 4 BHK Flats in DDA Dwarka Kunj & Raman Vihar',
-    metaDescription: 'Buy verified 2, 3 & 4 BHK flats in DDA Dwarka Kunj and Raman Vihar Apartment, Dwarka Sector 12. Direct metro connectivity and City Centre Mall.',
+    metaTitle: 'Flats in Dwarka Sector 12 | Shri Shyam Associate',
+    metaDescription: 'Verified 2, 3 & 4 BHK flats in DDA Dwarka Kunj and Raman Vihar Apartment, Dwarka Sector 12 near Metro & City Centre. Call +91 9911956274.',
     heading: 'Property in Dwarka Sector 12 — Metro Hub & Prime DDA/CGHS Housing',
     intro: 'Dwarka Sector 12 is a focal point of Dwarka featuring Sector 12 Metro Station, City Centre Mall, DDA Dwarka Kunj, and Raman Vihar Apartment. It offers both affordable DDA housing and ultra-luxury 4 BHK society flats.',
     connectivity: [
@@ -372,8 +372,8 @@ export const LOCATION_DETAILS: Record<string, LocationDetail> = {
   'dwarka-sector-14b': {
     slug: 'dwarka-sector-14b',
     name: 'Dwarka Sector 14B',
-    metaTitle: 'Property in Dwarka Sector 14B | 3 BHK Flats in DDA Kautilya Apartment',
-    metaDescription: 'Explore verified 3 BHK flats in DDA Kautilya Apartment, Dwarka Sector 14B. Near Sector 14 Metro Station & Guru Gobind Singh Indraprastha University (GGSIPU).',
+    metaTitle: 'Flats in Dwarka Sector 14B | Shri Shyam',
+    metaDescription: 'Explore verified 3 BHK flats in DDA Kautilya Apartment, Dwarka Sector 14B near Sector 14 Metro Station and GGSIPU. Call +91 9911956274.',
     heading: 'Property in Dwarka Sector 14B — University Hub & DDA Enclave',
     intro: 'Dwarka Sector 14B is situated adjacent to the GGSIPU Campus and National Law University (NLU). It is home to DDA Kautilya Apartment, offering great rental demand and peaceful residential surroundings.',
     connectivity: [
@@ -404,8 +404,8 @@ export const LOCATION_DETAILS: Record<string, LocationDetail> = {
   'dwarka-sector-16b': {
     slug: 'dwarka-sector-16b',
     name: 'Dwarka Sector 16B',
-    metaTitle: 'Property in Dwarka Sector 16B | 2 & 3 BHK Flats in Triveni Height Apartment',
-    metaDescription: 'Find verified 2 BHK apartments in Triveni Height Apartment, Dwarka Sector 16B. Near Dwarka Sector 14 Metro and main arterial road.',
+    metaTitle: 'Flats in Dwarka Sector 16B | Shri Shyam',
+    metaDescription: 'Find verified 2 & 3 BHK apartments in Triveni Height Apartment, Dwarka Sector 16B near Dwarka Sector 14 Metro. Call +91 9911956274.',
     heading: 'Property in Dwarka Sector 16B — Developing Residential Corridor',
     intro: 'Dwarka Sector 16B is located on the western periphery of Dwarka, featuring modern societies like Triveni Height Apartment with spacious layouts and modern security infrastructure.',
     connectivity: [
@@ -434,8 +434,8 @@ export const LOCATION_DETAILS: Record<string, LocationDetail> = {
   'dwarka-sector-17a': {
     slug: 'dwarka-sector-17a',
     name: 'Dwarka Sector 17A',
-    metaTitle: 'Property in Dwarka Sector 17A | 3 BHK Flats in Sarvahit Apartment',
-    metaDescription: 'Buy verified 3 BHK society flats in Sarvahit Apartment, Dwarka Sector 17A. Near Sector 17 DDA Sports Complex and Blue Line metro.',
+    metaTitle: 'Flats in Dwarka Sector 17A | Shri Shyam',
+    metaDescription: 'Buy verified 3 BHK society flats in Sarvahit Apartment, Dwarka Sector 17A near Sector 17 DDA Sports Complex & metro. Call +91 9911956274.',
     heading: 'Property in Dwarka Sector 17A — Serene Living Near Sports Complex',
     intro: 'Dwarka Sector 17A features established CGHS societies including Sarvahit Apartment. With immediate proximity to the DDA Sports Complex Sector 17, it is an idyllic neighborhood for families.',
     connectivity: [
@@ -465,8 +465,8 @@ export const LOCATION_DETAILS: Record<string, LocationDetail> = {
   'dwarka-sector-18': {
     slug: 'dwarka-sector-18',
     name: 'Dwarka Sector 18 & 18A',
-    metaTitle: 'Property in Dwarka Sector 18 & 18A | 3, 4 & 5 BHK Flats in Humdum & Janaksar Apartment',
-    metaDescription: 'Find luxury 3, 4 & 5 BHK apartments in Humdum Apartment, Janaksar Apartment, and Magestic Apartment, Dwarka Sector 18. Near Sector 12 Metro.',
+    metaTitle: 'Flats in Dwarka Sector 18 | Shri Shyam Associate',
+    metaDescription: 'Luxury 3, 4 & 5 BHK apartments in Humdum Apartment & Janaksar Apartment, Dwarka Sector 18 near Sector 12 Metro. Call +91 9911956274.',
     heading: 'Property in Dwarka Sector 18 & 18A — Luxury Society & Penthouse Enclave',
     intro: 'Dwarka Sector 18 and Sector 18A are celebrated for luxury high-rise CGHS societies including Humdum Apartment (rare 5 BHK penthouses), Janaksar Apartment, and Magestic Apartment. Located near the central spine of Dwarka, it offers supreme connectivity and elite living.',
     connectivity: [
@@ -500,8 +500,8 @@ export const LOCATION_DETAILS: Record<string, LocationDetail> = {
   'dwarka-sector-19': {
     slug: 'dwarka-sector-19',
     name: 'Dwarka Sector 19 & 19B',
-    metaTitle: 'Property in Dwarka Sector 19 & 19B | 3 & 4 BHK Flats in Solomon Heights, Orchid Valley & Best Paradise',
-    metaDescription: 'Explore 3 & 4 BHK luxury society flats in Sector 19: Solomon Heights, Orchid Valley, Nishat, Lords & Best Paradise Apartment, Dwarka Delhi.',
+    metaTitle: 'Flats in Dwarka Sector 19 | Shri Shyam Associate',
+    metaDescription: 'Explore 3 & 4 BHK luxury society flats in Solomon Heights, Orchid Valley & Best Paradise, Dwarka Sector 19 Delhi. Call +91 9911956274.',
     heading: 'Property in Dwarka Sector 19 & 19B — The High-Rise Society Capital',
     intro: 'Dwarka Sector 19 and Sector 19B represent the premier CGHS cluster of Dwarka, featuring renowned societies like Solomon Heights, Orchid Valley, Nishat Apartment, Lords Apartment, Best Paradise, and Eco Height. Located adjacent to the Delhi Golf Course and Sector 10/11 metro corridor.',
     connectivity: [
@@ -536,8 +536,8 @@ export const LOCATION_DETAILS: Record<string, LocationDetail> = {
   'dwarka-sector-21': {
     slug: 'dwarka-sector-21',
     name: 'Dwarka Sector 21',
-    metaTitle: 'Property in Dwarka Sector 21 | Flats near Metro Interchange | Shri Shyam Associate',
-    metaDescription: 'Find verified properties in Dwarka Sector 21 near Metro Interchange & Pacific D21 Mall. Luxury apartments, builder floors & airport express connectivity.',
+    metaTitle: 'Property in Dwarka Sector 21 | Shri Shyam',
+    metaDescription: 'Verified properties in Dwarka Sector 21 near Metro Interchange & Pacific D21 Mall. Luxury apartments & builder floors. Call +91 9911956274.',
     heading: 'Property in Dwarka Sector 21 — Metro Interchange & Express Hub',
     intro: 'Dwarka Sector 21 is Dwarka’s primary transportation and lifestyle gateway. Home to the massive Delhi Metro Blue Line and Airport Express Line interchange, Pacific D21 Mall, and adjacent to the world-class Delhi Golf Course in Sector 24, Sector 21 offers unmatched connectivity for frequent flyers, embassy staff, and corporate executives.',
     connectivity: [
@@ -577,8 +577,8 @@ export const LOCATION_DETAILS: Record<string, LocationDetail> = {
   'dwarka-sector-22': {
     slug: 'dwarka-sector-22',
     name: 'Dwarka Sector 22',
-    metaTitle: 'Property in Dwarka Sector 22 | 3 & 4 BHK Flats in Janaki Apartment & Top CGHS',
-    metaDescription: 'Buy verified 3 & 4 BHK flats in Janaki Apartment and top societies in Dwarka Sector 22. Walking distance to Sector 21 Metro & Pacific Mall.',
+    metaTitle: 'Flats in Dwarka Sector 22 | Shri Shyam Associate',
+    metaDescription: 'Buy verified 3 & 4 BHK flats in Janaki Apartment and top societies in Dwarka Sector 22 near Sector 21 Metro & Mall. Call +91 9911956274.',
     heading: 'Property in Dwarka Sector 22 — Elite Residential Society Sector',
     intro: 'Dwarka Sector 22 is an upscale residential enclave right next to Sector 21 Metro and the Delhi Golf Course. It is renowned for well-maintained societies like Janaki Apartment with lush manicured gardens and quiet avenues.',
     connectivity: [
@@ -610,8 +610,8 @@ export const LOCATION_DETAILS: Record<string, LocationDetail> = {
   'dwarka-sector-23': {
     slug: 'dwarka-sector-23',
     name: 'Dwarka Sector 23',
-    metaTitle: 'Property in Dwarka Sector 23 | Luxury Builder Floors & Villas | Shri Shyam Associate',
-    metaDescription: 'Verified luxury builder floors, society apartments and plots in Dwarka Sector 23 near Yashobhoomi (IICC). Freehold registry & 3D virtual property tours.',
+    metaTitle: 'Property in Dwarka Sector 23 | Shri Shyam',
+    metaDescription: 'Verified luxury builder floors, society apartments and plots in Dwarka Sector 23 near Yashobhoomi IICC & Metro. Call +91 9911956274.',
     heading: 'Property in Dwarka Sector 23 — Elite Luxury & Yashobhoomi Corridor',
     intro: 'Dwarka Sector 23 is one of the most prestigious and rapidly appreciating sectors in Delhi NCR. Bordered by the Yashobhoomi (India International Convention and Expo Centre), Sector 21 Metro Station, and the Diplomatic Enclave, Sector 23 is renowned for its wide green avenues, high-end society apartments, and elite luxury builder floors.',
     connectivity: [
@@ -651,8 +651,8 @@ export const LOCATION_DETAILS: Record<string, LocationDetail> = {
   'dwarka-expressway-sector-102': {
     slug: 'dwarka-expressway-sector-102',
     name: 'Sector 102 Dwarka Expressway',
-    metaTitle: 'Property in Sector 102 Dwarka Expressway | Shapoorji Joyville & Luxury Flats',
-    metaDescription: 'Find verified 3 & 4 BHK luxury high-rise flats in Shapoorji Pallonji Joyville, Sector 102 Dwarka Expressway. Ultra-modern gated township.',
+    metaTitle: 'Flats in Sector 102 Expressway | Shri Shyam',
+    metaDescription: 'Find verified 3 & 4 BHK luxury high-rise flats in Shapoorji Pallonji Joyville, Sector 102 Dwarka Expressway Gurgaon. Call +91 9911956274.',
     heading: 'Property in Sector 102 Dwarka Expressway — Ultra-Modern High-Rise Living',
     intro: 'Sector 102 on Dwarka Expressway (NH-248BB) is a premier luxury high-rise destination featuring world-class gated developments like Shapoorji Pallonji Joyville. Offering 75% open green spaces, multi-tier security, clubhouses, and seamless 15-minute connectivity to both Dwarka and Cyber Hub Gurgaon.',
     connectivity: [
